@@ -30,6 +30,22 @@
   line-height: 1.7;
 }
 
+// ===== Header reveal =====
+.header {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  span { transition-delay: 0s; }
+  h2   { transition-delay: 0.1s; }
+  p    { transition-delay: 0.2s; }
+
+  &.inView {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 // ===== Card =====
 .card {
   max-width: 720px;
@@ -39,6 +55,20 @@
   box-shadow: $shadow-lg;
   border: 1px solid $gray-200;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+              transform 0.75s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+              box-shadow 0.3s ease;
+
+  &.cardVisible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  &:hover {
+    box-shadow: $shadow-xl;
+  }
 }
 
 .cardHeader {

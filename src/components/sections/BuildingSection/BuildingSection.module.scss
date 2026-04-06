@@ -27,6 +27,37 @@
   @include section-desc;
 }
 
+// ===== Reveal =====
+.header {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  &.inView { opacity: 1; transform: translateY(0); }
+}
+
+.photoGrid {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1) 0.1s,
+              transform 0.75s cubic-bezier(0.4,0,0.2,1) 0.1s;
+  &.inView { opacity: 1; transform: translateX(0); }
+}
+
+.specsWrap {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1) 0.2s,
+              transform 0.75s cubic-bezier(0.4,0,0.2,1) 0.2s;
+  &.inView { opacity: 1; transform: translateX(0); }
+}
+
+.facilitiesWrap {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s;
+  &.inView { opacity: 1; transform: translateY(0); }
+}
+
 // ===== Overview =====
 .overview {
   display: grid;
@@ -176,11 +207,18 @@
   padding: 24px 16px;
   text-align: center;
   box-shadow: $shadow-sm;
-  transition: $transition;
+  opacity: 0;
+  transform: translateY(24px) scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+
+  .facilitiesWrap.inView & {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 
   &:hover {
     box-shadow: $shadow-md;
-    transform: translateY(-3px);
+    transform: translateY(-4px) scale(1.02) !important;
   }
 }
 

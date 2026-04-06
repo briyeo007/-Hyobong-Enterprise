@@ -1,0 +1,102 @@
+// ===== Keyframes =====
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulseShadow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(45, 122, 84, 0.5); }
+  50%       { box-shadow: 0 0 0 16px rgba(45, 122, 84, 0); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(12px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+// ===== Reveal utility (scroll-triggered via .inView class) =====
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+
+  &.inView {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.revealLeft {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.inView { opacity: 1; transform: translateX(0); }
+}
+
+.revealRight {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.inView { opacity: 1; transform: translateX(0); }
+}
+
+.revealScale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.inView { opacity: 1; transform: scale(1); }
+}
+
+// ===== Delay helpers =====
+.d0  { transition-delay: 0s; }
+.d1  { transition-delay: 0.1s; }
+.d2  { transition-delay: 0.2s; }
+.d3  { transition-delay: 0.3s; }
+.d4  { transition-delay: 0.4s; }
+.d5  { transition-delay: 0.5s; }
+.d6  { transition-delay: 0.6s; }

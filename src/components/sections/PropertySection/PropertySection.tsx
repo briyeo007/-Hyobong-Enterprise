@@ -1,6 +1,8 @@
+'use client'
+
+import { useInView } from '@/hooks/useInView'
 import styles from './PropertySection.module.scss'
 
-// 실제 매물 정보로 교체해 주세요
 const PROPERTY = {
   floor: '층수 입력',
   area: '평수 입력',
@@ -12,10 +14,16 @@ const PROPERTY = {
 }
 
 export default function PropertySection() {
+  const { ref: headerRef, inView: headerIn } = useInView()
+  const { ref: cardRef,   inView: cardIn   } = useInView(0.15)
+
   return (
     <section id="property" className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.header}>
+        <div
+          ref={headerRef}
+          className={`${styles.header} ${headerIn ? styles.inView : ''}`}
+        >
           <span className={styles.label}>매물정보</span>
           <h2 className={styles.title}>현재 공실 현황</h2>
           <p className={styles.desc}>
@@ -24,8 +32,10 @@ export default function PropertySection() {
           </p>
         </div>
 
-        <div className={styles.card}>
-          {/* 상단 헤더 */}
+        <div
+          ref={cardRef}
+          className={`${styles.card} ${cardIn ? styles.cardVisible : ''}`}
+        >
           <div className={styles.cardHeader}>
             <div className={styles.statusBadge}>
               <span className={styles.statusDot} />
@@ -34,7 +44,6 @@ export default function PropertySection() {
             <span className={styles.floor}>{PROPERTY.floor}</span>
           </div>
 
-          {/* 스펙 정보 */}
           <div className={styles.specGrid}>
             <div className={styles.specItem}>
               <span className={styles.specLabel}>전용 면적</span>
@@ -53,17 +62,14 @@ export default function PropertySection() {
             </div>
           </div>
 
-          {/* 설명 */}
           <p className={styles.description}>{PROPERTY.description}</p>
 
-          {/* 태그 */}
           <div className={styles.tags}>
             {PROPERTY.tags.map((tag) => (
               <span key={tag} className={styles.tag}>{tag}</span>
             ))}
           </div>
 
-          {/* CTA */}
           <a href="tel:02-3473-6651" className={styles.cta}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>

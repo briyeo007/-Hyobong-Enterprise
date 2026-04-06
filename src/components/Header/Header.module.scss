@@ -7,13 +7,13 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 20px 0;
+  padding: 18px 0;
   transition: $transition-slow;
   background: transparent;
 
   &.scrolled {
     background: $white;
-    padding: 14px 0;
+    padding: 12px 0;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
   }
 }
@@ -23,21 +23,23 @@
   @include flex-between;
 }
 
+// ===== Logo =====
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
+  z-index: 1001;
 }
 
 .logoIcon {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   background: $primary;
   color: $white;
   border-radius: $radius-md;
   @include flex-center;
-  font-size: $font-xl;
+  font-size: $font-lg;
   font-weight: 900;
   flex-shrink: 0;
   box-shadow: 0 4px 12px rgba($primary, 0.35);
@@ -47,7 +49,6 @@
   font-size: $font-lg;
   font-weight: 800;
   color: $white;
-  letter-spacing: -0.01em;
   transition: $transition;
 
   .scrolled & {
@@ -55,29 +56,14 @@
   }
 }
 
-.nav {
+// ===== Desktop Nav =====
+.desktopNav {
   display: flex;
   align-items: center;
   gap: 4px;
 
   @include responsive(lg) {
     display: none;
-    flex-direction: column;
-    align-items: stretch;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 280px;
-    background: $white;
-    padding: 80px 24px 32px;
-    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15);
-    gap: 4px;
-    z-index: 999;
-
-    &.navOpen {
-      display: flex;
-    }
   }
 }
 
@@ -88,7 +74,7 @@
   color: rgba(255, 255, 255, 0.85);
   border-radius: $radius-md;
   transition: $transition;
-  letter-spacing: 0.01em;
+  text-decoration: none;
 
   .scrolled & {
     color: $gray-700;
@@ -96,77 +82,61 @@
 
   &:hover,
   &.active {
-    color: $primary;
+    color: $primary !important;
     background: $primary-pale;
-  }
-
-  &.active {
-    color: $primary;
-  }
-
-  @include responsive(lg) {
-    color: $gray-700;
-    padding: 12px 16px;
-    font-size: $font-base;
   }
 }
 
 .navCta {
   @include btn-primary;
-  padding: 10px 20px;
+  padding: 10px 18px;
   font-size: $font-sm;
   margin-left: 8px;
   box-shadow: 0 4px 12px rgba($primary, 0.3);
 
-  svg {
-    width: 15px;
-    height: 15px;
-  }
-
-  @include responsive(lg) {
-    margin-left: 0;
-    margin-top: 12px;
-    justify-content: center;
-    padding: 14px 20px;
-    font-size: $font-base;
-  }
+  svg { flex-shrink: 0; }
 }
 
+// ===== Hamburger =====
 .hamburger {
   display: none;
   flex-direction: column;
+  justify-content: center;
   gap: 5px;
+  width: 40px;
+  height: 40px;
   padding: 8px;
   cursor: pointer;
   background: none;
   border: none;
   z-index: 1001;
+  position: relative;
 
   span {
     display: block;
-    width: 24px;
+    width: 22px;
     height: 2px;
     background: $white;
     border-radius: 2px;
     transition: $transition;
+    transform-origin: center;
 
     .scrolled & {
       background: $text-primary;
     }
   }
 
-  &.hamburgerOpen {
-    span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-      background: $text-primary;
-    }
-    span:nth-child(2) {
-      opacity: 0;
-    }
-    span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-      background: $text-primary;
-    }
+  &.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+    background: $text-primary !important;
+  }
+  &.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  &.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+    background: $text-primary !important;
   }
 
   @include responsive(lg) {
@@ -174,14 +144,116 @@
   }
 }
 
+// ===== Overlay =====
 .overlay {
-  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1098;
+  backdrop-filter: blur(2px);
+}
 
-  @include responsive(lg) {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 998;
+// ===== Drawer =====
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  background: $white;
+  z-index: 1099;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15);
+
+  &.drawerOpen {
+    transform: translateX(0);
+  }
+}
+
+.drawerHeader {
+  @include flex-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid $gray-100;
+}
+
+.drawerTitle {
+  font-size: $font-lg;
+  font-weight: 800;
+  color: $text-primary;
+}
+
+.closeBtn {
+  width: 36px;
+  height: 36px;
+  @include flex-center;
+  background: $gray-100;
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  color: $gray-700;
+  transition: $transition;
+
+  &:hover {
+    background: $gray-200;
+  }
+}
+
+.drawerNav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+  overflow-y: auto;
+}
+
+.drawerLink {
+  @include flex-between;
+  padding: 16px 24px;
+  font-size: $font-lg;
+  font-weight: 700;
+  color: $text-primary;
+  text-decoration: none;
+  transition: $transition;
+  border-left: 3px solid transparent;
+
+  &:hover {
+    background: $primary-pale;
+    color: $primary;
+    border-left-color: $primary;
+  }
+
+  svg {
+    color: $gray-400;
+    flex-shrink: 0;
+    transition: $transition;
+  }
+
+  &:hover svg {
+    color: $primary;
+    transform: translateX(3px);
+  }
+}
+
+.drawerCta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 20px 32px;
+  padding: 16px;
+  background: $primary;
+  color: $white;
+  border-radius: $radius-lg;
+  font-size: $font-base;
+  font-weight: 800;
+  text-decoration: none;
+  transition: $transition;
+  box-shadow: 0 4px 16px rgba($primary, 0.35);
+
+  &:hover {
+    background: $primary-dark;
   }
 }

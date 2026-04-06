@@ -1,3 +1,6 @@
+'use client'
+
+import { useInView } from '@/hooks/useInView'
 import styles from './LocationSection.module.scss'
 
 const ACCESS_POINTS = [
@@ -10,9 +13,7 @@ const ACCESS_POINTS = [
       </svg>
     ),
     category: '지하철',
-    items: [
-      '3호선 남부터미널역 4-1번 출구 도보 374m (약 5분)',
-    ],
+    items: ['3호선 남부터미널역 4-1번 출구 도보 374m (약 5분)'],
   },
   {
     icon: (
@@ -24,9 +25,7 @@ const ACCESS_POINTS = [
       </svg>
     ),
     category: '버스',
-    items: [
-      '남부순환로 경유 간선·지선버스 이용 가능',
-    ],
+    items: ['남부순환로 경유 간선·지선버스 이용 가능'],
   },
   {
     icon: (
@@ -36,18 +35,19 @@ const ACCESS_POINTS = [
       </svg>
     ),
     category: '주변 상권',
-    items: [
-      '서초구 주요 상권 및 편의시설 인접',
-      '은행 · 카페 · 편의점 도보 이용 가능',
-    ],
+    items: ['서초구 주요 상권 및 편의시설 인접', '은행 · 카페 · 편의점 도보 이용 가능'],
   },
 ]
 
 export default function LocationSection() {
+  const { ref: headerRef, inView: headerIn } = useInView()
+  const { ref: mapRef,    inView: mapIn    } = useInView(0.1)
+  const { ref: infoRef,   inView: infoIn   } = useInView(0.1)
+
   return (
     <section id="location" className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.header}>
+        <div ref={headerRef} className={`${styles.header} ${headerIn ? styles.inView : ''}`}>
           <span className={styles.label}>입지/위치</span>
           <h2 className={styles.title}>최적의 입지</h2>
           <p className={styles.desc}>
@@ -56,8 +56,7 @@ export default function LocationSection() {
         </div>
 
         <div className={styles.layout}>
-          {/* 지도 */}
-          <div className={styles.mapWrap}>
+          <div ref={mapRef} className={`${styles.mapWrap} ${mapIn ? styles.inView : ''}`}>
             <iframe
               src="https://maps.google.com/maps?q=서울+서초구+남부순환로333길+13&t=&z=17&ie=UTF8&iwloc=&output=embed"
               width="100%"
@@ -81,8 +80,7 @@ export default function LocationSection() {
             </a>
           </div>
 
-          {/* 접근성 정보 */}
-          <div className={styles.infoWrap}>
+          <div ref={infoRef} className={`${styles.infoWrap} ${infoIn ? styles.inView : ''}`}>
             <div className={styles.addressCard}>
               <div className={styles.addressIcon}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -101,8 +99,8 @@ export default function LocationSection() {
             </div>
 
             <div className={styles.accessList}>
-              {ACCESS_POINTS.map((ap) => (
-                <div key={ap.category} className={styles.accessCard}>
+              {ACCESS_POINTS.map((ap, i) => (
+                <div key={ap.category} className={styles.accessCard} style={{ transitionDelay: `${i * 0.1 + 0.15}s` }}>
                   <div className={styles.accessHeader}>
                     <div className={styles.accessIcon}>{ap.icon}</div>
                     <span className={styles.accessCategory}>{ap.category}</span>

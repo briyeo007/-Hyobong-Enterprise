@@ -1,9 +1,14 @@
+'use client'
+
+import { useInView } from '@/hooks/useInView'
 import styles from './ContactSection.module.scss'
 
 export default function ContactSection() {
+  const { ref, inView } = useInView(0.2)
+
   return (
     <section id="contact" className={styles.section}>
-      <div className={styles.container}>
+      <div ref={ref} className={`${styles.container} ${inView ? styles.inView : ''}`}>
         <span className={styles.label}>상담문의</span>
         <h2 className={styles.title}>임대 문의</h2>
         <a href="tel:02-3473-6651" className={styles.phone}>

@@ -38,7 +38,38 @@
   }
 }
 
-// ===== Map =====
+// ===== Reveal =====
+.header {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  &.inView { opacity: 1; transform: translateY(0); }
+}
+
+.mapWrap {
+  opacity: 0;
+  transform: translateX(-36px);
+  &.inView { opacity: 1; transform: translateX(0); }
+}
+
+.infoWrap {
+  opacity: 0;
+  transform: translateX(36px);
+  &.inView { opacity: 1; transform: translateX(0); }
+}
+
+.accessCard {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+
+  .infoWrap.inView & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ===== Map Block =====
 .mapWrap {
   position: relative;
   border-radius: $radius-xl;
@@ -46,6 +77,8 @@
   height: 500px;
   box-shadow: $shadow-lg;
   background: $gray-100;
+  transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1) 0.1s,
+              transform 0.75s cubic-bezier(0.4,0,0.2,1) 0.1s;
 
   iframe {
     width: 100%;
@@ -135,6 +168,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1) 0.2s,
+              transform 0.75s cubic-bezier(0.4,0,0.2,1) 0.2s;
 }
 
 .addressCard {
