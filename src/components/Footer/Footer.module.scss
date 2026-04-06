@@ -25,6 +25,10 @@
   display: flex;
   align-items: center;
   gap: 12px;
+
+  @include responsive(md) {
+    justify-content: center;
+  }
 }
 
 .logoIcon {
@@ -94,4 +98,9 @@
   font-size: $font-xs;
   color: rgba(255, 255, 255, 0.35);
   white-space: nowrap;
+
+  @include responsive(md) {
+    text-align: center;
+    white-space: normal;
+  }
 }
