@@ -1,0 +1,250 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.section {
+  @include section-padding;
+  background: $gray-50;
+}
+
+.container {
+  @include container;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.label {
+  @include section-label;
+}
+
+.title {
+  @include section-title;
+}
+
+.desc {
+  @include section-desc;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 40px;
+  align-items: start;
+
+  @include responsive(lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ===== Map =====
+.mapWrap {
+  position: relative;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  height: 500px;
+  box-shadow: $shadow-lg;
+  background: $gray-100;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  @include responsive(lg) {
+    height: 360px;
+  }
+}
+
+.naverBtn {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  padding: 10px 20px;
+  background: $white;
+  color: $primary;
+  border-radius: $radius-full;
+  font-size: $font-sm;
+  font-weight: 700;
+  box-shadow: $shadow-lg;
+  text-decoration: none;
+  transition: $transition;
+  z-index: 10;
+
+  &:hover {
+    background: $primary;
+    color: $white;
+    transform: translateX(-50%) translateY(-2px);
+  }
+}
+
+.mapPlaceholder {
+  width: 100%;
+  height: 100%;
+  @include flex-center;
+  flex-direction: column;
+  gap: 12px;
+  color: $gray-400;
+  background: $gray-100;
+  border: 2px dashed $gray-300;
+  border-radius: $radius-xl;
+  text-align: center;
+  padding: 24px;
+}
+
+.mapPlaceholderTitle {
+  font-size: $font-xl;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.mapPlaceholderDesc {
+  font-size: $font-sm;
+  color: $text-muted;
+  line-height: 1.6;
+}
+
+.mapLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 8px 18px;
+  background: $primary;
+  color: $white;
+  border-radius: $radius-full;
+  font-size: $font-sm;
+  font-weight: 600;
+  transition: $transition;
+
+  &:hover {
+    background: $primary-dark;
+  }
+}
+
+// ===== Info =====
+.infoWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.addressCard {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  background: $white;
+  border-radius: $radius-xl;
+  border: 1px solid $gray-200;
+  box-shadow: $shadow-sm;
+}
+
+.addressIcon {
+  width: 44px;
+  height: 44px;
+  background: $primary-pale;
+  border-radius: $radius-md;
+  @include flex-center;
+  flex-shrink: 0;
+  color: $primary;
+}
+
+.addressLabel {
+  font-size: $font-xs;
+  font-weight: 600;
+  color: $text-muted;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.addressValue {
+  font-size: $font-base;
+  font-weight: 700;
+  color: $text-primary;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.addressNote {
+  font-size: $font-xs;
+  color: $text-muted;
+  font-style: italic;
+}
+
+.accessList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.accessCard {
+  padding: 20px;
+  background: $white;
+  border-radius: $radius-lg;
+  border: 1px solid $gray-200;
+  box-shadow: $shadow-sm;
+}
+
+.accessHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.accessIcon {
+  width: 36px;
+  height: 36px;
+  background: $primary-pale;
+  border-radius: $radius-sm;
+  @include flex-center;
+  color: $primary;
+  flex-shrink: 0;
+}
+
+.accessCategory {
+  font-size: $font-base;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.accessItems {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 6px;
+}
+
+.accessItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: $font-sm;
+  color: $text-secondary;
+}
+
+.accessDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: $primary-light;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cta {
+  @include btn-primary;
+  width: 100%;
+  justify-content: center;
+  padding: 16px;
+}

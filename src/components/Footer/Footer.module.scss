@@ -1,0 +1,97 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  background: $primary-dark;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 48px 0 32px;
+}
+
+.inner {
+  @include container;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 32px;
+  align-items: center;
+
+  @include responsive(md) {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 20px;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  background: $primary;
+  color: $white;
+  border-radius: $radius-md;
+  @include flex-center;
+  font-size: $font-xl;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-size: $font-lg;
+  font-weight: 800;
+  color: $white;
+}
+
+.logoSub {
+  font-size: $font-xs;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.04em;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: $font-sm;
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    @include responsive(md) {
+      justify-content: center;
+    }
+  }
+}
+
+.infoLabel {
+  display: inline-block;
+  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: $radius-sm;
+  font-size: $font-xs;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.infoPhone {
+  color: $primary-light;
+  font-weight: 700;
+  text-decoration: none;
+  transition: $transition;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.copyright {
+  font-size: $font-xs;
+  color: rgba(255, 255, 255, 0.35);
+  white-space: nowrap;
+}

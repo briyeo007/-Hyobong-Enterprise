@@ -1,0 +1,105 @@
+@use 'variables' as *;
+
+@mixin container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@mixin section-padding {
+  padding: $section-py 0;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin responsive($bp) {
+  @if $bp == sm  { @media (max-width: #{$sm})  { @content; } }
+  @if $bp == md  { @media (max-width: #{$md})  { @content; } }
+  @if $bp == lg  { @media (max-width: #{$lg})  { @content; } }
+  @if $bp == xl  { @media (max-width: #{$xl})  { @content; } }
+}
+
+@mixin section-label {
+  display: inline-block;
+  padding: 4px 14px;
+  background: $primary-pale;
+  color: $primary;
+  border-radius: $radius-full;
+  font-size: $font-sm;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-bottom: 16px;
+}
+
+@mixin section-title {
+  font-size: $font-4xl;
+  font-weight: 800;
+  color: $text-primary;
+  line-height: 1.2;
+  margin-bottom: 16px;
+
+  @include responsive(md) {
+    font-size: $font-3xl;
+  }
+}
+
+@mixin section-desc {
+  font-size: $font-lg;
+  color: $text-secondary;
+  line-height: 1.7;
+  margin-bottom: 48px;
+
+  @include responsive(md) {
+    font-size: $font-base;
+    margin-bottom: 36px;
+  }
+}
+
+@mixin btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: $primary;
+  color: $white;
+  border-radius: $radius-full;
+  font-size: $font-base;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: $transition;
+  text-decoration: none;
+
+  &:hover {
+    background: $primary-dark;
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin card {
+  background: $white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  border: 1px solid $gray-200;
+  transition: $transition;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-4px);
+  }
+}

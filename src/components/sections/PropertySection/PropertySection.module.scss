@@ -1,0 +1,210 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.section {
+  @include section-padding;
+  background: $gray-50;
+}
+
+.container {
+  @include container;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.label {
+  @include section-label;
+}
+
+.title {
+  @include section-title;
+}
+
+.desc {
+  font-size: $font-base;
+  color: $text-secondary;
+  margin-top: 12px;
+  line-height: 1.7;
+}
+
+// ===== Card =====
+.card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: $white;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-lg;
+  border: 1px solid $gray-200;
+  overflow: hidden;
+}
+
+.cardHeader {
+  @include flex-between;
+  padding: 24px 32px;
+  background: $primary;
+
+  @include responsive(sm) {
+    padding: 20px 24px;
+  }
+}
+
+.statusBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: $radius-full;
+  color: $white;
+  font-size: $font-sm;
+  font-weight: 700;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  background: #4ADE80;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.floor {
+  font-size: $font-2xl;
+  font-weight: 900;
+  color: $white;
+  letter-spacing: -0.01em;
+}
+
+// ===== Spec Grid =====
+.specGrid {
+  display: flex;
+  align-items: stretch;
+  padding: 36px 32px;
+  gap: 0;
+  border-bottom: 1px solid $gray-100;
+
+  @include responsive(sm) {
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+  }
+}
+
+.specItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.specDivider {
+  width: 1px;
+  background: $gray-200;
+  margin: 0 8px;
+
+  @include responsive(sm) {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+  }
+}
+
+.specLabel {
+  font-size: $font-xs;
+  font-weight: 600;
+  color: $text-muted;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.specValue {
+  font-size: $font-2xl;
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.02em;
+}
+
+.specSub {
+  font-size: $font-xs;
+  color: $text-muted;
+  margin-top: -2px;
+}
+
+// ===== Body =====
+.description {
+  padding: 24px 32px 0;
+  font-size: $font-base;
+  color: $text-secondary;
+  line-height: 1.7;
+
+  @include responsive(sm) {
+    padding: 20px 24px 0;
+  }
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 16px 32px 24px;
+
+  @include responsive(sm) {
+    padding: 16px 24px 20px;
+  }
+}
+
+.tag {
+  padding: 5px 14px;
+  background: $primary-pale;
+  color: $primary;
+  border-radius: $radius-full;
+  font-size: $font-sm;
+  font-weight: 700;
+}
+
+// ===== CTA =====
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  background: $primary;
+  color: $white;
+  font-size: $font-lg;
+  font-weight: 800;
+  text-decoration: none;
+  transition: $transition;
+  letter-spacing: -0.01em;
+
+  &:hover {
+    background: $primary-dark;
+  }
+}
+
+// ===== Notice =====
+.notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-size: $font-sm;
+  color: $text-muted;
+
+  svg {
+    flex-shrink: 0;
+    color: $primary-light;
+  }
+}
