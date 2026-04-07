@@ -1,6 +1,4 @@
-'use client'
-
-import { useInView } from '@/hooks/useInView'
+import AnimateIn from '@/components/AnimateIn'
 import styles from './BuildingSection.module.scss'
 
 const SPECS = [
@@ -22,15 +20,10 @@ const FACILITIES = [
 ]
 
 export default function BuildingSection() {
-  const { ref: headerRef, inView: headerIn } = useInView()
-  const { ref: photoRef,  inView: photoIn  } = useInView(0.1)
-  const { ref: specsRef,  inView: specsIn  } = useInView(0.1)
-  const { ref: facRef,    inView: facIn    } = useInView(0.1)
-
   return (
     <section id="building" className={styles.section}>
       <div className={styles.container}>
-        <div ref={headerRef} className={`${styles.header} ${headerIn ? styles.inView : ''}`}>
+        <AnimateIn className={styles.header} activeClassName={styles.inView}>
           <span className={styles.label}>빌딩소개</span>
           <h2 className={styles.title}>효봉8빌딩 소개</h2>
           <p className={styles.desc}>
@@ -38,10 +31,10 @@ export default function BuildingSection() {
             <br />
             효봉8빌딩에서 최고의 업무 환경을 경험하세요.
           </p>
-        </div>
+        </AnimateIn>
 
         <div className={styles.overview}>
-          <div ref={photoRef} className={`${styles.photoGrid} ${photoIn ? styles.inView : ''}`}>
+          <AnimateIn className={styles.photoGrid} activeClassName={styles.inView} threshold={0.1}>
             <div className={`${styles.photoItem} ${styles.photoMain}`}>
               <div className={styles.photoPlaceholder}>
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
@@ -60,9 +53,9 @@ export default function BuildingSection() {
                 <p>로비 사진</p>
               </div>
             </div>
-          </div>
+          </AnimateIn>
 
-          <div ref={specsRef} className={`${styles.specsWrap} ${specsIn ? styles.inView : ''}`}>
+          <AnimateIn className={styles.specsWrap} activeClassName={styles.inView} threshold={0.1}>
             <h3 className={styles.specsTitle}>건물 개요</h3>
             <dl className={styles.specsList}>
               {SPECS.map((s) => (
@@ -76,10 +69,10 @@ export default function BuildingSection() {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
               입주 문의 바로 전화
             </a>
-          </div>
+          </AnimateIn>
         </div>
 
-        <div ref={facRef} className={`${styles.facilitiesWrap} ${facIn ? styles.inView : ''}`}>
+        <AnimateIn className={styles.facilitiesWrap} activeClassName={styles.inView} threshold={0.1}>
           <h3 className={styles.facilitiesTitle}>주요 시설</h3>
           <div className={styles.facilitiesGrid}>
             {FACILITIES.map((f, i) => (
@@ -90,7 +83,7 @@ export default function BuildingSection() {
               </div>
             ))}
           </div>
-        </div>
+        </AnimateIn>
       </div>
     </section>
   )

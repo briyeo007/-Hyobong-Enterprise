@@ -1,6 +1,4 @@
-'use client'
-
-import { useInView } from '@/hooks/useInView'
+import AnimateIn from '@/components/AnimateIn'
 import styles from './LocationSection.module.scss'
 
 const ACCESS_POINTS = [
@@ -40,23 +38,19 @@ const ACCESS_POINTS = [
 ]
 
 export default function LocationSection() {
-  const { ref: headerRef, inView: headerIn } = useInView()
-  const { ref: mapRef,    inView: mapIn    } = useInView(0.1)
-  const { ref: infoRef,   inView: infoIn   } = useInView(0.1)
-
   return (
     <section id="location" className={styles.section}>
       <div className={styles.container}>
-        <div ref={headerRef} className={`${styles.header} ${headerIn ? styles.inView : ''}`}>
+        <AnimateIn className={styles.header} activeClassName={styles.inView}>
           <span className={styles.label}>입지/위치</span>
           <h2 className={styles.title}>최적의 입지</h2>
           <p className={styles.desc}>
             3호선 남부터미널역 도보 5분, 서초구 핵심 업무지역에 위치합니다.
           </p>
-        </div>
+        </AnimateIn>
 
         <div className={styles.layout}>
-          <div ref={mapRef} className={`${styles.mapWrap} ${mapIn ? styles.inView : ''}`}>
+          <AnimateIn className={styles.mapWrap} activeClassName={styles.inView} threshold={0.1}>
             <iframe
               src="https://maps.google.com/maps?q=서울+서초구+남부순환로333길+13&t=&z=17&ie=UTF8&iwloc=&output=embed"
               width="100%"
@@ -78,9 +72,9 @@ export default function LocationSection() {
               </svg>
               네이버 지도에서 정확한 위치 보기
             </a>
-          </div>
+          </AnimateIn>
 
-          <div ref={infoRef} className={`${styles.infoWrap} ${infoIn ? styles.inView : ''}`}>
+          <AnimateIn className={styles.infoWrap} activeClassName={styles.inView} threshold={0.1}>
             <div className={styles.addressCard}>
               <div className={styles.addressIcon}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -123,7 +117,7 @@ export default function LocationSection() {
               </svg>
               위치 확인 후 전화 문의
             </a>
-          </div>
+          </AnimateIn>
         </div>
       </div>
     </section>

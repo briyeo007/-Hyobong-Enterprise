@@ -1,14 +1,10 @@
-'use client'
-
-import { useInView } from '@/hooks/useInView'
+import AnimateIn from '@/components/AnimateIn'
 import styles from './ContactSection.module.scss'
 
 export default function ContactSection() {
-  const { ref, inView } = useInView(0.2)
-
   return (
     <section id="contact" className={styles.section}>
-      <div ref={ref} className={`${styles.container} ${inView ? styles.inView : ''}`}>
+      <AnimateIn className={styles.container} activeClassName={styles.inView} threshold={0.2}>
         <span className={styles.label}>상담문의</span>
         <h2 className={styles.title}>임대 문의</h2>
         <a href="tel:02-3473-6651" className={styles.phone}>
@@ -20,7 +16,7 @@ export default function ContactSection() {
           </svg>
           전화 연결하기
         </a>
-      </div>
+      </AnimateIn>
     </section>
   )
 }
