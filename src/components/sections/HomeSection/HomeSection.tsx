@@ -1,5 +1,3 @@
-'use client'
-
 import styles from './HomeSection.module.scss'
 
 const FEATURES = [
@@ -82,10 +80,6 @@ export default function HomeSection() {
           <a
             href="#property"
             className={styles.btnOutline}
-            onClick={(e) => {
-              e.preventDefault()
-              document.getElementById('property')?.scrollIntoView({ behavior: 'smooth' })
-            }}
           >
             매물 정보 보기
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -100,10 +94,6 @@ export default function HomeSection() {
         href="#property"
         className={styles.scrollDown}
         aria-label="아래로 스크롤"
-        onClick={(e) => {
-          e.preventDefault()
-          document.getElementById('property')?.scrollIntoView({ behavior: 'smooth' })
-        }}
       >
         <span />
       </a>
