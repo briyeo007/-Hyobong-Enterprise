@@ -31,22 +31,24 @@
 
 @mixin section-label {
   display: inline-block;
-  padding: 4px 14px;
-  background: $primary-pale;
-  color: $primary;
+  padding: 5px 16px;
+  background: $primary;
+  color: $white;
   border-radius: $radius-full;
   font-size: $font-sm;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba($primary, 0.3);
 }
 
 @mixin section-title {
   font-size: $font-4xl;
-  font-weight: 800;
+  font-weight: 900;
   color: $text-primary;
   line-height: 1.2;
   margin-bottom: 16px;
+  letter-spacing: -0.02em;
 
   @include responsive(md) {
     font-size: $font-3xl;

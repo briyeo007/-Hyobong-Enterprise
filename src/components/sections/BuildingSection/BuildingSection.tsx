@@ -5,11 +5,11 @@ import styles from './BuildingSection.module.scss'
 
 const SPECS = [
   { label: '건물 용도', value: '업무용 오피스' },
-  { label: '총 층수',   value: '지하 1층 / 지상 10층' },
+  { label: '총 층수',   value: '지상 1층 ~ 5층' },
   { label: '준공연도',  value: '정보 입력 예정' },
   { label: '총 면적',   value: '정보 입력 예정' },
   { label: '주차 규모', value: '정보 입력 예정' },
-  { label: '엘리베이터', value: '승객용 2기' },
+  { label: '엘리베이터', value: '정보 입력 예정' },
 ]
 
 const FACILITIES = [

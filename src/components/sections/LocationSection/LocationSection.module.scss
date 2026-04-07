@@ -3,7 +3,8 @@
 
 .section {
   @include section-padding;
-  background: $gray-50;
+  background: $white;
+  border-top: 1px solid $gray-200;
 }
 
 .container {
@@ -21,6 +22,16 @@
 
 .title {
   @include section-title;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 52px;
+    height: 4px;
+    background: $primary;
+    border-radius: 2px;
+    margin: 14px auto 0;
+  }
 }
 
 .desc {
@@ -178,8 +189,9 @@
   padding: 24px;
   background: $white;
   border-radius: $radius-xl;
-  border: 1px solid $gray-200;
-  box-shadow: $shadow-sm;
+  border: 1.5px solid $gray-200;
+  border-left: 4px solid $primary;
+  box-shadow: $shadow-md;
 }
 
 .addressIcon {
@@ -194,8 +206,8 @@
 
 .addressLabel {
   font-size: $font-xs;
-  font-weight: 600;
-  color: $text-muted;
+  font-weight: 700;
+  color: $primary;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin-bottom: 4px;
@@ -203,7 +215,7 @@
 
 .addressValue {
   font-size: $font-base;
-  font-weight: 700;
+  font-weight: 800;
   color: $text-primary;
   line-height: 1.5;
   margin-bottom: 4px;
@@ -225,8 +237,8 @@
   padding: 20px;
   background: $white;
   border-radius: $radius-lg;
-  border: 1px solid $gray-200;
-  box-shadow: $shadow-sm;
+  border: 1.5px solid $gray-200;
+  box-shadow: $shadow-md;
 }
 
 .accessHeader {
@@ -248,7 +260,7 @@
 
 .accessCategory {
   font-size: $font-base;
-  font-weight: 700;
+  font-weight: 800;
   color: $text-primary;
 }
 
@@ -266,6 +278,7 @@
   gap: 8px;
   font-size: $font-sm;
   color: $text-secondary;
+  font-weight: 500;
 }
 
 .accessDot {

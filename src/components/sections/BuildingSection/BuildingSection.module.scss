@@ -3,7 +3,8 @@
 
 .section {
   @include section-padding;
-  background: $white;
+  background: $primary-bg;
+  border-top: 1px solid rgba($primary-light, 0.2);
 }
 
 .container {
@@ -21,6 +22,16 @@
 
 .title {
   @include section-title;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 52px;
+    height: 4px;
+    background: $primary;
+    border-radius: 2px;
+    margin: 14px auto 0;
+  }
 }
 
 .desc {
@@ -107,19 +118,20 @@
 
 // ===== Specs =====
 .specsWrap {
-  background: $gray-50;
+  background: $white;
   border-radius: $radius-xl;
   padding: 32px;
-  border: 1px solid $gray-200;
+  border: 1.5px solid $gray-200;
+  box-shadow: $shadow-md;
 }
 
 .specsTitle {
   font-size: $font-xl;
-  font-weight: 800;
+  font-weight: 900;
   color: $text-primary;
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 2px solid $primary-pale;
+  border-bottom: 2px solid $primary-light;
 }
 
 .specsList {
@@ -143,13 +155,13 @@
 .specLabel {
   font-size: $font-sm;
   color: $text-secondary;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .specValue {
   font-size: $font-sm;
-  font-weight: 700;
-  color: $text-primary;
+  font-weight: 800;
+  color: $primary-dark;
   text-align: right;
 }
 
@@ -166,9 +178,11 @@
 
 // ===== Facilities =====
 .facilitiesWrap {
-  background: $primary-pale;
+  background: $white;
   border-radius: $radius-xl;
   padding: 48px;
+  border: 1.5px solid $gray-200;
+  box-shadow: $shadow-md;
 
   @include responsive(md) {
     padding: 32px 24px;
@@ -234,13 +248,13 @@
 
 .facilityLabel {
   font-size: $font-sm;
-  font-weight: 700;
+  font-weight: 800;
   color: $text-primary;
   margin-bottom: 4px;
 }
 
 .facilityDesc {
   font-size: $font-xs;
-  color: $text-muted;
+  color: $text-secondary;
   line-height: 1.4;
 }
