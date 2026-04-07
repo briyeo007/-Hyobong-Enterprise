@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy:vercel": "vercel --prod",
-    "deploy:ghpages": "cross-env DEPLOY_GH_PAGES=true next build && gh-pages -d out --nojekyll"
+    "deploy:vercel": "vercel --prod"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
@@ -20,8 +19,6 @@
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "cross-env": "^10.1.0",
-    "gh-pages": "^6.3.0",
     "sass": "^1.77.8",
     "typescript": "^5.5.3"
   }
