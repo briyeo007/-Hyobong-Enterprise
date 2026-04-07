@@ -27,11 +27,6 @@ export const metadata: Metadata = {
     description: '서울 서초구 남부터미널역 도보 5분. 역세권·넓은 주차·우수한 관리 상태. 지금 바로 문의하세요. 02-3473-6651',
     locale: 'ko_KR',
   },
-  verification: {
-    other: {
-      'naver-site-verification': '2bd22d4d4301aa66ef7b753371cd34a9cef9e3e4',
-    },
-  },
   twitter: {
     card: 'summary',
     title: '효봉8빌딩 임대 안내 | 서초구 역세권 사무실',
@@ -46,6 +41,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
+      <head>
+        <meta name="naver-site-verification" content="2bd22d4d4301aa66ef7b753371cd34a9cef9e3e4" />
+      </head>
       <body className={notoSansKR.className}>
         {children}
         <Analytics />
