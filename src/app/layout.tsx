@@ -44,6 +44,7 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         <meta name="naver-site-verification" content="2bd22d4d4301aa66ef7b753371cd34a9cef9e3e4" />
+        <meta name="google-site-verification" content="k2vUG4wByx1PSBDuv18F3WGc6AjxQsmpeFThcC15wCw" />
       </head>
       <body className={notoSansKR.className}>
         {children}
