@@ -14,7 +14,7 @@ const BASE_URL = 'https://www.hyobongkiup.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
-  title: '서초동 상가 임대 | 서초 사무실 임대 | 효봉8빌딩',
+  title: '서초동 사무실 임대 | 효봉8빌딩',
   description: '서초동 상가 및 사무실 임대 (효봉8빌딩). 남부터미널역 도보 5분, 즉시 입주 가능. 문의: 02-3473-6651',
   keywords: ['서초동 상가 임대', '서초 사무실 임대', '효봉8빌딩', '남부터미널 사무실 임대'],
   alternates: {
