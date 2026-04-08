@@ -47,9 +47,7 @@ export default function HomeSection() {
         <div className={styles.badge}>현재 공실 임대 중</div>
 
         <h1 className={styles.title}>
-          효봉8빌딩
-          <br />
-          <span>임대 안내</span>
+          효봉8빌딩 서초동 상가 임대 / 사무실 임대
         </h1>
 
         <p className={styles.subtitle}>
