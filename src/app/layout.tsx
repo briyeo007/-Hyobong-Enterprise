@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_KR } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.scss'
 
 const notoSansKR = Noto_Sans_KR({
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body className={notoSansKR.className}>
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
