@@ -51,9 +51,7 @@ export default function HomeSection() {
         </h1>
 
         <p className={styles.subtitle}>
-          직접 관리 건물로 신속 상담 가능
-          <br className={styles.brMd} />
-          지금 바로 문의하시면 바로 안내해 드립니다.
+          서울 공실 건물 임대 / 즉시 상담 가능
         </p>
 
         <div className={styles.features}>
@@ -79,7 +77,7 @@ export default function HomeSection() {
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
             </svg>
-            문의하기
+            지금 공실 문의하기
           </a>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import AnimateIn from '@/components/AnimateIn'
 import SectionCTA from '@/components/SectionCTA/SectionCTA'
 import styles from './PropertySection.module.scss'
 
@@ -16,16 +15,16 @@ export default function PropertySection() {
   return (
     <section id="property" className={styles.section}>
       <div className={styles.container}>
-        <AnimateIn className={styles.header} activeClassName={styles.inView}>
+        <div className={styles.header}>
           <span className={styles.label}>매물정보</span>
           <h2 className={styles.title}>현재 공실 현황</h2>
           <p className={styles.desc}>
             효봉8빌딩의 임대 가능한 공실입니다.
             자세한 조건은 전화 문의를 통해 확인하세요.
           </p>
-        </AnimateIn>
+        </div>
 
-        <AnimateIn className={styles.card} activeClassName={styles.cardVisible} threshold={0.15}>
+        <div className={`${styles.card} ${styles.cardVisible}`}>
           <div className={styles.cardHeader}>
             <div className={styles.statusBadge}>
               <span className={styles.statusDot} />
@@ -66,7 +65,7 @@ export default function PropertySection() {
             </svg>
             이 매물 문의하기 · 02-3473-6651
           </a>
-        </AnimateIn>
+        </div>
 
         <p className={styles.notice}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
