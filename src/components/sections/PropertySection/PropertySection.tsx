@@ -1,4 +1,5 @@
 import AnimateIn from '@/components/AnimateIn'
+import SectionCTA from '@/components/SectionCTA/SectionCTA'
 import styles from './PropertySection.module.scss'
 
 const PROPERTY = {
@@ -75,6 +76,7 @@ export default function PropertySection() {
           </svg>
           가격 및 조건은 협의 가능합니다.
         </p>
+        <SectionCTA />
       </div>
     </section>
   )

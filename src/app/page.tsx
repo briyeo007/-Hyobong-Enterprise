@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import Header from '@/components/Header/Header'
 import HomeSection from '@/components/sections/HomeSection/HomeSection'
+import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
 import Footer from '@/components/Footer/Footer'
 
 const PropertySection = dynamic(() => import('@/components/sections/PropertySection/PropertySection'))
@@ -20,6 +21,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
+      <FloatingButtons />
     </>
   )
 }

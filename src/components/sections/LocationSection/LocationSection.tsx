@@ -1,4 +1,5 @@
 import AnimateIn from '@/components/AnimateIn'
+import SectionCTA from '@/components/SectionCTA/SectionCTA'
 import styles from './LocationSection.module.scss'
 
 const ACCESS_POINTS = [
@@ -119,6 +120,7 @@ export default function LocationSection() {
             </a>
           </AnimateIn>
         </div>
+        <SectionCTA />
       </div>
     </section>
   )

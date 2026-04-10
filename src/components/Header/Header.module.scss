@@ -7,15 +7,20 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 18px 0;
+  padding: 14px 0;
   transition: $transition-slow;
-  background: transparent;
+  background: rgba($primary-dark, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
   &.scrolled {
     background: $white;
     padding: 12px 0;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.06);
     border-bottom: 1px solid $gray-200;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
 

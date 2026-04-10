@@ -1,4 +1,5 @@
 import AnimateIn from '@/components/AnimateIn'
+import SectionCTA from '@/components/SectionCTA/SectionCTA'
 import styles from './BuildingSection.module.scss'
 
 const SPECS = [
@@ -84,6 +85,7 @@ export default function BuildingSection() {
             ))}
           </div>
         </AnimateIn>
+        <SectionCTA />
       </div>
     </section>
   )

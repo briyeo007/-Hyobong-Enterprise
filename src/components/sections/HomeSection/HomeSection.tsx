@@ -44,16 +44,16 @@ export default function HomeSection() {
       <div className={styles.overlay} aria-hidden="true" />
 
       <div className={styles.content}>
-        <div className={styles.badge}>현재 공실 임대 중</div>
+        <div className={styles.badge}>서초동 공실 문의 · 빠른 입주 가능</div>
 
         <h1 className={styles.title}>
           효봉8빌딩 사무실 임대
         </h1>
 
         <p className={styles.subtitle}>
-          최적의 입지와 쾌적한 환경을 갖춘
+          직접 관리 건물로 신속 상담 가능
           <br className={styles.brMd} />
-          효봉8빌딩에서 비즈니스를 시작하세요.
+          지금 바로 문의하시면 바로 안내해 드립니다.
         </p>
 
         <div className={styles.features}>
@@ -70,20 +70,16 @@ export default function HomeSection() {
 
         <div className={styles.actions}>
           <a href="tel:02-3473-6651" className={styles.btnPrimary}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
               <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
             </svg>
-            지금 바로 문의하기
+            전화하기
           </a>
-          <a
-            href="#property"
-            className={styles.btnOutline}
-          >
-            매물 정보 보기
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
+          <a href="#contact" className={styles.btnOutline}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
             </svg>
+            문의하기
           </a>
         </div>
       </div>

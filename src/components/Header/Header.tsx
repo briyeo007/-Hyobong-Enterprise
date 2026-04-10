@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react'
 import styles from './Header.module.scss'
 
 const NAV_ITEMS = [
-  { label: '매물정보', href: '#property' },
-  { label: '빌딩소개', href: '#building' },
-  { label: '입지/위치', href: '#location' },
-  { label: '상담문의', href: '#contact' },
+  { label: '공실 / 부동산', href: '#property' },
+  { label: '사업분야', href: '#building' },
+  { label: '회사소개', href: '#location' },
+  { label: '문의', href: '#contact' },
 ]
 
 export default function Header() {
