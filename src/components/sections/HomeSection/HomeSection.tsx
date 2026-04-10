@@ -51,7 +51,9 @@ export default function HomeSection() {
         </h1>
 
         <p className={styles.subtitle}>
-          서울 공실 건물 임대 / 즉시 상담 가능
+          현재 공실 즉시 안내 / 빠른 입주 가능
+          <br />
+          <strong className={styles.subtitleAccent}>지금 문의하시면 바로 연결됩니다</strong>
         </p>
 
         <div className={styles.features}>

@@ -2,46 +2,41 @@
 
 .wrap {
   position: fixed;
-  bottom: 32px;
-  right: 24px;
-  z-index: 999;
+  bottom: 28px;
+  right: 20px;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  opacity: 0;
-  transform: translateY(16px);
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-
-  &.show {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
+  gap: 10px;
 
   @media (max-width: $sm) {
-    bottom: 20px;
-    right: 16px;
+    bottom: 16px;
+    right: 12px;
   }
 }
 
 %btn-base {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 22px;
+  gap: 10px;
+  padding: 15px 24px;
   border-radius: $radius-full;
   font-size: $font-base;
-  font-weight: 700;
+  font-weight: 800;
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
   transition: $transition;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  span {
+    @media (max-width: $sm) {
+      display: none;
+    }
+  }
+
+  @media (max-width: $sm) {
+    padding: 15px;
+    border-radius: 50%;
   }
 }
 
@@ -49,9 +44,14 @@
   @extend %btn-base;
   background: $primary;
   color: $white;
+  box-shadow: 0 4px 20px rgba($primary, 0.55), 0 0 0 0 rgba($primary, 0.4);
+  animation: phonePulse 2.4s ease-in-out infinite;
 
   &:hover {
     background: $primary-mid;
+    transform: translateY(-2px) scale(1.04);
+    animation: none;
+    box-shadow: 0 8px 28px rgba($primary, 0.5);
   }
 }
 
@@ -59,9 +59,21 @@
   @extend %btn-base;
   background: $white;
   color: $primary;
-  border: 2px solid $primary;
+  border: 2.5px solid $primary;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
 
   &:hover {
     background: $primary-pale;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  }
+}
+
+@keyframes phonePulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba($primary, 0.55), 0 0 0 0 rgba($primary, 0.45);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba($primary, 0.55), 0 0 0 10px rgba($primary, 0);
   }
 }
