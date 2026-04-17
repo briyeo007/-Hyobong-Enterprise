@@ -38,28 +38,10 @@
   z-index: 1001;
 }
 
-.logoIcon {
-  width: 36px;
+.logoImg {
   height: 36px;
-  background: $primary;
-  color: $white;
-  border-radius: $radius-md;
-  @include flex-center;
-  font-size: $font-lg;
-  font-weight: 900;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba($primary, 0.35);
-}
-
-.logoText {
-  font-size: $font-lg;
-  font-weight: 800;
-  color: $white;
-  transition: $transition;
-
-  .scrolled & {
-    color: $text-primary;
-  }
+  width: auto;
+  object-fit: contain;
 }
 
 // ===== Desktop Nav =====

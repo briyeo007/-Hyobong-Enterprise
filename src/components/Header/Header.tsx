@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import styles from './Header.module.scss'
 
 const NAV_ITEMS = [
@@ -52,8 +53,7 @@ export default function Header() {
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.inner}>
           <a className={styles.logo} href="#home" onClick={(e) => { e.preventDefault(); scrollTo('#home') }}>
-            <span className={styles.logoIcon}>H</span>
-            <span className={styles.logoText}>효봉8빌딩</span>
+            <Image src="/logo.png" alt="효봉8빌딩 로고" width={120} height={40} className={styles.logoImg} />
           </a>
 
           {/* 데스크탑 nav */}

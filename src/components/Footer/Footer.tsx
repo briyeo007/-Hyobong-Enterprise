@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import styles from './Footer.module.scss'
 
 export default function Footer() {
@@ -8,11 +9,7 @@ export default function Footer() {
       <div className={styles.inner}>
         <div className={styles.top}>
           <div className={styles.brand}>
-            <div className={styles.logoIcon}>H</div>
-            <div>
-              <p className={styles.logoText}>효봉8빌딩</p>
-              <p className={styles.logoSub}>임대 안내</p>
-            </div>
+            <Image src="/logo.png" alt="효봉8빌딩 로고" width={120} height={40} className={styles.logoImg} />
           </div>
 
           <div className={styles.contacts}>

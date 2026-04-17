@@ -35,23 +35,10 @@
   gap: 14px;
 }
 
-.logoIcon {
-  width: 48px;
-  height: 48px;
-  background: $primary;
-  color: $white;
-  border-radius: $radius-md;
-  @include flex-center;
-  font-size: $font-2xl;
-  font-weight: 900;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba($primary, 0.4);
-}
-
-.logoText {
-  font-size: $font-xl;
-  font-weight: 900;
-  color: $white;
+.logoImg {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .logoSub {
