@@ -53,7 +53,7 @@ export default function Header() {
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.inner}>
           <a className={styles.logo} href="#home" onClick={(e) => { e.preventDefault(); scrollTo('#home') }}>
-            <Image src="/logo.png" alt="효봉8빌딩 로고" width={180} height={60} className={styles.logoImg} />
+            <Image src="/logo.png" alt="효봉8빌딩 로고" width={240} height={80} className={styles.logoImg} />
           </a>
 
           {/* 데스크탑 nav */}
