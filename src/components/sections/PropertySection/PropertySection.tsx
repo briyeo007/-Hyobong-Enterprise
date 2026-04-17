@@ -32,7 +32,7 @@ const PROPERTIES: Property[] = [
   {
     id: '1f-102',
     floor: '1층 102호',
-    summary: '1층 노출상가',
+    summary: '노출 상가 가능',
     area: { contract: 66, actual: 40 },
     dual: true,
     options: [
@@ -64,7 +64,7 @@ const PROPERTIES: Property[] = [
   {
     id: '3f-all',
     floor: '3층 전체',
-    summary: '전층 단독 사용',
+    summary: '전층 단독 사용 가능',
     area: { contract: 110, actual: 70 },
     deposit: '1억원',
     rent: '700만원',
@@ -79,7 +79,7 @@ const PROPERTIES: Property[] = [
   {
     id: '5f-501',
     floor: '5층 501호',
-    summary: '쾌적한 고층 사무실',
+    summary: '소형 사무실 추천',
     area: { contract: 55, actual: 34 },
     deposit: '5,000만원',
     rent: '400만원',

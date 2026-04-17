@@ -44,6 +44,7 @@ export default function HomeSection() {
       <div className={styles.overlay} aria-hidden="true" />
 
       <div className={styles.content}>
+        <p className={styles.targetLine}>사무실 / 매장 찾는 분 바로 문의</p>
         <div className={styles.badge}>사무실·소형 매장 / 빠른 입주 가능</div>
 
         <h1 className={styles.title}>

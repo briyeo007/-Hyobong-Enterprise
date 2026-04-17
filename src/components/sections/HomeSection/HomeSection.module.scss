@@ -42,6 +42,19 @@
   padding: 0 24px;
 }
 
+.targetLine {
+  font-size: $font-2xl;
+  font-weight: 900;
+  color: $white;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  animation: fadeDown 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
+
+  @include responsive(sm) {
+    font-size: $font-xl;
+  }
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
