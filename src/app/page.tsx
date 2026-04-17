@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import Header from '@/components/Header/Header'
 import HomeSection from '@/components/sections/HomeSection/HomeSection'
+import CallCTASection from '@/components/CallCTASection/CallCTASection'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
 import Footer from '@/components/Footer/Footer'
 
@@ -19,6 +20,7 @@ export default function Home() {
         <BuildingSection />
         <LocationSection />
         <ContactSection />
+        <CallCTASection />
       </main>
       <Footer />
       <FloatingButtons />

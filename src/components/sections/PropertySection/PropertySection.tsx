@@ -13,6 +13,7 @@ type SingleProperty = {
   maintenance: string
   tags: string[]
   images: string[]
+  urgency?: string
   dual?: false
 }
 
@@ -25,6 +26,7 @@ type DualProperty = {
   options: { label: string; deposit: string; rent: string; maintenance: string }[]
   tags: string[]
   images: string[]
+  urgency?: string
 }
 
 type Property = SingleProperty | DualProperty
@@ -40,6 +42,7 @@ const PROPERTIES: Property[] = [
       { label: '사무실', deposit: '5,000만원', rent: '600만원', maintenance: '118.8만원' },
       { label: '가게', deposit: '1억원', rent: '600만원', maintenance: '132만원' },
     ],
+    urgency: '🔥 문의 많음',
     tags: ['즉시 입주 가능', '사무실 / 가게 선택'],
     images: [
       '/images/1f-102/KakaoTalk_20260417_150442023.jpg',
@@ -56,6 +59,7 @@ const PROPERTIES: Property[] = [
     deposit: '3,000만원',
     rent: '250만원',
     maintenance: '110만원',
+    urgency: '⚡ 빠른 계약 필요',
     tags: ['즉시 입주 가능'],
     images: [
       '/images/2f-201/KakaoTalk_20260417_150521837.jpg',
@@ -70,6 +74,7 @@ const PROPERTIES: Property[] = [
     deposit: '1억원',
     rent: '700만원',
     maintenance: '200만원',
+    urgency: '🔥 문의 많음',
     tags: ['즉시 입주 가능', '전층 단독 사용'],
     images: [
       '/images/3f-all/KakaoTalk_20260417_150553199.jpg',
@@ -83,6 +88,7 @@ const PROPERTIES: Property[] = [
     deposit: '5,000만원',
     rent: '400만원',
     maintenance: '110만원',
+    urgency: '✔ 즉시 입주 가능',
     tags: ['즉시 입주 가능'],
     images: [
       '/images/5f-501/KakaoTalk_20260417_150621262.jpg',
@@ -113,10 +119,20 @@ export default function PropertySection() {
           가격 및 조건은 협의 가능합니다.
         </p>
 
+        <a href="tel:02-3473-6651" className={styles.phoneCta}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+          </svg>
+          공실 문의는 전화로 바로 연결됩니다 · <strong>02-3473-6651</strong>
+        </a>
+
         <div className={styles.grid}>
           {PROPERTIES.map((p) => (
             <div key={p.id} className={`${styles.card} ${styles.cardVisible}`}>
-              <PropertyImageCarousel images={p.images} alt={p.floor} />
+              <div className={styles.imageWrap}>
+                <PropertyImageCarousel images={p.images} alt={p.floor} />
+                {p.urgency && <span className={styles.urgencyBadge}>{p.urgency}</span>}
+              </div>
               <div className={styles.cardHeader}>
                 <div className={styles.statusBadge}>
                   <span className={styles.statusDot} />

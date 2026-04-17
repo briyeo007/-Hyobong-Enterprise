@@ -44,7 +44,7 @@ export default function HomeSection() {
       <div className={styles.overlay} aria-hidden="true" />
 
       <div className={styles.content}>
-        <p className={styles.targetLine}>사무실 / 매장 찾는 분 바로 문의</p>
+        <p className={styles.targetLine}>현재 공실 있음 · 즉시 입주 가능</p>
         <div className={styles.badge}>사무실·소형 매장 / 빠른 입주 가능</div>
 
         <h1 className={styles.title}>
@@ -54,7 +54,7 @@ export default function HomeSection() {
         <p className={styles.subtitle}>
           현재 공실 즉시 안내 / 빠른 입주 가능
           <br />
-          <strong className={styles.subtitleAccent}>지금 문의하시면 바로 연결됩니다</strong>
+          <strong className={styles.subtitleAccent}>📞 지금 전화하면 바로 안내</strong>
         </p>
 
         <div className={styles.features}>

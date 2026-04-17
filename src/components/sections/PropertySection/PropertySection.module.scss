@@ -239,9 +239,9 @@
 }
 
 .specValue {
-  font-size: $font-xl;
+  font-size: $font-2xl;
   font-weight: 900;
-  color: $primary-dark;
+  color: $primary;
   letter-spacing: -0.02em;
 }
 
@@ -338,6 +338,59 @@
 
   &:hover {
     background: $primary-dark;
+  }
+}
+
+// ===== Image Wrap =====
+.imageWrap {
+  position: relative;
+}
+
+.urgencyBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+  background: #F97316;
+  color: $white;
+  font-size: $font-xs;
+  font-weight: 800;
+  padding: 5px 13px;
+  border-radius: $radius-full;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  letter-spacing: 0.01em;
+}
+
+// ===== Phone CTA Banner =====
+.phoneCta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding: 14px 24px;
+  background: $primary-dark;
+  color: $white;
+  border-radius: $radius-lg;
+  font-size: $font-base;
+  font-weight: 600;
+  text-decoration: none;
+  transition: $transition;
+
+  strong {
+    font-weight: 900;
+    font-size: $font-lg;
+  }
+
+  &:hover {
+    background: $primary-mid;
+    transform: translateY(-1px);
+  }
+
+  @include responsive(sm) {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
   }
 }
 
