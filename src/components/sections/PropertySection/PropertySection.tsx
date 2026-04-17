@@ -5,6 +5,7 @@ import styles from './PropertySection.module.scss'
 type SingleProperty = {
   id: string
   floor: string
+  summary: string
   area: { contract: number; actual: number }
   deposit: string
   rent: string
@@ -17,6 +18,7 @@ type SingleProperty = {
 type DualProperty = {
   id: string
   floor: string
+  summary: string
   area: { contract: number; actual: number }
   dual: true
   options: { label: string; deposit: string; rent: string; maintenance: string }[]
@@ -30,6 +32,7 @@ const PROPERTIES: Property[] = [
   {
     id: '1f-102',
     floor: '1층 102호',
+    summary: '1층 노출상가',
     area: { contract: 66, actual: 40 },
     dual: true,
     options: [
@@ -46,6 +49,7 @@ const PROPERTIES: Property[] = [
   {
     id: '2f-201',
     floor: '2층 201호',
+    summary: '저렴한 사무실',
     area: { contract: 55, actual: 34 },
     deposit: '3,000만원',
     rent: '250만원',
@@ -60,6 +64,7 @@ const PROPERTIES: Property[] = [
   {
     id: '3f-all',
     floor: '3층 전체',
+    summary: '전층 단독 사용',
     area: { contract: 110, actual: 70 },
     deposit: '1억원',
     rent: '700만원',
@@ -74,6 +79,7 @@ const PROPERTIES: Property[] = [
   {
     id: '5f-501',
     floor: '5층 501호',
+    summary: '쾌적한 고층 사무실',
     area: { contract: 55, actual: 34 },
     deposit: '5,000만원',
     rent: '400만원',
@@ -100,6 +106,15 @@ export default function PropertySection() {
           </p>
         </div>
 
+        <p className={styles.notice}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          가격 및 조건은 협의 가능합니다.
+        </p>
+
         <div className={styles.grid}>
           {PROPERTIES.map((p) => (
             <div key={p.id} className={`${styles.card} ${styles.cardVisible}`}>
@@ -111,6 +126,7 @@ export default function PropertySection() {
                 </div>
                 <span className={styles.floor}>{p.floor}</span>
               </div>
+              <p className={styles.summary}>{p.summary}</p>
 
               {/* 면적 공통 */}
               <div className={styles.areaRow}>
@@ -186,14 +202,6 @@ export default function PropertySection() {
           ))}
         </div>
 
-        <p className={styles.notice}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="8" x2="12" y2="12"/>
-            <line x1="12" y1="16" x2="12.01" y2="16"/>
-          </svg>
-          가격 및 조건은 협의 가능합니다.
-        </p>
         <SectionCTA />
       </div>
     </section>

@@ -135,6 +135,19 @@
   letter-spacing: -0.01em;
 }
 
+// ===== Summary =====
+.summary {
+  padding: 10px 28px 0;
+  font-size: $font-base;
+  font-weight: 800;
+  color: $primary-dark;
+  letter-spacing: -0.01em;
+
+  @include responsive(sm) {
+    padding: 8px 20px 0;
+  }
+}
+
 // ===== Area Row =====
 .areaRow {
   display: flex;
@@ -329,7 +342,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 28px;
+  margin-bottom: 20px;
   font-size: $font-sm;
   color: $text-secondary;
   font-weight: 500;
