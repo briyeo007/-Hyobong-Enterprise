@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import AnimateIn from '@/components/AnimateIn'
 import SectionCTA from '@/components/SectionCTA/SectionCTA'
 import styles from './BuildingSection.module.scss'
@@ -37,22 +38,24 @@ export default function BuildingSection() {
         <div className={styles.overview}>
           <AnimateIn className={styles.photoGrid} activeClassName={styles.inView} threshold={0.1}>
             <div className={`${styles.photoItem} ${styles.photoMain}`}>
-              <div className={styles.photoPlaceholder}>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                <p>빌딩 외관 사진</p>
-              </div>
+              <Image
+                src="/images/building/KakaoTalk_20260417_164505696_01.jpg"
+                alt="효봉8빌딩 외관"
+                fill
+                className={styles.photoImg}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={90}
+              />
             </div>
             <div className={styles.photoItem}>
-              <div className={styles.photoPlaceholder}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                <p>내부 사진</p>
-              </div>
-            </div>
-            <div className={styles.photoItem}>
-              <div className={styles.photoPlaceholder}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                <p>로비 사진</p>
-              </div>
+              <Image
+                src="/images/building/KakaoTalk_20260417_164505696.jpg"
+                alt="효봉8빌딩 외관 2"
+                fill
+                className={styles.photoImg}
+                sizes="(max-width: 768px) 100vw, 25vw"
+                quality={90}
+              />
             </div>
           </AnimateIn>
 

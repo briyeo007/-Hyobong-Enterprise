@@ -90,6 +90,7 @@
 }
 
 .photoItem {
+  position: relative;
   border-radius: $radius-lg;
   overflow: hidden;
   background: $gray-100;
@@ -97,6 +98,10 @@
   &.photoMain {
     grid-row: 1 / 3;
   }
+}
+
+.photoImg {
+  object-fit: cover;
 }
 
 .photoPlaceholder {
