@@ -1,4 +1,5 @@
 import SectionCTA from '@/components/SectionCTA/SectionCTA'
+import PropertyImageCarousel from './PropertyImageCarousel'
 import styles from './PropertySection.module.scss'
 
 type SingleProperty = {
@@ -9,6 +10,7 @@ type SingleProperty = {
   rent: string
   maintenance: string
   tags: string[]
+  images: string[]
   dual?: false
 }
 
@@ -19,6 +21,7 @@ type DualProperty = {
   dual: true
   options: { label: string; deposit: string; rent: string; maintenance: string }[]
   tags: string[]
+  images: string[]
 }
 
 type Property = SingleProperty | DualProperty
@@ -34,6 +37,11 @@ const PROPERTIES: Property[] = [
       { label: '가게', deposit: '1억원', rent: '600만원', maintenance: '132만원' },
     ],
     tags: ['즉시 입주 가능', '사무실 / 가게 선택'],
+    images: [
+      // '/images/1f-102/1.jpg',
+      // '/images/1f-102/2.jpg',
+      // '/images/1f-102/3.jpg',
+    ],
   },
   {
     id: '2f-201',
@@ -43,6 +51,11 @@ const PROPERTIES: Property[] = [
     rent: '250만원',
     maintenance: '110만원',
     tags: ['즉시 입주 가능'],
+    images: [
+      // '/images/2f-201/1.jpg',
+      // '/images/2f-201/2.jpg',
+      // '/images/2f-201/3.jpg',
+    ],
   },
   {
     id: '3f-all',
@@ -52,6 +65,11 @@ const PROPERTIES: Property[] = [
     rent: '700만원',
     maintenance: '200만원',
     tags: ['즉시 입주 가능', '전층 단독 사용'],
+    images: [
+      // '/images/3f-all/1.jpg',
+      // '/images/3f-all/2.jpg',
+      // '/images/3f-all/3.jpg',
+    ],
   },
   {
     id: '5f-501',
@@ -61,6 +79,11 @@ const PROPERTIES: Property[] = [
     rent: '400만원',
     maintenance: '110만원',
     tags: ['즉시 입주 가능'],
+    images: [
+      // '/images/5f-501/1.jpg',
+      // '/images/5f-501/2.jpg',
+      // '/images/5f-501/3.jpg',
+    ],
   },
 ]
 
@@ -80,6 +103,7 @@ export default function PropertySection() {
         <div className={styles.grid}>
           {PROPERTIES.map((p) => (
             <div key={p.id} className={`${styles.card} ${styles.cardVisible}`}>
+              <PropertyImageCarousel images={p.images} alt={p.floor} />
               <div className={styles.cardHeader}>
                 <div className={styles.statusBadge}>
                   <span className={styles.statusDot} />
