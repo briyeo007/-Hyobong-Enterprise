@@ -36,9 +36,10 @@
 }
 
 .logoImg {
-  height: 120px;
+  height: 160px;
   width: auto;
   object-fit: contain;
+  filter: brightness(0) invert(1); // 푸터 어두운 배경: 흰색
 }
 
 .logoSub {

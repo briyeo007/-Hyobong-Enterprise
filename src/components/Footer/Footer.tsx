@@ -9,7 +9,7 @@ export default function Footer() {
       <div className={styles.inner}>
         <div className={styles.top}>
           <div className={styles.brand}>
-            <Image src="/logo.png" alt="효봉8빌딩 로고" width={360} height={120} className={styles.logoImg} />
+            <Image src="/logo.png" alt="효봉8빌딩 로고" width={480} height={160} className={styles.logoImg} />
           </div>
 
           <div className={styles.contacts}>
