@@ -41,9 +41,10 @@ const PROPERTIES: Property[] = [
     ],
     tags: ['즉시 입주 가능', '사무실 / 가게 선택'],
     images: [
-      // '/images/1f-102/1.jpg',
-      // '/images/1f-102/2.jpg',
-      // '/images/1f-102/3.jpg',
+      '/images/1f-102/KakaoTalk_20260417_150442023.jpg',
+      '/images/1f-102/KakaoTalk_20260417_150442244.jpg',
+      '/images/1f-102/KakaoTalk_20260417_150442471.jpg',
+      '/images/1f-102/KakaoTalk_20260417_150442724.jpg',
     ],
   },
   {
@@ -56,9 +57,8 @@ const PROPERTIES: Property[] = [
     maintenance: '110만원',
     tags: ['즉시 입주 가능'],
     images: [
-      // '/images/2f-201/1.jpg',
-      // '/images/2f-201/2.jpg',
-      // '/images/2f-201/3.jpg',
+      '/images/2f-201/KakaoTalk_20260417_150521837.jpg',
+      '/images/2f-201/KakaoTalk_20260417_150521837_01.jpg',
     ],
   },
   {
@@ -71,9 +71,7 @@ const PROPERTIES: Property[] = [
     maintenance: '200만원',
     tags: ['즉시 입주 가능', '전층 단독 사용'],
     images: [
-      // '/images/3f-all/1.jpg',
-      // '/images/3f-all/2.jpg',
-      // '/images/3f-all/3.jpg',
+      '/images/3f-all/KakaoTalk_20260417_150553199.jpg',
     ],
   },
   {
@@ -86,9 +84,8 @@ const PROPERTIES: Property[] = [
     maintenance: '110만원',
     tags: ['즉시 입주 가능'],
     images: [
-      // '/images/5f-501/1.jpg',
-      // '/images/5f-501/2.jpg',
-      // '/images/5f-501/3.jpg',
+      '/images/5f-501/KakaoTalk_20260417_150621262.jpg',
+      '/images/5f-501/KakaoTalk_20260417_150621262_01.jpg',
     ],
   },
 ]
