@@ -57,13 +57,23 @@
   }
 }
 
+// ===== Grid =====
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+
+  @include responsive(md) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
 // ===== Card =====
 .card {
-  max-width: 720px;
-  margin: 0 auto;
   background: $white;
   border-radius: $radius-xl;
-  box-shadow: 0 12px 48px rgba(0,0,0,.15), 0 4px 12px rgba(0,0,0,.08);
+  box-shadow: 0 12px 48px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.07);
   border: none;
   overflow: hidden;
   opacity: 0;
@@ -84,11 +94,11 @@
 
 .cardHeader {
   @include flex-between;
-  padding: 24px 32px;
+  padding: 20px 28px;
   background: $primary;
 
   @include responsive(sm) {
-    padding: 20px 24px;
+    padding: 16px 20px;
   }
 }
 
@@ -96,18 +106,18 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 16px;
+  padding: 5px 14px;
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: $radius-full;
   color: $white;
-  font-size: $font-sm;
+  font-size: $font-xs;
   font-weight: 700;
 }
 
 .statusDot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   background: #4ADE80;
   border-radius: 50%;
   animation: pulse 2s ease-in-out infinite;
@@ -119,24 +129,66 @@
 }
 
 .floor {
-  font-size: $font-2xl;
+  font-size: $font-xl;
   font-weight: 900;
   color: $white;
   letter-spacing: -0.01em;
 }
 
-// ===== Spec Grid =====
+// ===== Area Row =====
+.areaRow {
+  display: flex;
+  align-items: center;
+  padding: 18px 28px;
+  background: $gray-50;
+  border-bottom: 1px solid $gray-100;
+  gap: 0;
+
+  @include responsive(sm) {
+    padding: 14px 20px;
+  }
+}
+
+.areaItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.areaDivider {
+  width: 1px;
+  height: 32px;
+  background: $gray-200;
+}
+
+.areaLabel {
+  font-size: $font-xs;
+  font-weight: 700;
+  color: $text-secondary;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.areaValue {
+  font-size: $font-lg;
+  font-weight: 800;
+  color: $text-primary;
+}
+
+// ===== Spec Grid (단일 조건) =====
 .specGrid {
   display: flex;
   align-items: stretch;
-  padding: 36px 32px;
+  padding: 24px 28px;
   gap: 0;
   border-bottom: 1px solid $gray-100;
 
   @include responsive(sm) {
     flex-direction: column;
-    padding: 24px;
-    gap: 20px;
+    padding: 18px 20px;
+    gap: 16px;
   }
 }
 
@@ -170,47 +222,84 @@
 }
 
 .specValue {
-  font-size: $font-2xl;
+  font-size: $font-xl;
   font-weight: 900;
   color: $primary-dark;
   letter-spacing: -0.02em;
 }
 
-.specSub {
-  font-size: $font-xs;
-  color: $text-secondary;
-  margin-top: -2px;
+// ===== Dual Grid (사무실/가게) =====
+.dualGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid $gray-100;
 }
 
-// ===== Body =====
-.description {
-  padding: 24px 32px 0;
-  font-size: $font-base;
-  color: $text-secondary;
-  line-height: 1.7;
+.dualOption {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &:first-child {
+    border-right: 1px solid $gray-100;
+  }
 
   @include responsive(sm) {
-    padding: 20px 24px 0;
+    padding: 14px 16px;
   }
 }
 
+.dualLabel {
+  font-size: $font-sm;
+  font-weight: 800;
+  color: $white;
+  background: $primary;
+  padding: 3px 12px;
+  border-radius: $radius-full;
+  text-align: center;
+  align-self: center;
+}
+
+.dualSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dualSpecItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+}
+
+.dualValue {
+  font-size: $font-base;
+  font-weight: 800;
+  color: $primary-dark;
+  letter-spacing: -0.02em;
+}
+
+// ===== Tags =====
 .tags {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  padding: 16px 32px 24px;
+  padding: 14px 28px 18px;
 
   @include responsive(sm) {
-    padding: 16px 24px 20px;
+    padding: 12px 20px 16px;
   }
 }
 
 .tag {
-  padding: 5px 14px;
+  padding: 4px 12px;
   background: $primary-pale;
   color: $primary;
   border-radius: $radius-full;
-  font-size: $font-sm;
+  font-size: $font-xs;
   font-weight: 700;
 }
 
@@ -220,10 +309,10 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 20px;
+  padding: 16px;
   background: $primary;
   color: $white;
-  font-size: $font-lg;
+  font-size: $font-base;
   font-weight: 800;
   text-decoration: none;
   transition: $transition;
@@ -240,7 +329,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 24px;
+  margin-top: 28px;
   font-size: $font-sm;
   color: $text-secondary;
   font-weight: 500;
