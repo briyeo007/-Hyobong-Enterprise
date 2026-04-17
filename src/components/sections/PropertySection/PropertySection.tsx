@@ -42,6 +42,7 @@ const PROPERTIES: Property[] = [
       { label: '사무실', deposit: '5,000만원', rent: '600만원', maintenance: '118.8만원' },
       { label: '가게', deposit: '1억원', rent: '600만원', maintenance: '132만원' },
     ],
+    urgency: '✔ 즉시 입주 가능',
     tags: ['즉시 입주 가능', '사무실 / 가게 선택'],
     images: [
       '/images/1f-102/KakaoTalk_20260417_150442023.jpg',
@@ -58,7 +59,7 @@ const PROPERTIES: Property[] = [
     deposit: '3,000만원',
     rent: '250만원',
     maintenance: '110만원',
-    urgency: '⚡ 빠른 계약 필요',
+    urgency: '✔ 즉시 입주 가능',
     tags: ['즉시 입주 가능'],
     images: [
       '/images/2f-201/KakaoTalk_20260417_150521837.jpg',
@@ -73,6 +74,7 @@ const PROPERTIES: Property[] = [
     deposit: '1억원',
     rent: '700만원',
     maintenance: '200만원',
+    urgency: '✔ 즉시 입주 가능',
     tags: ['즉시 입주 가능', '전층 단독 사용'],
     images: [
       '/images/3f-all/KakaoTalk_20260417_150553199.jpg',
