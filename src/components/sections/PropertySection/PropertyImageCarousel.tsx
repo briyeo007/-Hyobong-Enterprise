@@ -30,16 +30,23 @@ export default function PropertyImageCarousel({ images, alt }: Props) {
 
   return (
     <div className={styles.carousel}>
-      <div className={styles.imageWrap}>
-        <Image
-          src={images[current]}
-          alt={`${alt} ${current + 1}`}
-          fill
-          quality={90}
-          className={styles.image}
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
-      </div>
+      {/* 모든 사진 미리 로드, CSS로 전환 — 딜레이 없음 */}
+      {images.map((src, i) => (
+        <div
+          key={src}
+          className={`${styles.imageWrap} ${i === current ? styles.imageActive : ''}`}
+        >
+          <Image
+            src={src}
+            alt={`${alt} ${i + 1}`}
+            fill
+            quality={90}
+            priority={i === 0}
+            className={styles.image}
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
+      ))}
 
       {images.length > 1 && (
         <>
