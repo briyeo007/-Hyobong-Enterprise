@@ -10,7 +10,7 @@ const PHONE = '02-3473-6651'
 
 const NAV_ITEMS = [
   { label: '효봉8빌딩', href: '/hyobong8' },
-  { label: '비산효봉빌딩', href: '/bisan' },
+  { label: '비산효봉', href: '/bisan' },
 ]
 
 export default function Header() {

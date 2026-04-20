@@ -8,14 +8,14 @@ import LocationSection from '@/components/sections/LocationSection/LocationSecti
 import styles from './page.module.scss'
 
 export const metadata: Metadata = {
-  title: '비산효봉빌딩 공실 안내 | 안양 비산동 사무실 임대',
-  description: '안양 비산동 비산효봉빌딩. 현재 공실 1개 빠른 계약 가능. 사무실 임대 문의: 02-3473-6651',
+  title: '비산효봉 공실 안내 | 안양 비산동 사무실 임대',
+  description: '안양 비산동 비산효봉. 현재 공실 1개 빠른 계약 가능. 사무실 임대 문의: 02-3473-6651',
 }
 
 const PHONE = '02-3473-6651'
 
 const VACANCY = {
-  floor: '비산효봉빌딩',
+  floor: '비산효봉',
   summary: '사무실 임대 · 즉시 입주 가능',
   area: { contract: 55, actual: 34 },
   deposit: '전화 문의',
@@ -51,7 +51,7 @@ export default function BisanPage() {
               현재 공실 1개 · 빠른 계약 가능
             </div>
 
-            <h1 className={styles.heroTitle}>비산효봉빌딩</h1>
+            <h1 className={styles.heroTitle}>비산효봉</h1>
             <p className={styles.heroLocation}>경기도 안양시 동안구 비산동 422-12</p>
 
             <div className={styles.heroPhoneRow}>
@@ -83,7 +83,7 @@ export default function BisanPage() {
                   <span className={styles.statusDot} />
                   즉시 입주 가능
                 </div>
-                <span className={styles.cardFloor}>비산효봉빌딩</span>
+                <span className={styles.cardFloor}>비산효봉</span>
               </div>
 
               <p className={styles.cardSummary}>{VACANCY.summary}</p>
@@ -142,7 +142,7 @@ export default function BisanPage() {
         <LocationSection
           naverMapUrl="https://naver.me/GxrpBs47"
           googleMapsQuery="경기도+안양시+동안구+비산동+422-12"
-          address={'경기도 안양시 동안구 비산동 422-12\n비산효봉빌딩'}
+          address={'경기도 안양시 동안구 비산동 422-12\n비산효봉'}
           accessPoints={[]}
           showCta={false}
         />

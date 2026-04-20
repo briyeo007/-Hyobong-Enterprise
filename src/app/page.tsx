@@ -37,7 +37,7 @@ const BUILDINGS = [
   },
   {
     id: 'bisan',
-    name: '비산효봉빌딩',
+    name: '비산효봉',
     location: '안양 비산동',
     vacancies: '현재 공실 1개',
     status: '빠른 계약 가능',

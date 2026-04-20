@@ -15,8 +15,8 @@ const BASE_URL = 'https://www.hyobongkiup.com'
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: '효봉기업 임대 | 사무실·상가 공실 즉시 확인',
-  description: '효봉8빌딩(남부터미널)·비산효봉빌딩(안양). 사무실·상가 임대. 공실 즉시 확인 가능. 문의: 02-3473-6651',
-  keywords: ['사무실 임대', '상가 임대', '효봉8빌딩', '비산효봉빌딩', '남부터미널 사무실', '안양 사무실 임대', '효봉기업'],
+  description: '효봉8빌딩(남부터미널)·비산효봉(안양). 사무실·상가 임대. 공실 즉시 확인 가능. 문의: 02-3473-6651',
+  keywords: ['사무실 임대', '상가 임대', '효봉8빌딩', '비산효봉', '남부터미널 사무실', '안양 사무실 임대', '효봉기업'],
   alternates: {
     canonical: BASE_URL,
   },
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     url: BASE_URL,
     siteName: '효봉기업 임대 안내',
     title: '효봉기업 임대 | 사무실·상가 공실 즉시 확인',
-    description: '효봉8빌딩(남부터미널)·비산효봉빌딩(안양). 공실 즉시 안내. 문의: 02-3473-6651',
+    description: '효봉8빌딩(남부터미널)·비산효봉(안양). 공실 즉시 안내. 문의: 02-3473-6651',
     locale: 'ko_KR',
   },
   twitter: {
