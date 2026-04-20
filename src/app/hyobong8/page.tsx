@@ -4,6 +4,7 @@ import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
 import PropertySection from '@/components/sections/PropertySection/PropertySection'
+import LocationSection from '@/components/sections/LocationSection/LocationSection'
 import styles from './page.module.scss'
 
 export const metadata: Metadata = {
@@ -79,6 +80,9 @@ export default function Hyobong8Page() {
 
         {/* ── Vacancies ── */}
         <PropertySection />
+
+        {/* ── Location ── */}
+        <LocationSection />
 
         {/* ── Bottom CTA ── */}
         <div style={{ padding: '0 24px 80px' }}>
