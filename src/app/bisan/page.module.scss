@@ -333,6 +333,53 @@
   &:hover { background: $primary-dark; }
 }
 
+// ===== Location Box =====
+.locationBox {
+  margin-top: 24px;
+  padding: 24px 28px;
+  background: $white;
+  border-radius: $radius-lg;
+  border: 1px solid $gray-200;
+  box-shadow: $shadow-sm;
+}
+
+.locationHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: $font-base;
+  font-weight: 800;
+  color: $text-primary;
+  margin-bottom: 8px;
+
+  svg { color: $primary; flex-shrink: 0; }
+}
+
+.locationAddress {
+  font-size: $font-sm;
+  color: $text-secondary;
+  margin-bottom: 16px;
+}
+
+.naverMapBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #03C75A;
+  color: $white;
+  border-radius: $radius-md;
+  font-size: $font-sm;
+  font-weight: 700;
+  text-decoration: none;
+  transition: $transition;
+
+  &:hover {
+    background: #02a84e;
+    transform: translateY(-1px);
+  }
+}
+
 // ===== Highlight Box =====
 .highlightBox {
   margin-top: 32px;
