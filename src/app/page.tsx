@@ -37,24 +37,15 @@ const BUILDINGS = [
     vacancies: '현재 공실 1개',
     status: '빠른 계약 가능',
     href: '/bisan',
-    image: '/images/building/KakaoTalk_20260417_164505696_01.jpg',
+    image: null,
     tags: ['즉시 입주', '조건 협의 가능'],
   },
 ]
 
 const INFO_ITEMS = [
-  {
-    icon: '📍',
-    label: '남부터미널 / 안양 비산동',
-  },
-  {
-    icon: '🏢',
-    label: '사무실·상가 가능',
-  },
-  {
-    icon: '⚡',
-    label: '즉시 입주 가능',
-  },
+  { icon: '📍', label: '남부터미널 / 안양 비산동' },
+  { icon: '🏢', label: '사무실·상가 가능' },
+  { icon: '⚡', label: '즉시 입주 가능' },
 ]
 
 export default function MainPage() {
@@ -64,25 +55,13 @@ export default function MainPage() {
       <main>
         {/* ── Hero ── */}
         <section className={styles.hero}>
-          <div className={styles.heroBgImage}>
-            <Image
-              src="/images/building/KakaoTalk_20260417_164505696.jpg"
-              alt="효봉기업 건물 외관"
-              fill
-              quality={90}
-              priority
-              className={styles.heroBgImg}
-              sizes="100vw"
-            />
-          </div>
+          <div className={styles.heroBg} aria-hidden="true" />
           <div className={styles.heroOverlay} aria-hidden="true" />
 
           <div className={styles.heroContent}>
             <div className={styles.heroBadge}>공실 확인 · 즉시 안내 가능</div>
 
-            <h1 className={styles.heroTitle}>
-              사무실·상가 임대
-            </h1>
+            <h1 className={styles.heroTitle}>사무실·상가 임대</h1>
             <p className={styles.heroSub}>지금 공실 바로 확인 가능</p>
 
             <a href={`tel:${PHONE}`} className={styles.heroPhone}>
@@ -104,17 +83,23 @@ export default function MainPage() {
             <div className={styles.buildingGrid}>
               {BUILDINGS.map((b) => (
                 <Link key={b.id} href={b.href} className={styles.buildingCard}>
-                  {/* 이미지 */}
+                  {/* 이미지 or 플레이스홀더 */}
                   <div className={styles.cardImageWrap}>
-                    <Image
-                      src={b.image}
-                      alt={b.name}
-                      fill
-                      quality={85}
-                      className={styles.cardImage}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    <div className={styles.cardImageOverlay} />
+                    {b.image ? (
+                      <>
+                        <Image
+                          src={b.image}
+                          alt={b.name}
+                          fill
+                          quality={85}
+                          className={styles.cardImage}
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                        <div className={styles.cardImageOverlay} />
+                      </>
+                    ) : (
+                      <div className={styles.cardImagePlaceholder} />
+                    )}
                     <div className={styles.cardImageBadge}>
                       <span className={styles.cardDot} />
                       {b.status}
