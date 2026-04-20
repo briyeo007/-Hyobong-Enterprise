@@ -2,7 +2,22 @@ import AnimateIn from '@/components/AnimateIn'
 import SectionCTA from '@/components/SectionCTA/SectionCTA'
 import styles from './LocationSection.module.scss'
 
-const ACCESS_POINTS = [
+interface AccessPoint {
+  icon: React.ReactNode
+  category: string
+  items: string[]
+}
+
+interface LocationProps {
+  description?: string
+  googleMapsQuery?: string
+  naverMapUrl: string
+  address: string
+  accessPoints?: AccessPoint[]
+  showCta?: boolean
+}
+
+const HYOBONG8_ACCESS: AccessPoint[] = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -38,30 +53,65 @@ const ACCESS_POINTS = [
   },
 ]
 
-export default function LocationSection() {
+const DEFAULT_PROPS: LocationProps = {
+  description: '3호선 남부터미널역 도보 5분, 서초구 핵심 업무지역에 위치합니다.',
+  googleMapsQuery: '서울+서초구+남부순환로333길+13',
+  naverMapUrl: 'https://naver.me/xmxY78A9',
+  address: '서울 서초구 남부순환로333길 13\n효봉빌딩',
+  accessPoints: HYOBONG8_ACCESS,
+  showCta: true,
+}
+
+export default function LocationSection(props: Partial<LocationProps> = {}) {
+  const {
+    description,
+    googleMapsQuery,
+    naverMapUrl,
+    address,
+    accessPoints,
+    showCta,
+  } = { ...DEFAULT_PROPS, ...props }
+
   return (
     <section id="location" className={styles.section}>
       <div className={styles.container}>
         <AnimateIn className={styles.header} activeClassName={styles.inView}>
           <span className={styles.label}>입지/위치</span>
           <h2 className={styles.title}>최적의 입지</h2>
-          <p className={styles.desc}>
-            3호선 남부터미널역 도보 5분, 서초구 핵심 업무지역에 위치합니다.
-          </p>
+          {description && <p className={styles.desc}>{description}</p>}
         </AnimateIn>
 
         <div className={styles.layout}>
           <AnimateIn className={styles.mapWrap} activeClassName={styles.inView} threshold={0.1}>
-            <iframe
-              src="https://maps.google.com/maps?q=서울+서초구+남부순환로333길+13&t=&z=17&ie=UTF8&iwloc=&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              loading="lazy"
-              title="효봉빌딩 위치"
-            />
+            {googleMapsQuery ? (
+              <iframe
+                src={`https://maps.google.com/maps?q=${googleMapsQuery}&t=&z=17&ie=UTF8&iwloc=&output=embed`}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                title="건물 위치"
+              />
+            ) : (
+              <div className={styles.mapPlaceholder}>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <p className={styles.mapPlaceholderTitle}>지도 보기</p>
+                <p className={styles.mapPlaceholderDesc}>네이버 지도에서 정확한 위치를 확인하세요</p>
+                <a
+                  href={naverMapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.mapLink}
+                >
+                  네이버 지도 바로가기
+                </a>
+              </div>
+            )}
             <a
-              href="https://naver.me/xmxY78A9"
+              href={naverMapUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.naverBtn}
@@ -86,31 +136,33 @@ export default function LocationSection() {
               <div>
                 <p className={styles.addressLabel}>주소</p>
                 <p className={styles.addressValue}>
-                  서울 서초구 남부순환로333길 13
-                  <br />
-                  효봉빌딩
+                  {address.split('\n').map((line, i) => (
+                    <span key={i}>{line}{i < address.split('\n').length - 1 && <br />}</span>
+                  ))}
                 </p>
               </div>
             </div>
 
-            <div className={styles.accessList}>
-              {ACCESS_POINTS.map((ap, i) => (
-                <div key={ap.category} className={styles.accessCard} style={{ transitionDelay: `${i * 0.1 + 0.15}s` }}>
-                  <div className={styles.accessHeader}>
-                    <div className={styles.accessIcon}>{ap.icon}</div>
-                    <span className={styles.accessCategory}>{ap.category}</span>
+            {accessPoints && accessPoints.length > 0 && (
+              <div className={styles.accessList}>
+                {accessPoints.map((ap, i) => (
+                  <div key={ap.category} className={styles.accessCard} style={{ transitionDelay: `${i * 0.1 + 0.15}s` }}>
+                    <div className={styles.accessHeader}>
+                      <div className={styles.accessIcon}>{ap.icon}</div>
+                      <span className={styles.accessCategory}>{ap.category}</span>
+                    </div>
+                    <ul className={styles.accessItems}>
+                      {ap.items.map((item) => (
+                        <li key={item} className={styles.accessItem}>
+                          <span className={styles.accessDot} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className={styles.accessItems}>
-                    {ap.items.map((item) => (
-                      <li key={item} className={styles.accessItem}>
-                        <span className={styles.accessDot} />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
 
             <a href="tel:02-3473-6651" className={styles.cta}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -118,9 +170,10 @@ export default function LocationSection() {
               </svg>
               위치 확인 후 전화 문의
             </a>
+
+            {showCta && <SectionCTA />}
           </AnimateIn>
         </div>
-        <SectionCTA />
       </div>
     </section>
   )
