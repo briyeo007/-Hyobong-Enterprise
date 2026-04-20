@@ -14,18 +14,18 @@ const BASE_URL = 'https://www.hyobongkiup.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
-  title: '서초동 사무실 임대 | 효봉8빌딩',
-  description: '서초동 상가 및 사무실 임대 (효봉8빌딩). 남부터미널역 도보 5분, 즉시 입주 가능. 문의: 02-3473-6651',
-  keywords: ['서초동 상가 임대', '서초 사무실 임대', '효봉8빌딩', '남부터미널 사무실 임대'],
+  title: '효봉기업 임대 | 사무실·상가 공실 즉시 확인',
+  description: '효봉8빌딩(남부터미널)·비산효봉빌딩(안양). 사무실·상가 임대. 공실 즉시 확인 가능. 문의: 02-3473-6651',
+  keywords: ['사무실 임대', '상가 임대', '효봉8빌딩', '비산효봉빌딩', '남부터미널 사무실', '안양 사무실 임대', '효봉기업'],
   alternates: {
     canonical: BASE_URL,
   },
   openGraph: {
     type: 'website',
     url: BASE_URL,
-    siteName: '효봉8빌딩 임대 안내',
-    title: '효봉8빌딩 임대 안내 | 서초구 역세권 사무실',
-    description: '서울 서초구 남부터미널역 도보 5분. 역세권·넓은 주차·우수한 관리 상태. 지금 바로 문의하세요. 02-3473-6651',
+    siteName: '효봉기업 임대 안내',
+    title: '효봉기업 임대 | 사무실·상가 공실 즉시 확인',
+    description: '효봉8빌딩(남부터미널)·비산효봉빌딩(안양). 공실 즉시 안내. 문의: 02-3473-6651',
     locale: 'ko_KR',
   },
   twitter: {

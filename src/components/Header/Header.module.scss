@@ -228,6 +228,14 @@
     color: $primary;
     transform: translateX(3px);
   }
+
+  &.drawerLinkActive {
+    background: $primary-pale;
+    color: $primary;
+    border-left-color: $primary;
+
+    svg { color: $primary; }
+  }
 }
 
 .drawerCta {
