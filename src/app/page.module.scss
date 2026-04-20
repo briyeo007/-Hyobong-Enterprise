@@ -79,9 +79,16 @@
   letter-spacing: -0.03em;
   margin-bottom: 16px;
   animation: fadeUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+  white-space: nowrap;
 
-  @include responsive(md) { font-size: $font-5xl; }
+  @include responsive(md) { font-size: $font-5xl; white-space: normal; }
   @include responsive(sm) { font-size: $font-4xl; }
+}
+
+.heroBr {
+  display: none;
+
+  @include responsive(md) { display: inline; }
 }
 
 .heroSub {
@@ -423,6 +430,9 @@
   font-size: $font-base;
   color: rgba(255,255,255,0.75);
   margin-bottom: 28px;
+  word-break: keep-all;
+
+  @include responsive(sm) { font-size: $font-sm; }
 }
 
 .bottomPhoneBtn {
@@ -448,7 +458,9 @@
   @include responsive(sm) {
     width: 100%;
     justify-content: center;
-    padding: 16px 24px;
+    padding: 14px 20px;
+    font-size: $font-base;
+    white-space: nowrap;
   }
 }
 
