@@ -91,12 +91,12 @@ export default function BisanPage() {
               <div className={styles.areaRow}>
                 <div className={styles.areaItem}>
                   <span className={styles.areaLabel}>임대 평수</span>
-                  <span className={styles.areaValue}>{VACANCY.area.contract}평</span>
+                  <span className={styles.areaValue}>전화 문의</span>
                 </div>
                 <div className={styles.areaDivider} />
                 <div className={styles.areaItem}>
                   <span className={styles.areaLabel}>실 평수</span>
-                  <span className={styles.areaValue}>{VACANCY.area.actual}평</span>
+                  <span className={styles.areaValue}>전화 문의</span>
                 </div>
               </div>
 
