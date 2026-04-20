@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
@@ -26,6 +27,7 @@ const BUILDINGS = [
     vacancies: '현재 공실 4개',
     status: '즉시 입주 가능',
     href: '/hyobong8',
+    image: '/images/building/KakaoTalk_20260417_164505696.jpg',
     tags: ['역세권', '넓은 주차', '사무실·상가 가능'],
   },
   {
@@ -35,7 +37,23 @@ const BUILDINGS = [
     vacancies: '현재 공실 1개',
     status: '빠른 계약 가능',
     href: '/bisan',
+    image: '/images/building/KakaoTalk_20260417_164505696_01.jpg',
     tags: ['즉시 입주', '조건 협의 가능'],
+  },
+]
+
+const INFO_ITEMS = [
+  {
+    icon: '📍',
+    label: '남부터미널 / 안양 비산동',
+  },
+  {
+    icon: '🏢',
+    label: '사무실·상가 가능',
+  },
+  {
+    icon: '⚡',
+    label: '즉시 입주 가능',
   },
 ]
 
@@ -46,7 +64,17 @@ export default function MainPage() {
       <main>
         {/* ── Hero ── */}
         <section className={styles.hero}>
-          <div className={styles.heroBg} aria-hidden="true" />
+          <div className={styles.heroBgImage}>
+            <Image
+              src="/images/building/KakaoTalk_20260417_164505696.jpg"
+              alt="효봉기업 건물 외관"
+              fill
+              quality={90}
+              priority
+              className={styles.heroBgImg}
+              sizes="100vw"
+            />
+          </div>
           <div className={styles.heroOverlay} aria-hidden="true" />
 
           <div className={styles.heroContent}>
@@ -76,20 +104,33 @@ export default function MainPage() {
             <div className={styles.buildingGrid}>
               {BUILDINGS.map((b) => (
                 <Link key={b.id} href={b.href} className={styles.buildingCard}>
-                  <div className={styles.cardTop}>
-                    <div className={styles.cardBadge}>
+                  {/* 이미지 */}
+                  <div className={styles.cardImageWrap}>
+                    <Image
+                      src={b.image}
+                      alt={b.name}
+                      fill
+                      quality={85}
+                      className={styles.cardImage}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className={styles.cardImageOverlay} />
+                    <div className={styles.cardImageBadge}>
                       <span className={styles.cardDot} />
-                      입주 가능
+                      {b.status}
                     </div>
-                    <p className={styles.cardName}>{b.name}</p>
-                    <p className={styles.cardLocation}>{b.location}</p>
                   </div>
 
+                  {/* 본문 */}
                   <div className={styles.cardBody}>
+                    <p className={styles.cardLocation}>{b.location}</p>
+                    <p className={styles.cardName}>{b.name}</p>
+
                     <div className={styles.cardVacancy}>
                       <span className={styles.vacancyCount}>{b.vacancies}</span>
                       <span className={styles.vacancyStatus}>{b.status}</span>
                     </div>
+
                     <div className={styles.cardTags}>
                       {b.tags.map((t) => (
                         <span key={t} className={styles.cardTag}>{t}</span>
@@ -102,6 +143,16 @@ export default function MainPage() {
                     <ArrowIcon />
                   </div>
                 </Link>
+              ))}
+            </div>
+
+            {/* ── 아이콘 정보 바 ── */}
+            <div className={styles.infoBar}>
+              {INFO_ITEMS.map((item) => (
+                <div key={item.label} className={styles.infoItem}>
+                  <span className={styles.infoIcon}>{item.icon}</span>
+                  <span className={styles.infoLabel}>{item.label}</span>
+                </div>
               ))}
             </div>
 
