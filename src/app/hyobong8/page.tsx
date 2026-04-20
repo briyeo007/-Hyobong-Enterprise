@@ -82,7 +82,7 @@ export default function Hyobong8Page() {
         <PropertySection />
 
         {/* ── Location ── */}
-        <LocationSection />
+        <LocationSection showCta={false} />
 
         {/* ── Bottom CTA ── */}
         <div style={{ padding: '0 24px 80px' }}>
