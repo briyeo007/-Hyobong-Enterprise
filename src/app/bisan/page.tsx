@@ -52,7 +52,7 @@ export default function BisanPage() {
             </div>
 
             <h1 className={styles.heroTitle}>비산효봉빌딩</h1>
-            <p className={styles.heroLocation}>경기도 안양시 만안구 비산동</p>
+            <p className={styles.heroLocation}>경기도 안양시 동안구 비산동 422-12</p>
 
             <div className={styles.heroPhoneRow}>
               <a href={`tel:${PHONE}`} className={styles.heroPhoneBtn}>
@@ -141,8 +141,8 @@ export default function BisanPage() {
         {/* ── Location ── */}
         <LocationSection
           naverMapUrl="https://naver.me/GxrpBs47"
-          googleMapsQuery=""
-          address={'경기도 안양시 만안구 비산동\n비산효봉빌딩'}
+          googleMapsQuery="경기도+안양시+동안구+비산동+422-12"
+          address={'경기도 안양시 동안구 비산동 422-12\n비산효봉빌딩'}
           accessPoints={[]}
           showCta={false}
         />
