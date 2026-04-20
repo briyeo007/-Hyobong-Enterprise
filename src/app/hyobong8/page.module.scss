@@ -233,6 +233,8 @@
   font-size: $font-base;
   color: rgba(255,255,255,0.75);
   margin-bottom: 28px;
+
+  @include responsive(sm) { font-size: $font-sm; }
 }
 
 .bottomPhoneBtn {
@@ -247,6 +249,7 @@
   font-weight: 900;
   text-decoration: none;
   transition: $transition;
+  white-space: nowrap;
   box-shadow: 0 8px 24px rgba(0,0,0,.25);
 
   &:hover {
@@ -255,5 +258,10 @@
     box-shadow: 0 12px 32px rgba(0,0,0,.3);
   }
 
-  @include responsive(sm) { width: 100%; justify-content: center; padding: 16px 24px; }
+  @include responsive(sm) {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: $font-base;
+  }
 }
