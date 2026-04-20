@@ -135,15 +135,6 @@ export default function BisanPage() {
                 가격·조건 모두 협의 가능하니 부담 없이 전화해 주세요.
               </p>
             </div>
-
-            <div className={styles.bottomCta}>
-              <p className={styles.bottomCtaTitle}>고민하지 말고 지금 바로 전화하세요</p>
-              <p className={styles.bottomCtaSub}>먼저 연락하시는 분께 우선 안내해 드립니다</p>
-              <a href={`tel:${PHONE}`} className={styles.bottomPhoneBtn}>
-                <PhoneIcon size={26} />
-                {PHONE}
-              </a>
-            </div>
           </div>
         </section>
 
@@ -154,6 +145,20 @@ export default function BisanPage() {
           accessPoints={[]}
           showCta={false}
         />
+
+        {/* ── Bottom CTA ── */}
+        <section className={styles.bottomCtaSection}>
+          <div className={styles.vacancyContainer}>
+            <div className={styles.bottomCta}>
+              <p className={styles.bottomCtaTitle}>고민하지 말고 지금 바로 전화하세요</p>
+              <p className={styles.bottomCtaSub}>먼저 연락하시는 분께 우선 안내해 드립니다</p>
+              <a href={`tel:${PHONE}`} className={styles.bottomPhoneBtn}>
+                <PhoneIcon size={26} />
+                {PHONE}
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
       <FloatingButtons />

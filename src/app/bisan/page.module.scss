@@ -399,8 +399,13 @@
 }
 
 // ===== Bottom CTA =====
+.bottomCtaSection {
+  background: $gray-50;
+  padding: 0 0 80px;
+}
+
 .bottomCta {
-  margin-top: 48px;
+  margin-top: 0;
   text-align: center;
   padding: 52px 24px;
   background: $primary-dark;
