@@ -1,5 +1,4 @@
 import AnimateIn from '@/components/AnimateIn'
-import SectionCTA from '@/components/SectionCTA/SectionCTA'
 import PropertyImageCarousel from './PropertyImageCarousel'
 import styles from './PropertySection.module.scss'
 
@@ -216,7 +215,6 @@ export default function PropertySection() {
           ))}
         </div>
 
-        <SectionCTA />
       </div>
     </section>
   )
