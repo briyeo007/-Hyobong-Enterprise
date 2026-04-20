@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
+import AutoSlide from '@/components/AutoSlide/AutoSlide'
 import styles from './page.module.scss'
 
 const PHONE = '02-3473-6651'
@@ -19,6 +19,11 @@ const ArrowIcon = () => (
   </svg>
 )
 
+const HYOBONG8_IMAGES = [
+  '/images/building/KakaoTalk_20260417_164505696.jpg',
+  '/images/building/KakaoTalk_20260417_164505696_01.jpg',
+]
+
 const BUILDINGS = [
   {
     id: 'hyobong8',
@@ -27,7 +32,7 @@ const BUILDINGS = [
     vacancies: '현재 공실 4개',
     status: '즉시 입주 가능',
     href: '/hyobong8',
-    image: '/images/building/KakaoTalk_20260417_164505696.jpg',
+    hasSlide: true,
     tags: ['역세권', '넓은 주차', '사무실·상가 가능'],
   },
   {
@@ -37,7 +42,7 @@ const BUILDINGS = [
     vacancies: '현재 공실 1개',
     status: '빠른 계약 가능',
     href: '/bisan',
-    image: null,
+    hasSlide: false,
     tags: ['즉시 입주', '조건 협의 가능'],
   },
 ]
@@ -60,10 +65,8 @@ export default function MainPage() {
 
           <div className={styles.heroContent}>
             <div className={styles.heroBadge}>공실 확인 · 즉시 안내 가능</div>
-
             <h1 className={styles.heroTitle}>사무실·상가 임대</h1>
             <p className={styles.heroSub}>지금 공실 바로 확인 가능</p>
-
             <a href={`tel:${PHONE}`} className={styles.heroPhone}>
               <PhoneIcon />
               {PHONE} 바로 전화
@@ -83,31 +86,25 @@ export default function MainPage() {
             <div className={styles.buildingGrid}>
               {BUILDINGS.map((b) => (
                 <Link key={b.id} href={b.href} className={styles.buildingCard}>
-                  {/* 이미지 or 플레이스홀더 */}
-                  <div className={styles.cardImageWrap}>
-                    {b.image ? (
-                      <>
-                        <Image
-                          src={b.image}
-                          alt={b.name}
-                          fill
-                          quality={85}
-                          className={styles.cardImage}
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                        <div className={styles.cardImageOverlay} />
-                      </>
-                    ) : (
-                      <div className={styles.cardImagePlaceholder} />
-                    )}
-                    <div className={styles.cardImageBadge}>
-                      <span className={styles.cardDot} />
-                      {b.status}
+                  {/* 효봉8빌딩: 자동 슬라이드 / 비산: 이미지 없음 */}
+                  {b.hasSlide && (
+                    <div className={styles.cardImageWrap}>
+                      <AutoSlide images={HYOBONG8_IMAGES} alt={b.name} interval={3500} />
+                      <div className={styles.cardImageBadge}>
+                        <span className={styles.cardDot} />
+                        {b.status}
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   {/* 본문 */}
                   <div className={styles.cardBody}>
+                    {!b.hasSlide && (
+                      <div className={styles.cardImageBadgeInline}>
+                        <span className={styles.cardDot} />
+                        {b.status}
+                      </div>
+                    )}
                     <p className={styles.cardLocation}>{b.location}</p>
                     <p className={styles.cardName}>{b.name}</p>
 
