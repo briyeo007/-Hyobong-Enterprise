@@ -3,6 +3,7 @@ import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
 import AutoSlide from '@/components/AutoSlide/AutoSlide'
+import AnimateIn from '@/components/AnimateIn'
 import styles from './page.module.scss'
 
 const PHONE = '02-3473-6651'
@@ -77,12 +78,15 @@ export default function MainPage() {
         {/* ── Buildings ── */}
         <section className={styles.buildingsSection}>
           <div className={styles.buildingsContainer}>
-            <div className={styles.sectionHead}>
-              <span className={styles.sectionLabel}>건물 선택</span>
-              <h2 className={styles.sectionTitle}>임대 건물을 선택하세요</h2>
-              <p className={styles.sectionDesc}>두 건물 모두 즉시 입주 가능 · 조건 협의 환영</p>
-            </div>
+            <AnimateIn className="reveal" activeClassName="inView">
+              <div className={styles.sectionHead}>
+                <span className={styles.sectionLabel}>건물 선택</span>
+                <h2 className={styles.sectionTitle}>임대 건물을 선택하세요</h2>
+                <p className={styles.sectionDesc}>두 건물 모두 즉시 입주 가능 · 조건 협의 환영</p>
+              </div>
+            </AnimateIn>
 
+            <AnimateIn className="reveal" activeClassName="inView" threshold={0.08}>
             <div className={styles.buildingGrid}>
               {BUILDINGS.map((b) => (
                 <Link key={b.id} href={b.href} className={styles.buildingCard}>
@@ -127,25 +131,30 @@ export default function MainPage() {
                 </Link>
               ))}
             </div>
+            </AnimateIn>
 
             {/* ── 아이콘 정보 바 ── */}
-            <div className={styles.infoBar}>
-              {INFO_ITEMS.map((item) => (
-                <div key={item.label} className={styles.infoItem}>
-                  <span className={styles.infoIcon}>{item.icon}</span>
-                  <span className={styles.infoLabel}>{item.label}</span>
-                </div>
-              ))}
-            </div>
+            <AnimateIn className="reveal" activeClassName="inView">
+              <div className={styles.infoBar}>
+                {INFO_ITEMS.map((item) => (
+                  <div key={item.label} className={styles.infoItem}>
+                    <span className={styles.infoIcon}>{item.icon}</span>
+                    <span className={styles.infoLabel}>{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </AnimateIn>
 
-            <div className={styles.bottomCta}>
-              <p className={styles.bottomCtaTitle}>어떤 건물이든 바로 문의하세요</p>
-              <p className={styles.bottomCtaSub}>전화 한 통으로 모든 조건을 바로 안내해 드립니다</p>
-              <a href={`tel:${PHONE}`} className={styles.bottomPhoneBtn}>
-                <PhoneIcon />
-                {PHONE} 전화 문의
-              </a>
-            </div>
+            <AnimateIn className="revealScale" activeClassName="inView">
+              <div className={styles.bottomCta}>
+                <p className={styles.bottomCtaTitle}>어떤 건물이든 바로 문의하세요</p>
+                <p className={styles.bottomCtaSub}>전화 한 통으로 모든 조건을 바로 안내해 드립니다</p>
+                <a href={`tel:${PHONE}`} className={styles.bottomPhoneBtn}>
+                  <PhoneIcon />
+                  {PHONE} 전화 문의
+                </a>
+              </div>
+            </AnimateIn>
           </div>
         </section>
       </main>

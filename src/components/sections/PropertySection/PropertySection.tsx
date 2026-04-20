@@ -126,8 +126,13 @@ export default function PropertySection() {
         </a>
 
         <div className={styles.grid}>
-          {PROPERTIES.map((p) => (
-            <div key={p.id} className={`${styles.card} ${styles.cardVisible}`}>
+          {PROPERTIES.map((p, idx) => (
+            <AnimateIn
+              key={p.id}
+              className={styles.card}
+              activeClassName={styles.cardVisible}
+              style={{ transitionDelay: `${idx * 0.12}s` }}
+            >
               <div className={styles.imageWrap}>
                 <PropertyImageCarousel images={p.images} alt={p.floor} />
                 {p.urgency && <span className={styles.urgencyBadge}>{p.urgency}</span>}
@@ -211,7 +216,7 @@ export default function PropertySection() {
                 </svg>
                 문의하기 · 02-3473-6651
               </a>
-            </div>
+            </AnimateIn>
           ))}
         </div>
 

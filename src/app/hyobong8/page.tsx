@@ -5,6 +5,7 @@ import Footer from '@/components/Footer/Footer'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
 import PropertySection from '@/components/sections/PropertySection/PropertySection'
 import LocationSection from '@/components/sections/LocationSection/LocationSection'
+import AnimateIn from '@/components/AnimateIn'
 import styles from './page.module.scss'
 
 export const metadata: Metadata = {
@@ -67,16 +68,18 @@ export default function Hyobong8Page() {
         </section>
 
         {/* ── Summary Bar ── */}
-        <div className={styles.summaryBar}>
-          <div className={styles.summaryInner}>
-            {SUMMARY_ITEMS.map((item) => (
-              <div key={item} className={styles.summaryItem}>
-                <CheckIcon />
-                {item}
-              </div>
-            ))}
+        <AnimateIn className="reveal" activeClassName="inView">
+          <div className={styles.summaryBar}>
+            <div className={styles.summaryInner}>
+              {SUMMARY_ITEMS.map((item) => (
+                <div key={item} className={styles.summaryItem}>
+                  <CheckIcon />
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </AnimateIn>
 
         {/* ── Vacancies ── */}
         <PropertySection />
@@ -87,14 +90,16 @@ export default function Hyobong8Page() {
         {/* ── Bottom CTA ── */}
         <div style={{ padding: '0 24px 80px' }}>
           <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-            <div className={styles.bottomCta}>
-              <p className={styles.bottomCtaTitle}>공실 확인 후 바로 문의하세요</p>
-              <p className={styles.bottomCtaSub}>전화 한 통으로 모든 조건을 바로 안내해 드립니다</p>
-              <a href={`tel:${PHONE}`} className={styles.bottomPhoneBtn}>
-                <PhoneIcon />
-                {PHONE} 전화 문의
-              </a>
-            </div>
+            <AnimateIn className="revealScale" activeClassName="inView">
+              <div className={styles.bottomCta}>
+                <p className={styles.bottomCtaTitle}>공실 확인 후 바로 문의하세요</p>
+                <p className={styles.bottomCtaSub}>전화 한 통으로 모든 조건을 바로 안내해 드립니다</p>
+                <a href={`tel:${PHONE}`} className={styles.bottomPhoneBtn}>
+                  <PhoneIcon />
+                  {PHONE} 전화 문의
+                </a>
+              </div>
+            </AnimateIn>
           </div>
         </div>
       </main>

@@ -5,6 +5,7 @@ import Footer from '@/components/Footer/Footer'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
 import PropertyImageCarousel from '@/components/sections/PropertySection/PropertyImageCarousel'
 import LocationSection from '@/components/sections/LocationSection/LocationSection'
+import AnimateIn from '@/components/AnimateIn'
 import styles from './page.module.scss'
 
 export const metadata: Metadata = {
@@ -67,12 +68,15 @@ export default function BisanPage() {
         {/* ── Vacancy ── */}
         <section className={styles.vacancySection}>
           <div className={styles.vacancyContainer}>
-            <div className={styles.sectionHead}>
-              <span className={styles.sectionLabel}>공실 정보</span>
-              <h2 className={styles.sectionTitle}>현재 공실 1개</h2>
-              <p className={styles.sectionDesc}>지금 바로 입주 가능 · 조건 협의 환영</p>
-            </div>
+            <AnimateIn className="reveal" activeClassName="inView">
+              <div className={styles.sectionHead}>
+                <span className={styles.sectionLabel}>공실 정보</span>
+                <h2 className={styles.sectionTitle}>현재 공실 1개</h2>
+                <p className={styles.sectionDesc}>지금 바로 입주 가능 · 조건 협의 환영</p>
+              </div>
+            </AnimateIn>
 
+            <AnimateIn className="revealScale" activeClassName="inView" threshold={0.05}>
             <div className={styles.vacancyCard}>
               {VACANCY.images.length > 0 && (
                 <PropertyImageCarousel images={VACANCY.images} alt={VACANCY.floor} />
@@ -128,13 +132,16 @@ export default function BisanPage() {
                 지금 전화해서 바로 계약하세요 · {PHONE}
               </a>
             </div>
+            </AnimateIn>
 
-            <div className={styles.highlightBox}>
-              <p>
-                <strong>공실이 1개뿐입니다.</strong> 먼저 연락 주시는 분이 우선 계약 가능합니다.
-                가격·조건 모두 협의 가능하니 부담 없이 전화해 주세요.
-              </p>
-            </div>
+            <AnimateIn className="reveal" activeClassName="inView">
+              <div className={styles.highlightBox}>
+                <p>
+                  <strong>공실이 1개뿐입니다.</strong> 먼저 연락 주시는 분이 우선 계약 가능합니다.
+                  가격·조건 모두 협의 가능하니 부담 없이 전화해 주세요.
+                </p>
+              </div>
+            </AnimateIn>
           </div>
         </section>
 
@@ -150,14 +157,16 @@ export default function BisanPage() {
         {/* ── Bottom CTA ── */}
         <section className={styles.bottomCtaSection}>
           <div className={styles.vacancyContainer}>
-            <div className={styles.bottomCta}>
-              <p className={styles.bottomCtaTitle}>고민하지 말고 지금 바로 전화하세요</p>
-              <p className={styles.bottomCtaSub}>먼저 연락하시는 분께 우선 안내해 드립니다</p>
-              <a href={`tel:${PHONE}`} className={styles.bottomPhoneBtn}>
-                <PhoneIcon size={26} />
-                {PHONE}
-              </a>
-            </div>
+            <AnimateIn className="revealScale" activeClassName="inView">
+              <div className={styles.bottomCta}>
+                <p className={styles.bottomCtaTitle}>고민하지 말고 지금 바로 전화하세요</p>
+                <p className={styles.bottomCtaSub}>먼저 연락하시는 분께 우선 안내해 드립니다</p>
+                <a href={`tel:${PHONE}`} className={styles.bottomPhoneBtn}>
+                  <PhoneIcon size={26} />
+                  {PHONE}
+                </a>
+              </div>
+            </AnimateIn>
           </div>
         </section>
       </main>
