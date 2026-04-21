@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
@@ -82,7 +83,17 @@ export default function MainPage() {
       <main>
         {/* ── Hero ── */}
         <section className={styles.hero}>
-          <div className={styles.heroBg} aria-hidden="true" />
+          <div className={styles.heroBg} aria-hidden="true">
+            <Image
+              src="/images/building/KakaoTalk_20260417_164505696_01.jpg"
+              alt="효봉기업 건물 외관"
+              fill
+              priority
+              quality={90}
+              className={styles.heroBgImg}
+              sizes="100vw"
+            />
+          </div>
           <div className={styles.heroOverlay} aria-hidden="true" />
 
           <div className={styles.heroContent}>

@@ -14,7 +14,12 @@
 .heroBg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #0D3D22 0%, #1B5E3B 40%, #2D7A54 70%, #1B5E3B 100%);
+  background: #0D3D22;
+}
+
+.heroBgImg {
+  object-fit: cover;
+  object-position: center;
 }
 
 .heroOverlay {
