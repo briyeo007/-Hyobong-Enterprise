@@ -56,7 +56,7 @@ export default function HyobongEnterprisePage() {
             </div>
 
             <h1 className={styles.heroTitle}>효봉기업</h1>
-            <p className={styles.heroLocation}>서울 서초구 서운로 20 (서초2동 1364번지)</p>
+            <p className={styles.heroLocation}>서울 서초구 서운로 20 (서초2동 1364-1번지)</p>
 
             <div className={styles.heroPhoneRow}>
               <a href={`tel:${PHONE}`} className={styles.heroPhoneBtn}>
@@ -152,7 +152,7 @@ export default function HyobongEnterprisePage() {
         <LocationSection
           naverMapUrl="https://naver.me/G58NvSJ2"
           googleMapsQuery="서울+서초구+서운로+20"
-          address={'서울 서초구 서운로 20\n(서초2동 1364번지)'}
+          address={'서울 서초구 서운로 20\n(서초2동 1364-1번지)'}
           accessPoints={[]}
           showCta={false}
         />
