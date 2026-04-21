@@ -134,14 +134,6 @@ export default function BisanPage() {
             </div>
             </AnimateIn>
 
-            <AnimateIn className="reveal" activeClassName="inView">
-              <div className={styles.highlightBox}>
-                <p>
-                  <strong>공실이 1개뿐입니다.</strong> 먼저 연락 주시는 분이 우선 계약 가능합니다.
-                  가격·조건 모두 협의 가능하니 부담 없이 전화해 주세요.
-                </p>
-              </div>
-            </AnimateIn>
           </div>
         </section>
 
