@@ -46,6 +46,16 @@ const BUILDINGS = [
     hasSlide: false,
     tags: ['즉시 입주', '조건 협의 가능'],
   },
+  {
+    id: 'hyobong-enterprise',
+    name: '효봉기업',
+    location: '서초구 서운로 (서초동)',
+    vacancies: '현재 공실 1개',
+    status: '즉시 입주 가능',
+    href: '/hyobong-enterprise',
+    hasSlide: false,
+    tags: ['즉시 입주', '무료주차 1대', '사무실 가능'],
+  },
 ]
 
 const INFO_ITEMS = [
@@ -67,7 +77,7 @@ export default function MainPage() {
           <div className={styles.heroContent}>
             <div className={styles.heroBadge}>공실 확인 · 즉시 안내 가능</div>
             <h1 className={styles.heroTitle}>지금 바로 입주 가능한 사무실·상가</h1>
-            <p className={styles.heroSub}>공실 5개 보유 / 빠른 계약 가능</p>
+            <p className={styles.heroSub}>공실 6개 보유 / 빠른 계약 가능</p>
             <a href={`tel:${PHONE}`} className={styles.heroPhone}>
               <PhoneIcon />
               {PHONE} 바로 전화
@@ -82,7 +92,7 @@ export default function MainPage() {
               <div className={styles.sectionHead}>
                 <span className={styles.sectionLabel}>건물 선택</span>
                 <h2 className={styles.sectionTitle}>임대 건물을 선택하세요</h2>
-                <p className={styles.sectionDesc}>두 건물 모두 즉시 입주 가능 · 조건 협의 환영</p>
+                <p className={styles.sectionDesc}>세 건물 모두 즉시 입주 가능 · 조건 협의 환영</p>
               </div>
             </AnimateIn>
 

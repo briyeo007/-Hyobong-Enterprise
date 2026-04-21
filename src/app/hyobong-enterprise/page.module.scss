@@ -1,0 +1,465 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ===== Hero =====
+.hero {
+  background: $primary;
+  padding: 100px 0 56px;
+}
+
+.heroInner {
+  @include container;
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  color: rgba(255,255,255,0.75);
+  font-size: $font-sm;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 64px;
+  transition: $transition;
+
+  &:hover { color: $white; }
+}
+
+.urgencyBanner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: $radius-full;
+  color: $white;
+  font-size: $font-base;
+  font-weight: 800;
+  margin-bottom: 20px;
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.01em;
+}
+
+.urgencyDot {
+  width: 8px;
+  height: 8px;
+  background: #4ADE80;
+  border-radius: 50%;
+  animation: dotPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(1.3); }
+}
+
+.heroTitle {
+  font-size: $font-5xl;
+  font-weight: 900;
+  color: $white;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+
+  @include responsive(md) { font-size: $font-4xl; }
+  @include responsive(sm) { font-size: $font-3xl; }
+}
+
+.heroLocation {
+  font-size: $font-lg;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 32px;
+}
+
+.heroPhoneRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.heroPhoneBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 48px;
+  background: $white;
+  color: $primary-dark;
+  border-radius: $radius-full;
+  font-size: $font-xl;
+  font-weight: 900;
+  text-decoration: none;
+  transition: $transition;
+  box-shadow: 0 8px 28px rgba(0,0,0,.25);
+
+  &:hover {
+    background: #E8F5EE;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(0,0,0,.3);
+  }
+
+  @include responsive(sm) {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 24px;
+    font-size: $font-lg;
+  }
+}
+
+.heroPhoneNote {
+  font-size: $font-sm;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+
+// ===== Vacancy Section =====
+.vacancySection {
+  padding: 72px 0;
+  background: $gray-50;
+}
+
+.vacancyContainer {
+  @include container;
+  max-width: 760px;
+}
+
+.sectionHead {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sectionLabel {
+  @include section-label;
+}
+
+.sectionTitle {
+  font-size: $font-4xl;
+  font-weight: 900;
+  color: $text-primary;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+
+  @include responsive(md) { font-size: $font-3xl; }
+}
+
+.sectionDesc {
+  font-size: $font-lg;
+  color: $text-secondary;
+}
+
+// ===== Vacancy Card =====
+.vacancyCard {
+  background: $white;
+  border-radius: $radius-xl;
+  box-shadow: 0 16px 56px rgba(0,0,0,.12), 0 4px 16px rgba(0,0,0,.07);
+  overflow: hidden;
+  border: 2px solid $primary-light;
+}
+
+.cardHeader {
+  @include flex-between;
+  padding: 22px 28px;
+  background: $primary;
+
+  @include responsive(sm) { padding: 18px 20px; }
+}
+
+.statusBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: $radius-full;
+  color: $white;
+  font-size: $font-xs;
+  font-weight: 700;
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  background: #4ADE80;
+  border-radius: 50%;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+.cardFloor {
+  font-size: $font-xl;
+  font-weight: 900;
+  color: $white;
+  letter-spacing: -0.01em;
+}
+
+.cardSummary {
+  padding: 10px 28px 0;
+  font-size: $font-base;
+  font-weight: 800;
+  color: $primary-dark;
+  letter-spacing: -0.01em;
+
+  @include responsive(sm) { padding: 8px 20px 0; }
+}
+
+.areaRow {
+  display: flex;
+  align-items: center;
+  padding: 18px 28px;
+  background: $gray-50;
+  border-bottom: 1px solid $gray-100;
+
+  @include responsive(sm) { padding: 14px 20px; }
+}
+
+.areaItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.areaDivider {
+  width: 1px;
+  height: 32px;
+  background: $gray-200;
+}
+
+.areaLabel {
+  font-size: $font-xs;
+  font-weight: 700;
+  color: $text-secondary;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.areaValue {
+  font-size: $font-lg;
+  font-weight: 800;
+  color: $text-primary;
+}
+
+.specGrid {
+  display: flex;
+  align-items: stretch;
+  padding: 28px;
+  gap: 0;
+  border-bottom: 1px solid $gray-100;
+
+  @include responsive(sm) {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+}
+
+.specItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.specDivider {
+  width: 1px;
+  background: $gray-200;
+  margin: 0 8px;
+
+  @include responsive(sm) {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+  }
+}
+
+.specLabel {
+  font-size: $font-xs;
+  font-weight: 700;
+  color: $text-secondary;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.specValue {
+  font-size: $font-2xl;
+  font-weight: 900;
+  color: $primary;
+  letter-spacing: -0.02em;
+}
+
+.specNote {
+  font-size: $font-xs;
+  color: $text-muted;
+  margin-top: 2px;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 16px 28px 20px;
+
+  @include responsive(sm) { padding: 14px 20px 16px; }
+}
+
+.tag {
+  padding: 4px 12px;
+  background: $primary-pale;
+  color: $primary;
+  border-radius: $radius-full;
+  font-size: $font-xs;
+  font-weight: 700;
+}
+
+.cardCta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  background: $primary;
+  color: $white;
+  font-size: $font-lg;
+  font-weight: 800;
+  text-decoration: none;
+  transition: $transition;
+  letter-spacing: -0.01em;
+  flex-wrap: wrap;
+  text-align: center;
+  line-height: 1.4;
+
+  &:hover { background: $primary-dark; }
+
+  @include responsive(sm) { font-size: $font-base; padding: 16px; }
+}
+
+// ===== Location Box =====
+.locationBox {
+  margin-top: 24px;
+  padding: 24px 28px;
+  background: $white;
+  border-radius: $radius-lg;
+  border: 1px solid $gray-200;
+  box-shadow: $shadow-sm;
+}
+
+.locationHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: $font-base;
+  font-weight: 800;
+  color: $text-primary;
+  margin-bottom: 8px;
+
+  svg { color: $primary; flex-shrink: 0; }
+}
+
+.locationAddress {
+  font-size: $font-sm;
+  color: $text-secondary;
+  margin-bottom: 16px;
+}
+
+.naverMapBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #03C75A;
+  color: $white;
+  border-radius: $radius-md;
+  font-size: $font-sm;
+  font-weight: 700;
+  text-decoration: none;
+  transition: $transition;
+
+  &:hover {
+    background: #02a84e;
+    transform: translateY(-1px);
+  }
+}
+
+// ===== Highlight Box =====
+.highlightBox {
+  margin-top: 32px;
+  padding: 24px 28px;
+  background: $primary-pale;
+  border-radius: $radius-lg;
+  border-left: 4px solid $primary;
+
+  p {
+    color: $primary-dark;
+    font-size: $font-base;
+    font-weight: 600;
+    line-height: 1.7;
+  }
+
+  strong { font-weight: 900; color: $primary; }
+}
+
+// ===== Bottom CTA =====
+.bottomCtaSection {
+  background: $gray-50;
+  padding: 0 0 80px;
+}
+
+.bottomCta {
+  margin-top: 0;
+  text-align: center;
+  padding: 52px 24px;
+  background: $primary-dark;
+  border-radius: $radius-xl;
+}
+
+.bottomCtaTitle {
+  font-size: $font-2xl;
+  font-weight: 900;
+  color: $white;
+  margin-bottom: 8px;
+
+  @include responsive(sm) { font-size: $font-xl; }
+}
+
+.bottomCtaSub {
+  font-size: $font-base;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 28px;
+
+  @include responsive(sm) { font-size: $font-sm; }
+}
+
+.bottomPhoneBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 56px;
+  background: $white;
+  color: $primary-dark;
+  border-radius: $radius-full;
+  font-size: $font-2xl;
+  font-weight: 900;
+  text-decoration: none;
+  transition: $transition;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+
+  &:hover {
+    background: #E8F5EE;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(0,0,0,.3);
+  }
+
+  @include responsive(sm) {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: $font-base;
+  }
+}
