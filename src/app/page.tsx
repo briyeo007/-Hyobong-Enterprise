@@ -49,7 +49,7 @@ const BUILDINGS = [
   {
     id: 'hyobong-enterprise',
     name: '효봉기업',
-    location: '서초구 서운로 (서초동)',
+    location: '양재역 (서초구)',
     vacancies: '현재 공실 1개',
     status: '즉시 입주 가능',
     href: '/hyobong-enterprise',
@@ -59,7 +59,7 @@ const BUILDINGS = [
 ]
 
 const INFO_ITEMS = [
-  { icon: '📍', label: '남부터미널 / 안양 비산동' },
+  { icon: '📍', label: '남부터미널 / 안양 비산동 / 양재역' },
   { icon: '🏢', label: '사무실·상가 가능' },
   { icon: '⚡', label: '즉시 입주 가능' },
 ]
