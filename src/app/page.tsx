@@ -85,11 +85,11 @@ export default function MainPage() {
         <section className={styles.hero}>
           <div className={styles.heroBg} aria-hidden="true">
             <Image
-              src="/images/building/KakaoTalk_20260417_164505696_01.jpg"
+              src="/images/building/KakaoTalk_20260417_164505696_01_hero.jpg"
               alt="효봉기업 건물 외관"
               fill
               priority
-              quality={90}
+              quality={95}
               className={styles.heroBgImg}
               sizes="100vw"
             />
