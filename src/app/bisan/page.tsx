@@ -16,12 +16,12 @@ export const metadata: Metadata = {
 const PHONE = '02-3473-6651'
 
 const VACANCY = {
-  floor: '비산효봉',
+  floor: '1층 1호',
   summary: '사무실 임대 · 즉시 입주 가능',
-  area: { contract: 55, actual: 34 },
-  deposit: '전화 문의',
-  rent: '전화 문의',
-  maintenance: '전화 문의',
+  area: { contract: 28, actual: 17 },
+  deposit: '5,000만원',
+  rent: '350만원',
+  maintenance: '28만원',
   tags: ['즉시 입주 가능', '조건 협의 가능', '단독 공실'],
   images: [] as string[],
 }
@@ -87,7 +87,7 @@ export default function BisanPage() {
                   <span className={styles.statusDot} />
                   즉시 입주 가능
                 </div>
-                <span className={styles.cardFloor}>비산효봉</span>
+                <span className={styles.cardFloor}>{VACANCY.floor}</span>
               </div>
 
               <p className={styles.cardSummary}>{VACANCY.summary}</p>
@@ -95,29 +95,29 @@ export default function BisanPage() {
               <div className={styles.areaRow}>
                 <div className={styles.areaItem}>
                   <span className={styles.areaLabel}>임대 평수</span>
-                  <span className={styles.areaValue}>전화 문의</span>
+                  <span className={styles.areaValue}>{VACANCY.area.contract}평</span>
                 </div>
                 <div className={styles.areaDivider} />
                 <div className={styles.areaItem}>
                   <span className={styles.areaLabel}>실 평수</span>
-                  <span className={styles.areaValue}>전화 문의</span>
+                  <span className={styles.areaValue}>{VACANCY.area.actual}평</span>
                 </div>
               </div>
 
               <div className={styles.specGrid}>
                 <div className={styles.specItem}>
                   <span className={styles.specLabel}>보증금</span>
-                  <span className={styles.specValue}>전화 문의</span>
+                  <span className={styles.specValue}>{VACANCY.deposit}</span>
                 </div>
                 <div className={styles.specDivider} />
                 <div className={styles.specItem}>
                   <span className={styles.specLabel}>월 임대료</span>
-                  <span className={styles.specValue}>전화 문의</span>
+                  <span className={styles.specValue}>{VACANCY.rent}</span>
                 </div>
                 <div className={styles.specDivider} />
                 <div className={styles.specItem}>
                   <span className={styles.specLabel}>관리비</span>
-                  <span className={styles.specValue}>전화 문의</span>
+                  <span className={styles.specValue}>{VACANCY.maintenance}</span>
                 </div>
               </div>
 
