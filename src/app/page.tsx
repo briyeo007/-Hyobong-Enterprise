@@ -25,6 +25,10 @@ const HYOBONG8_IMAGES = [
   '/images/building/KakaoTalk_20260417_164505696_01.jpg',
 ]
 
+const HYOBONG_ENTERPRISE_IMAGES = [
+  '/images/hyobong-enterprise/KakaoTalk_20260421_145928118.jpg',
+]
+
 const BUILDINGS = [
   {
     id: 'hyobong8',
@@ -53,7 +57,7 @@ const BUILDINGS = [
     vacancies: '현재 공실 1개',
     status: '즉시 입주 가능',
     href: '/hyobong-enterprise',
-    hasSlide: false,
+    hasSlide: true,
     tags: ['즉시 입주', '무료주차 1대', '사무실 가능'],
   },
 ]
@@ -100,10 +104,13 @@ export default function MainPage() {
             <div className={styles.buildingGrid}>
               {BUILDINGS.map((b) => (
                 <Link key={b.id} href={b.href} className={styles.buildingCard}>
-                  {/* 효봉8빌딩: 자동 슬라이드 / 비산: 이미지 없음 */}
                   {b.hasSlide && (
                     <div className={styles.cardImageWrap}>
-                      <AutoSlide images={HYOBONG8_IMAGES} alt={b.name} interval={3500} />
+                      <AutoSlide
+                        images={b.id === 'hyobong-enterprise' ? HYOBONG_ENTERPRISE_IMAGES : HYOBONG8_IMAGES}
+                        alt={b.name}
+                        interval={3500}
+                      />
                       <div className={styles.cardImageBadge}>
                         <span className={styles.cardDot} />
                         {b.status}
