@@ -29,6 +29,13 @@ const HYOBONG_ENTERPRISE_IMAGES = [
   '/images/hyobong-enterprise/KakaoTalk_20260421_145928118.jpg',
 ]
 
+const BISAN_IMAGES = [
+  '/images/bisan/KakaoTalk_20260421_150637700.jpg',
+  '/images/bisan/KakaoTalk_20260421_150637700_01.jpg',
+  '/images/bisan/KakaoTalk_20260421_150637700_02.jpg',
+  '/images/bisan/KakaoTalk_20260421_150637700_03.jpg',
+]
+
 const BUILDINGS = [
   {
     id: 'hyobong8',
@@ -47,7 +54,7 @@ const BUILDINGS = [
     vacancies: '현재 공실 1개',
     status: '빠른 계약 가능',
     href: '/bisan',
-    hasSlide: false,
+    hasSlide: true,
     tags: ['즉시 입주', '조건 협의 가능'],
   },
   {
@@ -107,7 +114,11 @@ export default function MainPage() {
                   {b.hasSlide && (
                     <div className={styles.cardImageWrap}>
                       <AutoSlide
-                        images={b.id === 'hyobong-enterprise' ? HYOBONG_ENTERPRISE_IMAGES : HYOBONG8_IMAGES}
+                        images={
+                          b.id === 'hyobong-enterprise' ? HYOBONG_ENTERPRISE_IMAGES :
+                          b.id === 'bisan' ? BISAN_IMAGES :
+                          HYOBONG8_IMAGES
+                        }
                         alt={b.name}
                         interval={3500}
                       />
