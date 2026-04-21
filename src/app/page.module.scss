@@ -86,8 +86,9 @@
   animation: fadeUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
   white-space: nowrap;
 
-  @include responsive(md) { font-size: $font-5xl; white-space: normal; }
-  @include responsive(sm) { font-size: $font-4xl; }
+  @include responsive(lg) { font-size: $font-5xl; }
+  @include responsive(md) { font-size: $font-4xl; }
+  @include responsive(sm) { font-size: 5.8vw; }
 }
 
 .heroBr {
