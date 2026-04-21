@@ -37,6 +37,9 @@
   position: relative;
   z-index: 1;
   @include container;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   max-width: 860px;
   margin: 0 auto;
@@ -88,7 +91,7 @@
 
   @include responsive(lg) { font-size: $font-5xl; }
   @include responsive(md) { font-size: $font-4xl; }
-  @include responsive(sm) { font-size: 5.8vw; }
+  @include responsive(sm) { font-size: 4.5vw; }
 }
 
 .heroBr {
