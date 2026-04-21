@@ -23,7 +23,10 @@ const VACANCY = {
   rent: '350만원',
   maintenance: '150만원',
   tags: ['즉시 입주 가능', '조건 협의 가능', '무료주차 1대'],
-  images: [] as string[],
+  images: [
+    '/images/hyobong-enterprise/KakaoTalk_20260421_144826946.jpg',
+    '/images/hyobong-enterprise/KakaoTalk_20260421_144826946_01.jpg',
+  ],
 }
 
 const PhoneIcon = ({ size = 22 }: { size?: number }) => (
