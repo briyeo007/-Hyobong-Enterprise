@@ -2,8 +2,24 @@
 
 @mixin container {
   max-width: $container-max;
+  width: 100%;
   margin: 0 auto;
   padding: 0 24px;
+
+  @include responsive(lg) {
+    width: 89.746%;
+    padding: 0;
+  }
+
+  @include responsive(md) {
+    width: 86.979%;
+    padding: 0;
+  }
+
+  @include responsive(sm) {
+    width: 82.222%;
+    padding: 0;
+  }
 }
 
 @mixin section-padding {
