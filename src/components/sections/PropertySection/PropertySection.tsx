@@ -62,7 +62,6 @@ const PROPERTIES: Property[] = [
     tags: ['즉시 입주 가능'],
     images: [
       '/images/2f-201/KakaoTalk_20260417_150521837.jpg',
-      '/images/2f-201/KakaoTalk_20260417_150521837_01.jpg',
     ],
   },
   {
