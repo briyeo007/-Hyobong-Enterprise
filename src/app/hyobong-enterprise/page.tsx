@@ -132,7 +132,7 @@ export default function HyobongEnterprisePage() {
 
               <a href={`tel:${PHONE}`} className={styles.cardCta}>
                 <PhoneIcon size={20} />
-                지금 전화해서 바로 계약하세요 · {PHONE}
+                문의하기 · {PHONE}
               </a>
             </div>
             </AnimateIn>
