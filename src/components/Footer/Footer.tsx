@@ -15,11 +15,11 @@ export default function Footer() {
           <div className={styles.contacts}>
             <a href="tel:02-3473-6651" className={styles.phone}>02-3473-6651</a>
             <span className={styles.sep} />
-            <span className={styles.address}>서울 서초구 남부순환로333길 13 효봉빌딩</span>
+            <span className={styles.address}>서울 서초구 서운로 20 (서초2동 1364-1번지)</span>
           </div>
         </div>
 
-        <p className={styles.copyright}>© {year} 효봉8빌딩. All rights reserved.</p>
+        <p className={styles.copyright}>© {year} 효봉기업. All rights reserved.</p>
       </div>
     </footer>
   )
