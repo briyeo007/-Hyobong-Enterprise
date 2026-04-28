@@ -19,12 +19,6 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className={styles.bizInfo}>
-          <span>대표자명: 여효창</span>
-          <span className={styles.bizSep} />
-          <span>사업자등록번호: 214-07-63073</span>
-        </div>
-
         <p className={styles.copyright}>© {year} 효봉기업. All rights reserved.</p>
       </div>
     </footer>
