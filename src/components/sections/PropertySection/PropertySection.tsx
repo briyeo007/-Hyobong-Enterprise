@@ -2,6 +2,8 @@ import AnimateIn from '@/components/AnimateIn'
 import PropertyImageCarousel from './PropertyImageCarousel'
 import styles from './PropertySection.module.scss'
 
+type SpecRow = { label: string; value: string }
+
 type SingleProperty = {
   id: string
   floor: string
@@ -14,6 +16,7 @@ type SingleProperty = {
   images: string[]
   urgency?: string
   dual?: false
+  detailSpecs?: SpecRow[]
 }
 
 type DualProperty = {
@@ -26,6 +29,7 @@ type DualProperty = {
   tags: string[]
   images: string[]
   urgency?: string
+  detailSpecs?: SpecRow[]
 }
 
 type Property = SingleProperty | DualProperty
@@ -43,6 +47,13 @@ const PROPERTIES: Property[] = [
     ],
     urgency: '✔ 즉시 입주 가능',
     tags: ['즉시 입주 가능', '사무실 / 가게 선택'],
+    detailSpecs: [
+      { label: '용도', value: '사무실 / 상가 선택' },
+      { label: '주차', value: '입주자 전용 주차' },
+      { label: '엘리베이터', value: '완비' },
+      { label: '관리비 포함', value: '전기·수도·청소·경비' },
+      { label: '관리 형태', value: '전문 관리팀 상주' },
+    ],
     images: [
       '/images/1f-102/KakaoTalk_20260417_150442023.jpg',
       '/images/1f-102/KakaoTalk_20260417_150442244.jpg',
@@ -60,6 +71,13 @@ const PROPERTIES: Property[] = [
     maintenance: '110만원',
     urgency: '✔ 즉시 입주 가능',
     tags: ['즉시 입주 가능'],
+    detailSpecs: [
+      { label: '용도', value: '사무실' },
+      { label: '주차', value: '입주자 전용 주차' },
+      { label: '엘리베이터', value: '완비' },
+      { label: '관리비 포함', value: '전기·수도·청소·경비' },
+      { label: '관리 형태', value: '전문 관리팀 상주' },
+    ],
     images: [
       '/images/2f-201/KakaoTalk_20260417_150521837.jpg',
     ],
@@ -74,6 +92,13 @@ const PROPERTIES: Property[] = [
     maintenance: '200만원',
     urgency: '✔ 즉시 입주 가능',
     tags: ['즉시 입주 가능', '전층 단독 사용'],
+    detailSpecs: [
+      { label: '용도', value: '사무실 (전층 단독 사용)' },
+      { label: '주차', value: '입주자 전용 주차' },
+      { label: '엘리베이터', value: '완비' },
+      { label: '관리비 포함', value: '전기·수도·청소·경비' },
+      { label: '관리 형태', value: '전문 관리팀 상주' },
+    ],
     images: [
       '/images/3f-all/KakaoTalk_20260417_150553199.jpg',
     ],
@@ -88,6 +113,13 @@ const PROPERTIES: Property[] = [
     maintenance: '110만원',
     urgency: '✔ 즉시 입주 가능',
     tags: ['즉시 입주 가능'],
+    detailSpecs: [
+      { label: '용도', value: '사무실' },
+      { label: '주차', value: '입주자 전용 주차' },
+      { label: '엘리베이터', value: '완비' },
+      { label: '관리비 포함', value: '전기·수도·청소·경비' },
+      { label: '관리 형태', value: '전문 관리팀 상주' },
+    ],
     images: [
       '/images/5f-501/KakaoTalk_20260417_150621262.jpg',
       '/images/5f-501/KakaoTalk_20260417_150621262_01.jpg',
@@ -200,6 +232,22 @@ export default function PropertySection() {
                       </div>
                     </div>
                   ))}
+                </div>
+              )}
+
+              {p.detailSpecs && p.detailSpecs.length > 0 && (
+                <div className={styles.detailTable}>
+                  <p className={styles.detailTableTitle}>상세 정보</p>
+                  <table className={styles.table}>
+                    <tbody>
+                      {p.detailSpecs.map((row) => (
+                        <tr key={row.label} className={styles.tableRow}>
+                          <th className={styles.tableTh}>{row.label}</th>
+                          <td className={styles.tableTd}>{row.value}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               )}
 

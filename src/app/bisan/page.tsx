@@ -24,6 +24,12 @@ const VACANCY = {
   maintenance: '28만원',
   tags: ['즉시 입주 가능', '조건 협의 가능', '단독 공실'],
   images: [] as string[],
+  detailSpecs: [
+    { label: '용도', value: '사무실' },
+    { label: '주차', value: '협의 가능' },
+    { label: '관리비 포함', value: '전기·수도·청소' },
+    { label: '입주 가능', value: '즉시' },
+  ],
 }
 
 const PhoneIcon = ({ size = 22 }: { size?: number }) => (
@@ -119,6 +125,20 @@ export default function BisanPage() {
                   <span className={styles.specLabel}>관리비</span>
                   <span className={styles.specValue}>{VACANCY.maintenance}</span>
                 </div>
+              </div>
+
+              <div className={styles.detailTable}>
+                <p className={styles.detailTableTitle}>상세 정보</p>
+                <table className={styles.table}>
+                  <tbody>
+                    {VACANCY.detailSpecs.map((row) => (
+                      <tr key={row.label} className={styles.tableRow}>
+                        <th className={styles.tableTh}>{row.label}</th>
+                        <td className={styles.tableTd}>{row.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
 
               <div className={styles.tags}>

@@ -85,6 +85,31 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
+// ===== 사업자 정보 =====
+.bizInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: $font-xs;
+  color: rgba(255, 255, 255, 0.45);
+
+  @include responsive(md) {
+    justify-content: center;
+  }
+}
+
+.bizSep {
+  display: block;
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.2);
+
+  @include responsive(sm) {
+    display: none;
+  }
+}
+
 // ===== 저작권 =====
 .copyright {
   font-size: $font-sm;

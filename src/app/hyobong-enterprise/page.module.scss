@@ -300,6 +300,59 @@
   margin-top: 2px;
 }
 
+// ===== Detail Spec Table =====
+.detailTable {
+  padding: 0 28px 4px;
+  border-bottom: 1px solid $gray-100;
+
+  @include responsive(sm) {
+    padding: 0 20px 4px;
+  }
+}
+
+.detailTableTitle {
+  font-size: $font-xs;
+  font-weight: 700;
+  color: $text-secondary;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-top: 16px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableRow {
+  border-bottom: 1px solid $gray-100;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.tableTh {
+  width: 38%;
+  padding: 8px 12px 8px 0;
+  font-size: $font-sm;
+  font-weight: 700;
+  color: $text-secondary;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.tableTd {
+  padding: 8px 0 8px 4px;
+  font-size: $font-sm;
+  font-weight: 600;
+  color: $text-primary;
+  text-align: left;
+  vertical-align: middle;
+}
+
 .tags {
   display: flex;
   gap: 8px;
