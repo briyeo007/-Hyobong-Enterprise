@@ -179,6 +179,13 @@
   @include responsive(sm) { font-size: $font-base; }
 }
 
+.updateDate {
+  margin-top: 8px;
+  font-size: $font-sm;
+  font-weight: 700;
+  color: $primary;
+}
+
 // ===== Building Cards =====
 .buildingGrid {
   display: grid;

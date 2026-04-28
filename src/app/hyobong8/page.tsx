@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
-import PropertySection from '@/components/sections/PropertySection/PropertySection'
+import PropertySection, { PROPERTIES } from '@/components/sections/PropertySection/PropertySection'
 import LocationSection from '@/components/sections/LocationSection/LocationSection'
 import AnimateIn from '@/components/AnimateIn'
 import styles from './page.module.scss'
@@ -49,9 +49,10 @@ export default function Hyobong8Page() {
               건물 선택으로 돌아가기
             </Link>
 
+            {/* 루틴: 공실 수는 PropertySection의 PROPERTIES 배열 길이로 자동 반영됩니다 */}
             <div className={styles.headerBadge}>
               <span className={styles.headerDot} />
-              현재 공실 4개 · 즉시 입주 가능
+              현재 공실 {PROPERTIES.length}개 · 즉시 입주 가능
             </div>
 
             <h1 className={styles.headerTitle}>효봉8빌딩</h1>

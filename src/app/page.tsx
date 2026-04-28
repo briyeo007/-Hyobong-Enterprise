@@ -5,6 +5,7 @@ import Footer from '@/components/Footer/Footer'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
 import AutoSlide from '@/components/AutoSlide/AutoSlide'
 import AnimateIn from '@/components/AnimateIn'
+import TodayDate from '@/components/TodayDate'
 import styles from './page.module.scss'
 
 const PHONE = '02-3473-6651'
@@ -37,6 +38,7 @@ const BISAN_IMAGES = [
   '/images/bisan/KakaoTalk_20260421_150637700_03.jpg',
 ]
 
+// 루틴: 공실 숫자 변경 시 아래 vacancies 값과 heroSub(공실 N개)를 함께 수정하세요.
 const BUILDINGS = [
   {
     id: 'hyobong8',
@@ -115,6 +117,7 @@ export default function MainPage() {
                 <span className={styles.sectionLabel}>건물 선택</span>
                 <h2 className={styles.sectionTitle}>임대 건물을 선택하세요</h2>
                 <p className={styles.sectionDesc}>세 건물 모두 즉시 입주 가능 · 조건 협의 환영</p>
+                <p className={styles.updateDate}><TodayDate /></p>
               </div>
             </AnimateIn>
 

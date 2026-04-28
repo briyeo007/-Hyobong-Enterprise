@@ -148,6 +148,13 @@
   color: $text-secondary;
 }
 
+.updateDate {
+  margin-top: 8px;
+  font-size: $font-sm;
+  font-weight: 700;
+  color: $primary;
+}
+
 // ===== Vacancy Card =====
 .vacancyCard {
   max-width: 900px;

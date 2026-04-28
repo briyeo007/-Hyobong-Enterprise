@@ -1,5 +1,6 @@
 import AnimateIn from '@/components/AnimateIn'
 import PropertyImageCarousel from './PropertyImageCarousel'
+import TodayDate from '@/components/TodayDate'
 import styles from './PropertySection.module.scss'
 
 type SpecRow = { label: string; value: string }
@@ -34,7 +35,8 @@ type DualProperty = {
 
 type Property = SingleProperty | DualProperty
 
-const PROPERTIES: Property[] = [
+// 루틴: 공실 추가·삭제 시 아래 배열에서 항목을 추가하거나 제거하세요.
+export const PROPERTIES: Property[] = [
   {
     id: '1f-102',
     floor: '1층 102호',
@@ -147,6 +149,8 @@ export default function PropertySection() {
             <line x1="12" y1="16" x2="12.01" y2="16"/>
           </svg>
           가격 및 조건은 협의 가능합니다.
+          <span className={styles.noticeSep}>·</span>
+          <TodayDate className={styles.noticeDate} />
         </p>
 
         <a href="tel:02-3473-6651" className={styles.phoneCta}>

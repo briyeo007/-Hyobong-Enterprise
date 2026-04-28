@@ -6,6 +6,7 @@ import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
 import PropertyImageCarousel from '@/components/sections/PropertySection/PropertyImageCarousel'
 import LocationSection from '@/components/sections/LocationSection/LocationSection'
 import AnimateIn from '@/components/AnimateIn'
+import TodayDate from '@/components/TodayDate'
 import styles from './page.module.scss'
 
 export const metadata: Metadata = {
@@ -59,6 +60,7 @@ export default function HyobongEnterprisePage() {
 
             <div className={styles.urgencyBanner}>
               <span className={styles.urgencyDot} />
+              {/* 루틴: 공실 숫자 변경 시 아래 텍스트도 수정하세요 */}
               현재 공실 1개 · 빠른 계약 가능
             </div>
 
@@ -81,8 +83,10 @@ export default function HyobongEnterprisePage() {
             <AnimateIn className="reveal" activeClassName="inView">
               <div className={styles.sectionHead}>
                 <span className={styles.sectionLabel}>공실 정보</span>
+                {/* 루틴: 공실 숫자 변경 시 아래 숫자를 수정하세요 */}
                 <h2 className={styles.sectionTitle}>현재 공실 1개</h2>
                 <p className={styles.sectionDesc}>지금 바로 입주 가능 · 조건 협의 환영</p>
+                <p className={styles.updateDate}><TodayDate /></p>
               </div>
             </AnimateIn>
 
