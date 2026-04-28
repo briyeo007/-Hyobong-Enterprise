@@ -1,4 +1,5 @@
 'use client'
+import { useEffect, useState } from 'react'
 
 function formatKoreanDate() {
   const today = new Date()
@@ -9,9 +10,12 @@ function formatKoreanDate() {
 }
 
 export default function TodayDate({ className }: { className?: string }) {
-  return (
-    <span className={className} suppressHydrationWarning>
-      {formatKoreanDate()}
-    </span>
-  )
+  const [date, setDate] = useState('')
+
+  useEffect(() => {
+    setDate(formatKoreanDate())
+  }, [])
+
+  if (!date) return null
+  return <span className={className}>{date}</span>
 }
