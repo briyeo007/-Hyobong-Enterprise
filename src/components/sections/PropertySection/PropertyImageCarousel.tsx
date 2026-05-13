@@ -41,7 +41,7 @@ export default function PropertyImageCarousel({ images, alt }: Props) {
             alt={`${alt} ${i + 1}`}
             fill
             quality={90}
-            priority={i === 0}
+            loading="eager"
             className={styles.image}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
