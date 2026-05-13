@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useCallback } from 'react'
 import Image from 'next/image'
 import styles from './PropertyImageCarousel.module.scss'
 
@@ -10,7 +10,24 @@ interface Props {
 }
 
 export default function PropertyImageCarousel({ images, alt }: Props) {
-  const [current, setCurrent] = useState(0)
+  const currentRef = useRef(0)
+  const wrapsRef = useRef<(HTMLDivElement | null)[]>([])
+  const dotsRef = useRef<(HTMLButtonElement | null)[]>([])
+  const counterRef = useRef<HTMLSpanElement | null>(null)
+
+  const goTo = useCallback((next: number) => {
+    const n = ((next % images.length) + images.length) % images.length
+    const prev = currentRef.current
+    if (prev === n) return
+
+    wrapsRef.current[prev]?.classList.remove(styles.imageActive)
+    wrapsRef.current[n]?.classList.add(styles.imageActive)
+    dotsRef.current[prev]?.classList.remove(styles.dotActive)
+    dotsRef.current[n]?.classList.add(styles.dotActive)
+    if (counterRef.current) counterRef.current.textContent = `${n + 1} / ${images.length}`
+
+    currentRef.current = n
+  }, [images.length])
 
   if (images.length === 0) {
     return (
@@ -25,16 +42,13 @@ export default function PropertyImageCarousel({ images, alt }: Props) {
     )
   }
 
-  const prev = () => setCurrent((c) => (c - 1 + images.length) % images.length)
-  const next = () => setCurrent((c) => (c + 1) % images.length)
-
   return (
     <div className={styles.carousel}>
-      {/* 모든 사진 미리 로드, CSS로 전환 — 딜레이 없음 */}
       {images.map((src, i) => (
         <div
           key={src}
-          className={`${styles.imageWrap} ${i === current ? styles.imageActive : ''}`}
+          ref={(el) => { wrapsRef.current[i] = el }}
+          className={`${styles.imageWrap}${i === 0 ? ` ${styles.imageActive}` : ''}`}
         >
           <Image
             src={src}
@@ -50,12 +64,20 @@ export default function PropertyImageCarousel({ images, alt }: Props) {
 
       {images.length > 1 && (
         <>
-          <button className={`${styles.arrow} ${styles.arrowLeft}`} onClick={prev} aria-label="이전 사진">
+          <button
+            className={`${styles.arrow} ${styles.arrowLeft}`}
+            onClick={() => goTo(currentRef.current - 1)}
+            aria-label="이전 사진"
+          >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <polyline points="15 18 9 12 15 6"/>
             </svg>
           </button>
-          <button className={`${styles.arrow} ${styles.arrowRight}`} onClick={next} aria-label="다음 사진">
+          <button
+            className={`${styles.arrow} ${styles.arrowRight}`}
+            onClick={() => goTo(currentRef.current + 1)}
+            aria-label="다음 사진"
+          >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <polyline points="9 18 15 12 9 6"/>
             </svg>
@@ -64,13 +86,14 @@ export default function PropertyImageCarousel({ images, alt }: Props) {
             {images.map((_, i) => (
               <button
                 key={i}
-                className={`${styles.dot} ${i === current ? styles.dotActive : ''}`}
-                onClick={() => setCurrent(i)}
+                ref={(el) => { dotsRef.current[i] = el }}
+                className={`${styles.dot}${i === 0 ? ` ${styles.dotActive}` : ''}`}
+                onClick={() => goTo(i)}
                 aria-label={`${i + 1}번 사진`}
               />
             ))}
           </div>
-          <span className={styles.counter}>{current + 1} / {images.length}</span>
+          <span ref={counterRef} className={styles.counter}>1 / {images.length}</span>
         </>
       )}
     </div>
