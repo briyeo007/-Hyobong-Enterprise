@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useCallback } from 'react'
+import { useRef, useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import styles from './PropertyImageCarousel.module.scss'
 
@@ -14,6 +14,13 @@ export default function PropertyImageCarousel({ images, alt }: Props) {
   const wrapsRef = useRef<(HTMLDivElement | null)[]>([])
   const dotsRef = useRef<(HTMLButtonElement | null)[]>([])
   const counterRef = useRef<HTMLSpanElement | null>(null)
+  const carouselRef = useRef<HTMLDivElement>(null)
+
+  // 마운트 후 모든 이미지를 강제 디코딩 — 클릭 시점에 디코딩 지연 제거
+  useEffect(() => {
+    const imgs = carouselRef.current?.querySelectorAll<HTMLImageElement>('img')
+    imgs?.forEach((img) => img.decode().catch(() => {}))
+  }, [])
 
   const goTo = useCallback((next: number) => {
     const n = ((next % images.length) + images.length) % images.length
@@ -43,7 +50,7 @@ export default function PropertyImageCarousel({ images, alt }: Props) {
   }
 
   return (
-    <div className={styles.carousel}>
+    <div ref={carouselRef} className={styles.carousel}>
       {images.map((src, i) => (
         <div
           key={src}
