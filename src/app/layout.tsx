@@ -17,11 +17,6 @@ export const metadata: Metadata = {
   title: '효봉기업 | 사무실·상가 공실 즉시 확인',
   description: '효봉8빌딩(남부터미널)·비산효봉(안양). 사무실·상가 임대. 공실 즉시 확인 가능. 문의: 02-3473-6651',
   keywords: ['효봉기업', '효봉기업 임대', '효봉기업 사무실', '효봉기업 상가', '사무실 임대', '상가 임대', '효봉8빌딩', '비산효봉', '남부터미널 사무실', '안양 사무실 임대'],
-  icons: {
-    icon: '/logo.png',
-    shortcut: '/logo.png',
-    apple: '/logo.png',
-  },
   alternates: {
     canonical: BASE_URL,
   },
