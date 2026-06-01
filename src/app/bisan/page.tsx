@@ -166,6 +166,7 @@ export default function BisanPage() {
           naverMapUrl="https://naver.me/GxrpBs47"
           googleMapsQuery="경기도+안양시+동안구+비산동+422-12"
           address={'경기도 안양시 동안구 비산동 422-12\n비산효봉'}
+          description="경기도 안양시 비산동에 위치합니다."
           accessPoints={[]}
           showCta={false}
         />

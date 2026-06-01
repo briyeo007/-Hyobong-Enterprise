@@ -170,7 +170,20 @@ export default function HyobongEnterprisePage() {
           naverMapUrl="https://naver.me/G58NvSJ2"
           googleMapsQuery="서울+서초구+서운로+20"
           address={'서울 서초구 서운로 20\n(서초2동 1364-1번지)'}
-          accessPoints={[]}
+          description="양재역 도보 5분, 서초구에 위치합니다."
+          accessPoints={[
+            {
+              icon: (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                </svg>
+              ),
+              category: '지하철',
+              items: ['3호선 · 신분당선 양재역 도보 약 5분'],
+            },
+          ]}
           showCta={false}
         />
 
