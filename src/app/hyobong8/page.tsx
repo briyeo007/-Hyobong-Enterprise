@@ -9,8 +9,8 @@ import AnimateIn from '@/components/AnimateIn'
 import styles from './page.module.scss'
 
 export const metadata: Metadata = {
-  title: '효봉8빌딩 공실 안내 | 남부터미널 사무실·상가 임대',
-  description: '서울 서초구 남부터미널역 도보 5분. 현재 공실 4개 즉시 입주 가능. 사무실·상가 임대 문의: 02-3473-6651',
+  title: '효봉8빌딩 공실 안내 | 남부터미널 사무실 임대',
+  description: '서울 서초구 남부터미널역 도보 5분. 현재 공실 5개 즉시 입주 가능. 사무실 임대 문의: 02-3473-6651',
 }
 
 const PHONE = '02-3473-6651'

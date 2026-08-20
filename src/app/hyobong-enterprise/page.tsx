@@ -23,13 +23,14 @@ const VACANCY = {
   deposit: '5,000만원',
   rent: '350만원',
   maintenance: '150만원',
-  tags: ['즉시 입주 가능', '조건 협의 가능', '무료주차 1대'],
+  tags: ['즉시 입주 가능', '조건 협의 가능', '무료주차 1대', '리모델링 완료'],
   detailSpecs: [
     { label: '용도', value: '사무실' },
     { label: '주차', value: '무료 1대 제공' },
     { label: '엘리베이터', value: '있음' },
     { label: '관리비 포함', value: '전기·수도·청소' },
-    { label: '입주 가능', value: '즉시' },
+    { label: '화장실', value: '남·여 화장실 공사 완료' },
+    { label: '입주 가능', value: '즉시 (리모델링 완료)' },
   ],
   images: [
     '/images/hyobong-enterprise/KakaoTalk_20260421_144826946.jpg',
