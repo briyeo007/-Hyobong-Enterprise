@@ -111,8 +111,8 @@ export const PROPERTIES: Property[] = [
     deposit: '5,000만원',
     rent: '250만원',
     maintenance: '110만원',
-    urgency: '✔ 즉시 입주 가능',
-    tags: ['즉시 입주 가능', '청소 완료', '무료주차 1대'],
+    urgency: '✔ 26.11.1 입주 가능',
+    tags: ['26.11.1 입주 가능', '청소 완료', '무료주차 1대'],
     detailSpecs: [
       { label: '용도', value: '사무실' },
       { label: '주차', value: '무료 1대 제공' },
@@ -120,6 +120,7 @@ export const PROPERTIES: Property[] = [
       { label: '관리비 포함', value: '전기·수도·청소·경비' },
       { label: '상태', value: '청소 완료, 바닥·천장 텍스 새로 설치' },
       { label: '관리 형태', value: '전문 관리팀 상주' },
+      { label: '입주 가능일', value: '2026년 11월 1일부터 (현 임차인 퇴거일 26.10.31)' },
     ],
     images: [],
   },
