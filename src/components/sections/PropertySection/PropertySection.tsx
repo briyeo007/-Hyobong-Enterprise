@@ -195,7 +195,7 @@ export default function PropertySection() {
               <div className={styles.cardHeader}>
                 <div className={styles.statusBadge}>
                   <span className={styles.statusDot} />
-                  즉시 입주 가능
+                  {p.urgency ? p.urgency.replace('✔ ', '') : '즉시 입주 가능'}
                 </div>
                 <span className={styles.floor}>{p.floor}</span>
               </div>
