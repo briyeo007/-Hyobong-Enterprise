@@ -7,6 +7,7 @@ import PropertyImageCarousel from '@/components/sections/PropertySection/Propert
 import LocationSection from '@/components/sections/LocationSection/LocationSection'
 import AnimateIn from '@/components/AnimateIn'
 import TodayDate from '@/components/TodayDate'
+import PhoneLink from '@/components/PhoneLink/PhoneLink'
 import styles from './page.module.scss'
 
 export const metadata: Metadata = {
@@ -64,10 +65,10 @@ export default function BisanPage() {
             <p className={styles.heroLocation}>경기도 안양시 동안구 비산동 422-12</p>
 
             <div className={styles.heroPhoneRow}>
-              <a href={`tel:${PHONE}`} className={styles.heroPhoneBtn}>
+              <PhoneLink className={styles.heroPhoneBtn} location="bisan_hero" phone={PHONE}>
                 <PhoneIcon size={22} />
                 {PHONE} 바로 전화
-              </a>
+              </PhoneLink>
               <span className={styles.heroPhoneNote}>지금 바로 안내 가능합니다</span>
             </div>
           </div>
@@ -151,10 +152,10 @@ export default function BisanPage() {
                 ))}
               </div>
 
-              <a href={`tel:${PHONE}`} className={styles.cardCta}>
+              <PhoneLink className={styles.cardCta} location="bisan_card" phone={PHONE}>
                 <PhoneIcon size={20} />
                 문의하기 · {PHONE}
-              </a>
+              </PhoneLink>
             </div>
             </AnimateIn>
 
@@ -178,10 +179,10 @@ export default function BisanPage() {
               <div className={styles.bottomCta}>
                 <p className={styles.bottomCtaTitle}>고민하지 말고 지금 바로 전화하세요</p>
                 <p className={styles.bottomCtaSub}>먼저 연락하시는 분께 우선 안내해 드립니다</p>
-                <a href={`tel:${PHONE}`} className={styles.bottomPhoneBtn}>
+                <PhoneLink className={styles.bottomPhoneBtn} location="bisan_bottom_cta" phone={PHONE}>
                   <PhoneIcon size={26} />
                   {PHONE}
-                </a>
+                </PhoneLink>
               </div>
             </AnimateIn>
           </div>

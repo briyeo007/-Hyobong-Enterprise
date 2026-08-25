@@ -6,6 +6,7 @@ import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
 import AutoSlide from '@/components/AutoSlide/AutoSlide'
 import AnimateIn from '@/components/AnimateIn'
 import TodayDate from '@/components/TodayDate'
+import PhoneLink from '@/components/PhoneLink/PhoneLink'
 import styles from './page.module.scss'
 
 const PHONE = '02-3473-6651'
@@ -102,10 +103,10 @@ export default function MainPage() {
             <div className={styles.heroBadge}>공실 확인 · 즉시 안내 가능</div>
             <h1 className={styles.heroTitle}>지금 바로 입주 가능한 사무실·상가</h1>
             <p className={styles.heroSub}>공실 6개 보유 / 빠른 계약 가능</p>
-            <a href={`tel:${PHONE}`} className={styles.heroPhone}>
+            <PhoneLink className={styles.heroPhone} location="home_hero" phone={PHONE}>
               <PhoneIcon />
               {PHONE} 바로 전화
-            </a>
+            </PhoneLink>
           </div>
         </section>
 
@@ -191,10 +192,10 @@ export default function MainPage() {
               <div className={styles.bottomCta}>
                 <p className={styles.bottomCtaTitle}>어떤 건물이든 바로 문의하세요</p>
                 <p className={styles.bottomCtaSub}>전화 한 통으로 모든 조건을 바로 안내해 드립니다</p>
-                <a href={`tel:${PHONE}`} className={styles.bottomPhoneBtn}>
+                <PhoneLink className={styles.bottomPhoneBtn} location="home_bottom_cta" phone={PHONE}>
                   <PhoneIcon />
                   {PHONE} 전화 문의
-                </a>
+                </PhoneLink>
               </div>
             </AnimateIn>
           </div>

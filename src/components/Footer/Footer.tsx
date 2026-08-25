@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import PhoneLink from '@/components/PhoneLink/PhoneLink'
 import styles from './Footer.module.scss'
 
 export default function Footer() {
@@ -13,7 +14,7 @@ export default function Footer() {
           </div>
 
           <div className={styles.contacts}>
-            <a href="tel:02-3473-6651" className={styles.phone}>02-3473-6651</a>
+            <PhoneLink className={styles.phone} location="footer">02-3473-6651</PhoneLink>
             <span className={styles.sep} />
             <span className={styles.address}>서울 서초구 서운로 20 (서초2동 1364-1번지)</span>
           </div>

@@ -6,6 +6,7 @@ import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
 import PropertySection, { PROPERTIES } from '@/components/sections/PropertySection/PropertySection'
 import LocationSection from '@/components/sections/LocationSection/LocationSection'
 import AnimateIn from '@/components/AnimateIn'
+import PhoneLink from '@/components/PhoneLink/PhoneLink'
 import styles from './page.module.scss'
 
 export const metadata: Metadata = {
@@ -59,10 +60,10 @@ export default function Hyobong8Page() {
             <p className={styles.headerLocation}>서울 서초구 남부순환로333길 13 · 남부터미널역 도보 5분</p>
 
             <div className={styles.headerPhoneRow}>
-              <a href={`tel:${PHONE}`} className={styles.headerPhone}>
+              <PhoneLink className={styles.headerPhone} location="hyobong8_header" phone={PHONE}>
                 <PhoneIcon />
                 {PHONE} 전화 문의
-              </a>
+              </PhoneLink>
               <span className={styles.headerInfo}>가격·조건 협의 가능 · 빠른 안내</span>
             </div>
           </div>
@@ -95,10 +96,10 @@ export default function Hyobong8Page() {
               <div className={styles.bottomCta}>
                 <p className={styles.bottomCtaTitle}>공실 확인 후 바로 문의하세요</p>
                 <p className={styles.bottomCtaSub}>전화 한 통으로 모든 조건을 바로 안내해 드립니다</p>
-                <a href={`tel:${PHONE}`} className={styles.bottomPhoneBtn}>
+                <PhoneLink className={styles.bottomPhoneBtn} location="hyobong8_bottom_cta" phone={PHONE}>
                   <PhoneIcon />
                   {PHONE} 전화 문의
-                </a>
+                </PhoneLink>
               </div>
             </AnimateIn>
           </div>
