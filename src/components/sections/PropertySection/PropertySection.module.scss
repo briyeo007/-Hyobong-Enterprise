@@ -120,7 +120,7 @@
 .statusDot {
   width: 7px;
   height: 7px;
-  background: $primary-light;
+  background: #4ADE80;
   border-radius: 50%;
   animation: pulse 2s ease-in-out infinite;
 }
@@ -404,7 +404,7 @@
   top: 12px;
   left: 12px;
   z-index: 10;
-  background: $primary-dark;
+  background: #059669;
   color: $white;
   font-size: $font-xs;
   font-weight: 800;
