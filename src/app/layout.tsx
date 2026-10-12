@@ -1,14 +1,7 @@
 import type { Metadata } from 'next'
-import { Noto_Sans_KR } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.scss'
-
-const notoSansKR = Noto_Sans_KR({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '700', '900'],
-  display: 'swap',
-})
 
 const BASE_URL = 'https://www.hyobongkiup.com'
 
@@ -50,8 +43,13 @@ export default function RootLayout({
       <head>
         <meta name="naver-site-verification" content="2bd22d4d4301aa66ef7b753371cd34a9cef9e3e4" />
         <meta name="google-site-verification" content="k2vUG4wByx1PSBDuv18F3WGc6AjxQsmpeFThcC15wCw" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+        />
       </head>
-      <body className={notoSansKR.className}>
+      <body>
         {children}
         <Analytics />
         <SpeedInsights />

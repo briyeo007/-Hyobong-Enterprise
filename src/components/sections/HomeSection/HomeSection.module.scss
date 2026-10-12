@@ -16,7 +16,7 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, #0D3D22 0%, #1B5E3B 40%, #2D7A54 70%, #1B5E3B 100%);
+    linear-gradient(135deg, #0B0B0C 0%, #1C1C1E 40%, #2A2A2D 70%, #1C1C1E 100%);
   background-size: cover;
   background-position: center;
 }
@@ -26,9 +26,9 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(13, 61, 34, 0.55) 0%,
-    rgba(13, 61, 34, 0.40) 50%,
-    rgba(13, 61, 34, 0.75) 100%
+    rgba(11, 11, 12, 0.55) 0%,
+    rgba(11, 11, 12, 0.40) 50%,
+    rgba(11, 11, 12, 0.75) 100%
   );
 }
 
@@ -77,7 +77,7 @@
     display: inline-block;
     width: 8px;
     height: 8px;
-    background: #4ADE80;
+    background: $primary-light;
     border-radius: 50%;
     animation: pulse 2s ease-in-out infinite;
   }
@@ -98,7 +98,7 @@
   animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
 
   span {
-    background: linear-gradient(90deg, #74C69D, #B7E4C7);
+    background: linear-gradient(90deg, $primary-light, #E4D3A3);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -130,7 +130,7 @@
   margin-top: 6px;
   font-size: $font-lg;
   font-weight: 800;
-  color: #4ADE80;
+  color: $primary-light;
   letter-spacing: 0.01em;
 
   @include responsive(md) {
@@ -186,7 +186,7 @@
   border-radius: $radius-md;
   @include flex-center;
   flex-shrink: 0;
-  color: #74C69D;
+  color: $primary-light;
 }
 
 .featureTitle {

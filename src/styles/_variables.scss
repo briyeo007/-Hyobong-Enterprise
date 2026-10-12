@@ -1,10 +1,14 @@
 // ===== Brand Colors =====
-$primary:       #1B5E3B;
-$primary-dark:  #0D3D22;
-$primary-mid:   #2D7A54;
-$primary-light: #52A876;
-$primary-pale:  #E8F5EE;
-$primary-bg:    #F2FAF5;
+// 프리미엄 상업용 부동산 콘셉트: 차콜 블랙 + 절제된 골드 포인트
+$primary:       #1C1C1E;  // 차콜 블랙 — 버튼/강조 배경
+$primary-dark:  #0B0B0C;  // 딥 차콜 — 헤더/푸터/다크 섹션
+$primary-mid:   #2A2A2D;  // 호버용 중간 차콜
+$primary-light: #C6A567;  // 골드 포인트 — 보더/아이콘/호버 강조
+$primary-pale:  #F6F1E3;  // 아이보리 골드 틴트 — 배지/태그 배경
+$primary-bg:    #FAF9F6;  // 섹션 배경 워시 (웜 오프화이트)
+
+$gold:          #C6A567;
+$gold-dark:     #A9843F;
 
 // ===== Neutrals =====
 $white:         #FFFFFF;
@@ -18,15 +22,15 @@ $gray-500:      #6B7280;
 $gray-700:      #374151;
 $gray-900:      #111827;
 
-$text-primary:   #111827;
-$text-secondary: #4B5563;
+$text-primary:   #16161A;
+$text-secondary: #52525B;
 $text-muted:     #9CA3AF;
 
 // ===== Status =====
-$status-available: #059669;
-$status-available-bg: #D1FAE5;
-$status-reserved: #D97706;
-$status-reserved-bg: #FEF3C7;
+$status-available: #0B0B0C;
+$status-available-bg: #F6F1E3;
+$status-reserved: #A9843F;
+$status-reserved-bg: #F6F1E3;
 
 // ===== Typography =====
 $font-xs:   0.75rem;
