@@ -100,7 +100,7 @@ export default function MainPage() {
           <div className={styles.heroOverlay} aria-hidden="true" />
 
           <div className={styles.heroContent}>
-            <div className={styles.heroBadge}>공실 확인 · 즉시 안내 가능</div>
+            <div className={styles.heroBadge}>남부터미널역 · 서초동 사무실 임대</div>
             <h1 className={styles.heroTitle}>지금 바로 입주 가능한 사무실·상가</h1>
             <p className={styles.heroSub}>공실 6개 보유 / 빠른 계약 가능</p>
             <PhoneLink className={styles.heroPhone} location="home_hero" phone={PHONE}>

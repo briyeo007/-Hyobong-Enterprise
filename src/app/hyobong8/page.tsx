@@ -10,8 +10,34 @@ import PhoneLink from '@/components/PhoneLink/PhoneLink'
 import styles from './page.module.scss'
 
 export const metadata: Metadata = {
-  title: '효봉8빌딩 공실 안내 | 남부터미널 사무실 임대',
-  description: '서울 서초구 남부터미널역 도보 5분. 현재 공실 5개 즉시 입주 가능. 사무실 임대 문의: 02-3473-6651',
+  title: '남부터미널역 사무실 임대 | 서초동 효봉8빌딩 공실 안내',
+  description: '서초동 남부터미널역 도보 5분 효봉8빌딩 사무실·상가 임대. 역세권, 주차 가능, 즉시 입주. 서초동 사무실 임대 문의: 02-3473-6651',
+  keywords: ['남부터미널역 사무실 임대', '남부터미널 사무실 임대', '서초동 사무실 임대', '서초동 상가 임대', '서초구 사무실 임대', '남부터미널역 상가 임대', '효봉8빌딩'],
+  alternates: { canonical: '/hyobong8' },
+  openGraph: {
+    type: 'website',
+    url: '/hyobong8',
+    siteName: '효봉기업',
+    locale: 'ko_KR',
+    title: '남부터미널역 사무실 임대 | 서초동 효봉8빌딩',
+    description: '서초동 남부터미널역 도보 5분 사무실·상가 임대. 즉시 입주 가능. 문의: 02-3473-6651',
+  },
+}
+
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Place',
+  name: '효봉8빌딩 (남부터미널역 사무실 임대)',
+  description: '서울 서초구 서초동 남부터미널역 도보 5분 사무실·상가 임대',
+  url: 'https://www.hyobongkiup.com/hyobong8',
+  telephone: '+82-2-3473-6651',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '남부순환로333길 13',
+    addressLocality: '서초구',
+    addressRegion: '서울특별시',
+    addressCountry: 'KR',
+  },
 }
 
 const PHONE = '02-3473-6651'
@@ -38,6 +64,7 @@ const SUMMARY_ITEMS = [
 export default function Hyobong8Page() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
       <Header />
       <main>
         {/* ── Building Header ── */}
@@ -57,7 +84,7 @@ export default function Hyobong8Page() {
             </div>
 
             <h1 className={styles.headerTitle}>효봉8빌딩</h1>
-            <p className={styles.headerLocation}>서울 서초구 남부순환로333길 13 · 남부터미널역 도보 5분</p>
+            <p className={styles.headerLocation}>서울 서초구 서초동 남부순환로333길 13 · 남부터미널역 도보 5분</p>
 
             <div className={styles.headerPhoneRow}>
               <PhoneLink className={styles.headerPhone} location="hyobong8_header" phone={PHONE}>

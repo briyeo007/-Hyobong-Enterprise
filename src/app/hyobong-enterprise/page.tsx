@@ -11,8 +11,18 @@ import PhoneLink from '@/components/PhoneLink/PhoneLink'
 import styles from './page.module.scss'
 
 export const metadata: Metadata = {
-  title: '효봉기업 공실 안내 | 서초구 사무실 임대',
-  description: '서울 서초구 서운로 20 효봉기업. 8층 사무실 공실 1개 즉시 입주 가능. 무료주차 1대 제공. 임대 문의: 02-3473-6651',
+  title: '서초동 사무실 임대 | 양재역 효봉기업 빌딩 공실 안내',
+  description: '서울 서초구 서초동 서운로 20 효봉기업 빌딩. 양재역 도보 5분 서초동 사무실 임대, 8층 즉시 입주 가능, 무료주차 1대. 문의: 02-3473-6651',
+  keywords: ['서초동 사무실 임대', '서초구 사무실 임대', '양재역 사무실 임대', '서초동 사무실', '효봉기업'],
+  alternates: { canonical: '/hyobong-enterprise' },
+  openGraph: {
+    type: 'website',
+    url: '/hyobong-enterprise',
+    siteName: '효봉기업',
+    locale: 'ko_KR',
+    title: '서초동 사무실 임대 | 양재역 효봉기업 빌딩',
+    description: '서초동 양재역 도보 5분 사무실 임대. 즉시 입주, 무료주차 1대. 문의: 02-3473-6651',
+  },
 }
 
 const PHONE = '02-3473-6651'
