@@ -167,7 +167,7 @@ export default function HyobongEnterprisePage() {
                 ))}
               </div>
 
-              <PhoneLink className={styles.cardCta} location="hyobong_enterprise_card" phone={PHONE}>
+              <PhoneLink className={styles.cardCta} location="hyobong_enterprise_card" phone={PHONE} unit={VACANCY.floor}>
                 <PhoneIcon size={20} />
                 문의하기 · {PHONE}
               </PhoneLink>

@@ -161,7 +161,7 @@ export default function BisanPage() {
                 ))}
               </div>
 
-              <PhoneLink className={styles.cardCta} location="bisan_card" phone={PHONE}>
+              <PhoneLink className={styles.cardCta} location="bisan_card" phone={PHONE} unit={VACANCY.floor}>
                 <PhoneIcon size={20} />
                 문의하기 · {PHONE}
               </PhoneLink>

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { GoogleAnalytics } from '@next/third-parties/google'
+import { GA_MEASUREMENT_ID } from '@/lib/analytics'
 import './globals.scss'
 
 const BASE_URL = 'https://www.hyobongkiup.com'
@@ -54,6 +56,7 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
       </body>
+      {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
     </html>
   )
 }
