@@ -99,7 +99,7 @@ export default function BisanPage() {
             <AnimateIn className="revealScale" activeClassName="inView" threshold={0.05}>
             <div className={styles.vacancyCard}>
               {VACANCY.images.length > 0 && (
-                <PropertyImageCarousel images={VACANCY.images} alt={VACANCY.floor} />
+                <PropertyImageCarousel images={VACANCY.images} alt={`비산효봉 ${VACANCY.floor} 사무실`} />
               )}
 
               <div className={styles.cardHeader}>

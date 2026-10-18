@@ -10,21 +10,6 @@ import TodayDate from '@/components/TodayDate'
 import PhoneLink from '@/components/PhoneLink/PhoneLink'
 import styles from './page.module.scss'
 
-export const metadata: Metadata = {
-  title: '서초동 사무실 임대 | 양재역 효봉기업 빌딩 공실 안내',
-  description: '서울 서초구 서초동 서운로 20 효봉기업 빌딩. 양재역 도보 5분 서초동 사무실 임대, 8층 즉시 입주 가능, 무료주차 1대. 문의: 02-3473-6651',
-  keywords: ['서초동 사무실 임대', '서초구 사무실 임대', '양재역 사무실 임대', '서초동 사무실', '효봉기업'],
-  alternates: { canonical: '/hyobong-enterprise' },
-  openGraph: {
-    type: 'website',
-    url: '/hyobong-enterprise',
-    siteName: '효봉기업',
-    locale: 'ko_KR',
-    title: '서초동 사무실 임대 | 양재역 효봉기업 빌딩',
-    description: '서초동 양재역 도보 5분 사무실 임대. 즉시 입주, 무료주차 1대. 문의: 02-3473-6651',
-  },
-}
-
 const PHONE = '02-3473-6651'
 
 const VACANCY = {
@@ -49,6 +34,42 @@ const VACANCY = {
   ],
 }
 
+// VACANCY 값이 description·구조화 데이터에 자동 반영됩니다.
+const VACANCY_SUMMARY = `${VACANCY.floor} 사무실 임대 ${VACANCY.area.contract}평(실 ${VACANCY.area.actual}평), 즉시 입주, 무료주차 1대`
+
+export const metadata: Metadata = {
+  title: '양재역 사무실 임대 | 서초동 효봉기업 빌딩 공실 안내',
+  description: `서울 서초구 서초동 서운로 20 효봉기업 빌딩. 3호선·신분당선 양재역 도보 약 5분. ${VACANCY_SUMMARY}. 문의: 02-3473-6651`,
+  keywords: ['양재역 사무실 임대', '서초동 사무실 임대', '서초구 사무실 임대', '양재역 사무실', '효봉기업'],
+  alternates: { canonical: '/hyobong-enterprise' },
+  openGraph: {
+    type: 'website',
+    url: '/hyobong-enterprise',
+    siteName: '효봉기업',
+    locale: 'ko_KR',
+    title: '양재역 사무실 임대 | 서초동 효봉기업 빌딩',
+    description: `서초동 양재역 도보 5분. ${VACANCY_SUMMARY}. 문의: 02-3473-6651`,
+    images: [VACANCY.images[0]],
+  },
+}
+
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Place',
+  name: '효봉기업 빌딩',
+  description: `서울 서초구 서초동, 3호선·신분당선 양재역 도보 약 5분. ${VACANCY_SUMMARY}`,
+  url: 'https://www.hyobongkiup.com/hyobong-enterprise',
+  image: `https://www.hyobongkiup.com${VACANCY.images[0]}`,
+  telephone: '+82-2-3473-6651',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '서운로 20',
+    addressLocality: '서초구',
+    addressRegion: '서울특별시',
+    addressCountry: 'KR',
+  },
+}
+
 const PhoneIcon = ({ size = 22 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
     <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
@@ -58,6 +79,7 @@ const PhoneIcon = ({ size = 22 }: { size?: number }) => (
 export default function HyobongEnterprisePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
       <Header />
       <main>
         {/* ── Hero ── */}
@@ -77,7 +99,7 @@ export default function HyobongEnterprisePage() {
             </div>
 
             <h1 className={styles.heroTitle}>효봉기업</h1>
-            <p className={styles.heroLocation}>서울 서초구 서운로 20 (서초2동 1364-1번지)</p>
+            <p className={styles.heroLocation}>서울 서초구 서운로 20 (서초2동 1364-1번지) · 양재역 도보 5분</p>
 
             <div className={styles.heroPhoneRow}>
               <PhoneLink className={styles.heroPhoneBtn} location="hyobong_enterprise_hero" phone={PHONE}>
@@ -105,7 +127,7 @@ export default function HyobongEnterprisePage() {
             <AnimateIn className="revealScale" activeClassName="inView" threshold={0.05}>
             <div className={styles.vacancyCard}>
               {VACANCY.images.length > 0 && (
-                <PropertyImageCarousel images={VACANCY.images} alt={VACANCY.floor} />
+                <PropertyImageCarousel images={VACANCY.images} alt={`효봉기업 빌딩 ${VACANCY.floor} 사무실`} />
               )}
 
               <div className={styles.cardHeader}>
@@ -182,7 +204,7 @@ export default function HyobongEnterprisePage() {
           naverMapUrl="https://naver.me/G58NvSJ2"
           googleMapsQuery="서울+서초구+서운로+20"
           address={'서울 서초구 서운로 20\n(서초2동 1364-1번지)'}
-          description="양재역 도보 5분, 서초구에 위치합니다."
+          description="3호선·신분당선 양재역 도보 5분, 서울 서초구 서초동에 위치합니다."
           accessPoints={[
             {
               icon: (

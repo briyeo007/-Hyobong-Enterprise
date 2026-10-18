@@ -158,7 +158,7 @@ export default function PropertySection() {
           <span className={styles.label}>매물정보</span>
           <h2 className={styles.title}>현재 공실 현황</h2>
           <p className={styles.desc}>
-            효봉8빌딩의 임대 가능한 공실입니다.
+            남부터미널역 효봉8빌딩의 임대 가능한 사무실 공실입니다.
             자세한 조건은 전화 문의를 통해 확인하세요.
           </p>
         </AnimateIn>
@@ -190,7 +190,7 @@ export default function PropertySection() {
               style={{ transitionDelay: `${idx * 0.12}s` }}
             >
               <div className={styles.imageWrap}>
-                <PropertyImageCarousel images={p.images} alt={p.floor} />
+                <PropertyImageCarousel images={p.images} alt={`효봉8빌딩 ${p.floor} 사무실`} />
                 {p.urgency && <span className={styles.urgencyBadge}>{p.urgency}</span>}
               </div>
               <div className={styles.cardHeader}>

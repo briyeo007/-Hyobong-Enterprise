@@ -44,7 +44,7 @@ const BUILDINGS = [
   {
     id: 'hyobong8',
     name: '효봉8빌딩',
-    location: '남부터미널 (서초구)',
+    location: '서초동 · 남부터미널역',
     vacancies: '현재 공실 4개',
     status: '즉시 입주 가능',
     href: '/hyobong8',
@@ -64,7 +64,7 @@ const BUILDINGS = [
   {
     id: 'hyobong-enterprise',
     name: '효봉기업',
-    location: '양재역 (서초구)',
+    location: '서초동 · 양재역',
     vacancies: '현재 공실 1개',
     status: '즉시 입주 가능',
     href: '/hyobong-enterprise',
@@ -100,7 +100,7 @@ export default function MainPage() {
           <div className={styles.heroOverlay} aria-hidden="true" />
 
           <div className={styles.heroContent}>
-            <div className={styles.heroBadge}>남부터미널역 · 서초동 사무실 임대</div>
+            <div className={styles.heroBadge}>서초동 남부터미널역 · 양재역 사무실 임대</div>
             <h1 className={styles.heroTitle}>지금 바로 입주 가능한 사무실·상가</h1>
             <p className={styles.heroSub}>공실 6개 보유 / 빠른 계약 가능</p>
             <PhoneLink className={styles.heroPhone} location="home_hero" phone={PHONE}>
@@ -134,7 +134,7 @@ export default function MainPage() {
                           b.id === 'bisan' ? BISAN_IMAGES :
                           HYOBONG8_IMAGES
                         }
-                        alt={b.name}
+                        alt={`${b.name} 건물`}
                         interval={3500}
                       />
                       <div className={styles.cardImageBadge}>

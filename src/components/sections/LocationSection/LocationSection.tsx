@@ -55,7 +55,7 @@ const HYOBONG8_ACCESS: AccessPoint[] = [
 ]
 
 const DEFAULT_PROPS: LocationProps = {
-  description: '3호선 남부터미널역 도보 5분, 서초구 핵심 업무지역에 위치합니다.',
+  description: '3호선 남부터미널역 도보 5분, 서울 서초구 서초동 업무지역에 위치합니다.',
   googleMapsQuery: '서울+서초구+남부순환로333길+13',
   naverMapUrl: 'https://naver.me/xmxY78A9',
   address: '서울 서초구 남부순환로333길 13\n효봉빌딩',

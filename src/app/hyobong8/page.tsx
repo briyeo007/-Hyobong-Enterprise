@@ -9,9 +9,13 @@ import AnimateIn from '@/components/AnimateIn'
 import PhoneLink from '@/components/PhoneLink/PhoneLink'
 import styles from './page.module.scss'
 
+// 공실 목록(PROPERTIES)에서 공실 수·평수 범위를 계산해 description에 자동 반영합니다.
+const CONTRACT_AREAS = PROPERTIES.map((p) => p.area.contract)
+const VACANCY_SUMMARY = `사무실 공실 ${PROPERTIES.length}개(${PROPERTIES.map((p) => p.floor).join('·')}), 임대 ${Math.min(...CONTRACT_AREAS)}~${Math.max(...CONTRACT_AREAS)}평`
+
 export const metadata: Metadata = {
   title: '남부터미널역 사무실 임대 | 서초동 효봉8빌딩 공실 안내',
-  description: '서초동 남부터미널역 도보 5분 효봉8빌딩 사무실·상가 임대. 역세권, 주차 가능, 즉시 입주. 서초동 사무실 임대 문의: 02-3473-6651',
+  description: `서울 서초구 서초동 3호선 남부터미널역 도보 5분 효봉8빌딩. ${VACANCY_SUMMARY}, 주차 가능. 문의: 02-3473-6651`,
   keywords: ['남부터미널역 사무실 임대', '남부터미널 사무실 임대', '서초동 사무실 임대', '서초동 상가 임대', '서초구 사무실 임대', '남부터미널역 상가 임대', '효봉8빌딩'],
   alternates: { canonical: '/hyobong8' },
   openGraph: {
@@ -21,15 +25,17 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     title: '남부터미널역 사무실 임대 | 서초동 효봉8빌딩',
     description: '서초동 남부터미널역 도보 5분 사무실·상가 임대. 즉시 입주 가능. 문의: 02-3473-6651',
+    images: ['/images/building/KakaoTalk_20260417_164505696.jpg'],
   },
 }
 
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'Place',
-  name: '효봉8빌딩 (남부터미널역 사무실 임대)',
-  description: '서울 서초구 서초동 남부터미널역 도보 5분 사무실·상가 임대',
+  name: '효봉8빌딩',
+  description: `서울 서초구 서초동, 3호선 남부터미널역 4-1번 출구 도보 약 5분(374m). ${VACANCY_SUMMARY}`,
   url: 'https://www.hyobongkiup.com/hyobong8',
+  image: 'https://www.hyobongkiup.com/images/building/KakaoTalk_20260417_164505696.jpg',
   telephone: '+82-2-3473-6651',
   address: {
     '@type': 'PostalAddress',
