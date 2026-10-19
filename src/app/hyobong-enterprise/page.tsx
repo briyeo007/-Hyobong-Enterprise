@@ -40,7 +40,7 @@ const VACANCY_SUMMARY = `${VACANCY.floor} 사무실 임대 ${VACANCY.area.contra
 export const metadata: Metadata = {
   title: '양재역 사무실 임대 | 서초동 효봉기업 빌딩 공실 안내',
   description: `서울 서초구 서초동 서운로 20 효봉기업 빌딩. 3호선·신분당선 양재역 도보 약 5분. ${VACANCY_SUMMARY}. 문의: 02-3473-6651`,
-  keywords: ['양재역 사무실 임대', '서초동 사무실 임대', '서초구 사무실 임대', '양재역 사무실', '효봉기업'],
+  keywords: ['양재역 사무실 임대', '양재역 사무실', '서운로 사무실 임대', '효봉기업 빌딩', '효봉기업'],
   alternates: { canonical: '/hyobong-enterprise' },
   openGraph: {
     type: 'website',
@@ -50,6 +50,11 @@ export const metadata: Metadata = {
     title: '양재역 사무실 임대 | 서초동 효봉기업 빌딩',
     description: `서초동 양재역 도보 5분. ${VACANCY_SUMMARY}. 문의: 02-3473-6651`,
     images: [VACANCY.images[0]],
+  },
+  twitter: {
+    card: 'summary',
+    title: '양재역 사무실 임대 | 서초동 효봉기업 빌딩',
+    description: `서초동 양재역 도보 5분. ${VACANCY_SUMMARY}. 문의: 02-3473-6651`,
   },
 }
 
@@ -234,6 +239,9 @@ export default function HyobongEnterprisePage() {
                 </PhoneLink>
               </div>
             </AnimateIn>
+            <p className={styles.relatedLink}>
+              같은 서초동의 <Link href="/hyobong8">남부터미널역 효봉8빌딩 사무실 공실</Link>도 확인해 보세요.
+            </p>
           </div>
         </section>
       </main>

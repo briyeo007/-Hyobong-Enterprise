@@ -7,6 +7,7 @@ import AutoSlide from '@/components/AutoSlide/AutoSlide'
 import AnimateIn from '@/components/AnimateIn'
 import TodayDate from '@/components/TodayDate'
 import PhoneLink from '@/components/PhoneLink/PhoneLink'
+import { CURRENT_PROPERTIES, UPCOMING_PROPERTIES } from '@/components/sections/PropertySection/PropertySection'
 import styles from './page.module.scss'
 
 const PHONE = '02-3473-6651'
@@ -39,13 +40,16 @@ const BISAN_IMAGES = [
   '/images/bisan/KakaoTalk_20260421_150637700_03.jpg',
 ]
 
-// 루틴: 공실 숫자 변경 시 아래 vacancies 값과 heroSub(공실 N개)를 함께 수정하세요.
+// 루틴: 효봉8빌딩 공실 수는 PropertySection의 PROPERTIES에서 자동 계산됩니다.
+// 비산효봉·효봉기업 빌딩은 각 페이지(bisan, hyobong-enterprise)의 공실 수와 맞춰 아래 숫자를 수정하세요.
+// 메인 상단 공실 합계(heroSub)는 아래 vacancyCount·upcomingCount 합계로 자동 계산됩니다.
 const BUILDINGS = [
   {
     id: 'hyobong8',
     name: '효봉8빌딩',
-    location: '서초동 · 남부터미널역',
-    vacancies: '현재 공실 4개',
+    location: '서초동 · 남부터미널역 도보 5분',
+    vacancyCount: CURRENT_PROPERTIES.length,
+    upcomingCount: UPCOMING_PROPERTIES.length,
     status: '즉시 입주 가능',
     href: '/hyobong8',
     hasSlide: true,
@@ -55,7 +59,8 @@ const BUILDINGS = [
     id: 'bisan',
     name: '비산효봉',
     location: '안양 비산동',
-    vacancies: '현재 공실 1개',
+    vacancyCount: 1,
+    upcomingCount: 0,
     status: '빠른 계약 가능',
     href: '/bisan',
     hasSlide: true,
@@ -64,14 +69,18 @@ const BUILDINGS = [
   {
     id: 'hyobong-enterprise',
     name: '효봉기업',
-    location: '서초동 · 양재역',
-    vacancies: '현재 공실 1개',
+    location: '서초동 · 양재역 도보 5분',
+    vacancyCount: 1,
+    upcomingCount: 0,
     status: '즉시 입주 가능',
     href: '/hyobong-enterprise',
     hasSlide: true,
     tags: ['즉시 입주', '무료주차 1대', '사무실 가능'],
   },
 ]
+
+const TOTAL_VACANCIES = BUILDINGS.reduce((sum, b) => sum + b.vacancyCount, 0)
+const TOTAL_UPCOMING = BUILDINGS.reduce((sum, b) => sum + b.upcomingCount, 0)
 
 const INFO_ITEMS = [
   { icon: '📍', label: '남부터미널 / 안양 비산동 / 양재역' },
@@ -102,7 +111,10 @@ export default function MainPage() {
           <div className={styles.heroContent}>
             <div className={styles.heroBadge}>서초동 남부터미널역 · 양재역 사무실 임대</div>
             <h1 className={styles.heroTitle}>지금 바로 입주 가능한 사무실·상가</h1>
-            <p className={styles.heroSub}>공실 6개 보유 / 빠른 계약 가능</p>
+            <p className={styles.heroSub}>
+              공실 {TOTAL_VACANCIES}개 보유
+              {TOTAL_UPCOMING > 0 && ` · 공실 예정 ${TOTAL_UPCOMING}개`} / 빠른 계약 가능
+            </p>
             <PhoneLink className={styles.heroPhone} location="home_hero" phone={PHONE}>
               <PhoneIcon />
               {PHONE} 바로 전화
@@ -156,7 +168,10 @@ export default function MainPage() {
                     <p className={styles.cardName}>{b.name}</p>
 
                     <div className={styles.cardVacancy}>
-                      <span className={styles.vacancyCount}>{b.vacancies}</span>
+                      <span className={styles.vacancyCount}>
+                        현재 공실 {b.vacancyCount}개
+                        {b.upcomingCount > 0 && ` · 공실 예정 ${b.upcomingCount}개`}
+                      </span>
                       <span className={styles.vacancyStatus}>{b.status}</span>
                     </div>
 

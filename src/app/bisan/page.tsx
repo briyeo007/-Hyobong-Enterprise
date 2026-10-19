@@ -13,12 +13,18 @@ import styles from './page.module.scss'
 export const metadata: Metadata = {
   title: '비산효봉 공실 안내 | 안양 비산동 사무실 임대',
   description: '안양 비산동 비산효봉. 현재 공실 1개 빠른 계약 가능. 사무실 임대 문의: 02-3473-6651',
+  keywords: ['안양 비산동 사무실 임대', '비산동 사무실 임대', '안양 사무실 임대', '비산효봉', '효봉기업'],
   alternates: { canonical: '/bisan' },
   openGraph: {
     type: 'website',
     url: '/bisan',
     siteName: '효봉기업',
     locale: 'ko_KR',
+    title: '비산효봉 공실 안내 | 안양 비산동 사무실 임대',
+    description: '안양 비산동 비산효봉. 빠른 계약 가능. 문의: 02-3473-6651',
+  },
+  twitter: {
+    card: 'summary',
     title: '비산효봉 공실 안내 | 안양 비산동 사무실 임대',
     description: '안양 비산동 비산효봉. 빠른 계약 가능. 문의: 02-3473-6651',
   },

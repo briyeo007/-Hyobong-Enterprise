@@ -3,7 +3,11 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
-import PropertySection, { PROPERTIES } from '@/components/sections/PropertySection/PropertySection'
+import PropertySection, {
+  PROPERTIES,
+  CURRENT_PROPERTIES,
+  UPCOMING_PROPERTIES,
+} from '@/components/sections/PropertySection/PropertySection'
 import LocationSection from '@/components/sections/LocationSection/LocationSection'
 import AnimateIn from '@/components/AnimateIn'
 import PhoneLink from '@/components/PhoneLink/PhoneLink'
@@ -11,7 +15,11 @@ import styles from './page.module.scss'
 
 // 공실 목록(PROPERTIES)에서 공실 수·평수 범위를 계산해 description에 자동 반영합니다.
 const CONTRACT_AREAS = PROPERTIES.map((p) => p.area.contract)
-const VACANCY_SUMMARY = `사무실 공실 ${PROPERTIES.length}개(${PROPERTIES.map((p) => p.floor).join('·')}), 임대 ${Math.min(...CONTRACT_AREAS)}~${Math.max(...CONTRACT_AREAS)}평`
+const floorList = (list: typeof PROPERTIES) => list.map((p) => p.floor).join('·')
+const UPCOMING_SUMMARY = UPCOMING_PROPERTIES.length > 0
+  ? `·공실 예정 ${UPCOMING_PROPERTIES.length}개(${floorList(UPCOMING_PROPERTIES)})`
+  : ''
+const VACANCY_SUMMARY = `사무실 공실 ${CURRENT_PROPERTIES.length}개(${floorList(CURRENT_PROPERTIES)})${UPCOMING_SUMMARY}, 임대 ${Math.min(...CONTRACT_AREAS)}~${Math.max(...CONTRACT_AREAS)}평`
 
 export const metadata: Metadata = {
   title: '남부터미널역 사무실 임대 | 서초동 효봉8빌딩 공실 안내',
@@ -26,6 +34,11 @@ export const metadata: Metadata = {
     title: '남부터미널역 사무실 임대 | 서초동 효봉8빌딩',
     description: '서초동 남부터미널역 도보 5분 사무실·상가 임대. 즉시 입주 가능. 문의: 02-3473-6651',
     images: ['/images/building/KakaoTalk_20260417_164505696.jpg'],
+  },
+  twitter: {
+    card: 'summary',
+    title: '남부터미널역 사무실 임대 | 서초동 효봉8빌딩',
+    description: '서초동 남부터미널역 도보 5분 사무실 임대. 즉시 입주 가능. 문의: 02-3473-6651',
   },
 }
 
@@ -83,13 +96,17 @@ export default function Hyobong8Page() {
               건물 선택으로 돌아가기
             </Link>
 
-            {/* 루틴: 공실 수는 PropertySection의 PROPERTIES 배열 길이로 자동 반영됩니다 */}
+            {/* 루틴: 공실 수는 PropertySection의 PROPERTIES 배열(upcoming 여부)로 자동 반영됩니다 */}
             <div className={styles.headerBadge}>
               <span className={styles.headerDot} />
-              현재 공실 {PROPERTIES.length}개 · 즉시 입주 가능
+              현재 공실 {CURRENT_PROPERTIES.length}개
+              {UPCOMING_PROPERTIES.length > 0 && ` · 공실 예정 ${UPCOMING_PROPERTIES.length}개`}
             </div>
 
-            <h1 className={styles.headerTitle}>효봉8빌딩</h1>
+            <h1 className={styles.headerTitle}>
+              <span className={styles.headerTitleKicker}>남부터미널역 사무실 임대</span>
+              효봉8빌딩
+            </h1>
             <p className={styles.headerLocation}>서울 서초구 서초동 남부순환로333길 13 · 남부터미널역 도보 5분</p>
 
             <div className={styles.headerPhoneRow}>
@@ -135,6 +152,9 @@ export default function Hyobong8Page() {
                 </PhoneLink>
               </div>
             </AnimateIn>
+            <p className={styles.relatedLink}>
+              같은 서초동의 <Link href="/hyobong-enterprise">양재역 효봉기업 빌딩 사무실 공실</Link>도 확인해 보세요.
+            </p>
           </div>
         </div>
       </main>

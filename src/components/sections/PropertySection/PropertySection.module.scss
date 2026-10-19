@@ -414,6 +414,14 @@
   letter-spacing: 0.01em;
 }
 
+.urgencyBadgeUpcoming {
+  background: $status-reserved;
+}
+
+.statusDotUpcoming {
+  background: #FBBF24;
+}
+
 // ===== Phone CTA Banner =====
 .phoneCta {
   display: flex;

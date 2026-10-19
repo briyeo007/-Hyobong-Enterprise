@@ -10,13 +10,13 @@ export default function Footer() {
       <div className={styles.inner}>
         <div className={styles.top}>
           <div className={styles.brand}>
-            <Image src="/logo.png" alt="효봉8빌딩 로고" width={997} height={252} className={styles.logoImg} />
+            <Image src="/logo.png" alt="효봉기업 로고" width={997} height={252} className={styles.logoImg} />
           </div>
 
           <div className={styles.contacts}>
             <PhoneLink className={styles.phone} location="footer">02-3473-6651</PhoneLink>
             <span className={styles.sep} />
-            <span className={styles.address}>서울 서초구 서운로 20 (서초2동 1364-1번지)</span>
+            <span className={styles.address}>효봉기업 빌딩(양재역): 서울 서초구 서운로 20 (서초2동 1364-1번지)</span>
           </div>
         </div>
 

@@ -17,6 +17,8 @@ type SingleProperty = {
   tags: string[]
   images: string[]
   urgency?: string
+  // true = 현 임차인 퇴거 전인 공실 예정 호실 (현재 공실 수에서 제외)
+  upcoming?: boolean
   dual?: false
   detailSpecs?: SpecRow[]
 }
@@ -31,6 +33,7 @@ type DualProperty = {
   tags: string[]
   images: string[]
   urgency?: string
+  upcoming?: boolean
   detailSpecs?: SpecRow[]
 }
 
@@ -112,8 +115,9 @@ export const PROPERTIES: Property[] = [
     deposit: '5,000만원',
     rent: '250만원',
     maintenance: '110만원',
-    urgency: '✔ 26.11.1 입주 가능',
-    tags: ['26.11.1 입주 가능', '청소 완료', '무료주차 1대'],
+    urgency: '2026년 11월 1일부터 입주 가능',
+    upcoming: true,
+    tags: ['공실 예정', '청소 완료', '무료주차 1대'],
     detailSpecs: [
       { label: '용도', value: '사무실' },
       { label: '주차', value: '무료 1대 제공' },
@@ -150,6 +154,10 @@ export const PROPERTIES: Property[] = [
   },
 ]
 
+// 현재 공실 / 공실 예정 구분 — 메인 페이지와 상세 페이지의 공실 숫자가 여기서 자동 계산됩니다.
+export const CURRENT_PROPERTIES = PROPERTIES.filter((p) => !p.upcoming)
+export const UPCOMING_PROPERTIES = PROPERTIES.filter((p) => p.upcoming)
+
 export default function PropertySection() {
   return (
     <section id="property" className={styles.section}>
@@ -158,8 +166,9 @@ export default function PropertySection() {
           <span className={styles.label}>매물정보</span>
           <h2 className={styles.title}>현재 공실 현황</h2>
           <p className={styles.desc}>
-            남부터미널역 효봉8빌딩의 임대 가능한 사무실 공실입니다.
-            자세한 조건은 전화 문의를 통해 확인하세요.
+            서초동 사무실 임대를 찾고 계신다면 3호선 남부터미널역 4-1번 출구에서 도보 약 5분 거리인
+            효봉8빌딩의 공실을 확인해 보세요. 입주자 전용 주차와 엘리베이터를 갖추고 있으며,
+            자세한 조건은 전화 문의를 통해 안내해 드립니다.
           </p>
         </AnimateIn>
 
@@ -191,11 +200,15 @@ export default function PropertySection() {
             >
               <div className={styles.imageWrap}>
                 <PropertyImageCarousel images={p.images} alt={`효봉8빌딩 ${p.floor} 사무실`} />
-                {p.urgency && <span className={styles.urgencyBadge}>{p.urgency}</span>}
+                {p.urgency && (
+                  <span className={`${styles.urgencyBadge}${p.upcoming ? ` ${styles.urgencyBadgeUpcoming}` : ''}`}>
+                    {p.urgency}
+                  </span>
+                )}
               </div>
               <div className={styles.cardHeader}>
                 <div className={styles.statusBadge}>
-                  <span className={styles.statusDot} />
+                  <span className={`${styles.statusDot}${p.upcoming ? ` ${styles.statusDotUpcoming}` : ''}`} />
                   {p.urgency ? p.urgency.replace('✔ ', '') : '즉시 입주 가능'}
                 </div>
                 <span className={styles.floor}>{p.floor}</span>
