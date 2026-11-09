@@ -125,7 +125,13 @@ export const PROPERTIES: Property[] = [
       { label: '상태', value: '청소 완료, 바닥·천장 텍스 새로 설치' },
       { label: '관리 형태', value: '전문 관리팀 상주' },
     ],
-    images: [],
+    images: [
+      '/images/4f-401/KakaoTalk_20261109_103958293.jpg',
+      '/images/4f-401/KakaoTalk_20261109_103958293_01.jpg',
+      '/images/4f-401/KakaoTalk_20261109_103958293_02.jpg',
+      '/images/4f-401/KakaoTalk_20261109_103958293_03.jpg',
+      '/images/4f-401/KakaoTalk_20261109_103958293_04.jpg',
+    ],
   },
   {
     id: '5f-501',
