@@ -18,8 +18,9 @@
 2. Supabase → SQL Editor → `supabase/schema.sql` 전체 붙여넣기 → Run
 3. Supabase → Project Settings → API 에서 URL과 `service_role`(또는 `secret`) 키 확인
 4. Vercel → Settings → Environment Variables 에 `.env.example`의 4개 값 등록
-5. 로컬 `.env.local`에도 `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` 추가 후 `npm run db:seed`
-   → 현재 홈페이지 공실 7건을 Supabase에 복사 (이미 있는 호실은 덮어쓰지 않음)
+5. (자동) 테이블이 비어 있는 동안 홈페이지는 기존 공실 데이터를 그대로 표시하고,
+   관리자 페이지에서 처음 저장할 때 기존 공실 7건이 자동으로 테이블에 들어갑니다.
+   수동으로 미리 넣으려면 `.env.local`에 Supabase 값 2개를 넣고 `npm run db:seed` (이미 있는 호실은 덮어쓰지 않음)
 6. 배포 후 `https://www.hyobongkiup.com/admin` 접속 → 비밀번호 로그인
 
 ## 사용 방법

@@ -76,7 +76,24 @@ export async function listForSite(): Promise<VacancyRow[]> {
   const res = await sbFetch(`/rest/v1/${TABLE}?select=${COLUMNS}&order=building.asc,sort_order.asc`, {
     next: { tags: [VACANCY_TAG], revalidate: PUBLIC_REVALIDATE },
   })
-  return res.json()
+  return orSeed(await res.json())
+}
+
+/** 테이블이 아직 비어 있으면(최초 데이터 입력 전) 기존 공실 데이터를 그대로 표시 → "공실 0개" 노출 방지 */
+function orSeed(rows: VacancyRow[]): VacancyRow[] {
+  return rows.length > 0 ? rows : SEED
+}
+
+/** 최초 저장 시 테이블이 비어 있으면 기존 공실 데이터를 먼저 넣음 (이미 있는 호실은 건드리지 않음) */
+async function ensureSeeded() {
+  const res = await sbFetch(`/rest/v1/${TABLE}?select=id&limit=1`, { cache: 'no-store' })
+  if ((await res.json()).length > 0) return
+  await sbFetch(`/rest/v1/${TABLE}?on_conflict=id`, {
+    method: 'POST',
+    cache: 'no-store',
+    headers: { 'Content-Type': 'application/json', Prefer: 'resolution=ignore-duplicates,return=minimal' },
+    body: JSON.stringify(SEED),
+  })
 }
 
 /** 관리자용 조회: 캐시 없음 */
@@ -85,7 +102,7 @@ export async function listForAdmin(): Promise<VacancyRow[]> {
   if (mode === 'seed') return SEED
   if (mode === 'local') return localRead()
   const res = await sbFetch(`/rest/v1/${TABLE}?select=${COLUMNS}&order=building.asc,sort_order.asc`, { cache: 'no-store' })
-  return res.json()
+  return orSeed(await res.json())
 }
 
 export async function getForAdmin(id: string): Promise<VacancyRow | null> {
@@ -107,6 +124,7 @@ export async function upsertVacancy(row: VacancyRow): Promise<void> {
   }
   const { updated_at: _ignored, ...data } = row
   void _ignored
+  await ensureSeeded()
   await sbFetch(`/rest/v1/${TABLE}?on_conflict=id`, {
     method: 'POST',
     cache: 'no-store',
@@ -122,6 +140,7 @@ export async function deleteVacancy(id: string): Promise<void> {
     await localWrite((await localRead()).filter((r) => r.id !== id))
     return
   }
+  await ensureSeeded()
   await sbFetch(`/rest/v1/${TABLE}?id=eq.${encodeURIComponent(id)}`, { method: 'DELETE', cache: 'no-store' })
 }
 
