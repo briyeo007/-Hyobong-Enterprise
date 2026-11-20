@@ -19,7 +19,7 @@ export default function LoginForm() {
     <form action={action} className={styles.loginForm}>
       <label className={styles.field}>
         <span>비밀번호</span>
-        <input type="password" name="password" autoComplete="current-password" required autoFocus />
+        <input type="password" name="password" autoComplete="current-password" autoCapitalize="none" autoCorrect="off" spellCheck={false} required autoFocus />
       </label>
       {state?.error && <p className={styles.errorBox}>{state.error}</p>}
       <Submit />

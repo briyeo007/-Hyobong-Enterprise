@@ -17,7 +17,7 @@ export default async function AdminLoginPage() {
           <LoginForm />
         ) : (
           <p className={styles.errorBox}>
-            관리자 비밀번호가 설정되지 않았습니다. Vercel 환경변수 ADMIN_PASSWORD(10자 이상)와
+            관리자 비밀번호가 설정되지 않았습니다. Vercel 환경변수 ADMIN_PASSWORD(8자 이상)와
             ADMIN_SESSION_SECRET(32자 이상)을 설정해 주세요.
           </p>
         )}

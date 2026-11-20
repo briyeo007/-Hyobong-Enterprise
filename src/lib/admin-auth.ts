@@ -13,14 +13,21 @@ function b64url(buf: ArrayBuffer | Uint8Array): string {
   return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
 }
 
+/** 환경변수에 붙여넣을 때 섞여 들어가기 쉬운 앞뒤 공백·줄바꿈·감싸는 따옴표 제거 */
+function cleanEnv(v: string | undefined): string {
+  let s = (v ?? '').trim()
+  if (s.length >= 2 && ((s[0] === '"' && s.endsWith('"')) || (s[0] === "'" && s.endsWith("'")))) s = s.slice(1, -1).trim()
+  return s.normalize('NFC')
+}
+const adminPassword = () => cleanEnv(process.env.ADMIN_PASSWORD)
+const sessionSecret = () => cleanEnv(process.env.ADMIN_SESSION_SECRET)
+
 export function authConfigured(): boolean {
-  const pw = process.env.ADMIN_PASSWORD ?? ''
-  const secret = process.env.ADMIN_SESSION_SECRET ?? ''
-  return pw.length >= 10 && secret.length >= 32
+  return adminPassword().length >= 8 && sessionSecret().length >= 32
 }
 
 async function hmacKey(): Promise<CryptoKey> {
-  const material = `${process.env.ADMIN_SESSION_SECRET}::${process.env.ADMIN_PASSWORD}`
+  const material = `${sessionSecret()}::${adminPassword()}`
   return crypto.subtle.importKey('raw', enc.encode(material), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign', 'verify'])
 }
 
@@ -56,8 +63,8 @@ export async function verifySessionToken(token: string | undefined | null): Prom
 export async function checkPassword(input: string): Promise<boolean> {
   if (!authConfigured()) return false
   const [a, b] = await Promise.all([
-    crypto.subtle.digest('SHA-256', enc.encode(input)),
-    crypto.subtle.digest('SHA-256', enc.encode(process.env.ADMIN_PASSWORD!)),
+    crypto.subtle.digest('SHA-256', enc.encode(input.trim().normalize('NFC'))),
+    crypto.subtle.digest('SHA-256', enc.encode(adminPassword())),
   ])
   return timingSafeEqualStr(b64url(a), b64url(b))
 }
