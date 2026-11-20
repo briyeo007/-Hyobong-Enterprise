@@ -10,7 +10,7 @@
       ]
     },
     {
-      "source": "/(.*)\\.(ico|png|jpg|jpeg|gif|webp|svg|woff|woff2|ttf|otf)",
+      "source": "/(.*)\.(ico|png|jpg|jpeg|gif|webp|svg|woff|woff2|ttf|otf)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -22,16 +22,25 @@
       "source": "/(.*)",
       "headers": [
         {
-          "key": "Cache-Control",
-          "value": "public, s-maxage=31536000, stale-while-revalidate"
-        },
-        {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
         },
         {
           "key": "X-Frame-Options",
           "value": "DENY"
+        }
+      ]
+    },
+    {
+      "source": "/(admin|api/admin)(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store, max-age=0"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
         }
       ]
     }

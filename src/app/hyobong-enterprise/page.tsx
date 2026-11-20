@@ -8,71 +8,70 @@ import LocationSection from '@/components/sections/LocationSection/LocationSecti
 import AnimateIn from '@/components/AnimateIn'
 import TodayDate from '@/components/TodayDate'
 import PhoneLink from '@/components/PhoneLink/PhoneLink'
+import { getSiteVacancies } from '@/lib/vacancies'
 import styles from './page.module.scss'
 
 const PHONE = '02-3473-6651'
 
-const VACANCY = {
-  floor: '8층',
-  summary: '사무실 임대 · 즉시 입주 가능',
-  area: { contract: 66, actual: 33 },
-  deposit: '5,000만원',
-  rent: '350만원',
-  maintenance: '150만원',
-  tags: ['즉시 입주 가능', '조건 협의 가능', '무료주차 1대', '리모델링 완료'],
-  detailSpecs: [
-    { label: '용도', value: '사무실' },
-    { label: '주차', value: '무료 1대 제공' },
-    { label: '엘리베이터', value: '있음' },
-    { label: '관리비 포함', value: '전기·수도·청소' },
-    { label: '화장실', value: '남·여 화장실 공사 완료' },
-    { label: '입주 가능', value: '즉시 (리모델링 완료)' },
-  ],
-  images: [
-    '/images/hyobong-enterprise/KakaoTalk_20260421_144826946.jpg',
-    '/images/hyobong-enterprise/KakaoTalk_20260421_144826946_01.jpg',
-  ],
+
+// 관리자 페이지에서 저장하면 즉시 갱신되고, 그 외에는 1시간마다 다시 확인합니다.
+export const revalidate = 3600
+
+const FALLBACK_IMAGE = '/images/hyobong-enterprise/KakaoTalk_20260421_144826946.jpg'
+const BASE_URL = 'https://www.hyobongkiup.com'
+
+// 첫 번째 공실 값이 description·구조화 데이터에 자동 반영됩니다.
+async function getSummary() {
+  const { all } = (await getSiteVacancies())['hyobong-enterprise']
+  const v = all[0]
+  const summary = v
+    ? `${v.floor} 사무실 임대 ${v.area.contract}평(실 ${v.area.actual}평), ${v.availability === 'now' ? '즉시 입주' : v.urgency.replace('✔ ', '')}, 무료주차 1대`
+    : '사무실 임대 문의, 무료주차 1대'
+  const image = v?.images[0] ?? FALLBACK_IMAGE
+  return { VACANCY_SUMMARY: summary, image }
 }
 
-// VACANCY 값이 description·구조화 데이터에 자동 반영됩니다.
-const VACANCY_SUMMARY = `${VACANCY.floor} 사무실 임대 ${VACANCY.area.contract}평(실 ${VACANCY.area.actual}평), 즉시 입주, 무료주차 1대`
-
-export const metadata: Metadata = {
-  title: '양재역 사무실 임대 | 서초동 효봉기업 빌딩 공실 안내',
-  description: `서울 서초구 서초동 서운로 20 효봉기업 빌딩. 3호선·신분당선 양재역 도보 약 5분. ${VACANCY_SUMMARY}. 문의: 02-3473-6651`,
-  keywords: ['양재역 사무실 임대', '양재역 사무실', '서운로 사무실 임대', '효봉기업 빌딩', '효봉기업'],
-  alternates: { canonical: '/hyobong-enterprise' },
-  openGraph: {
-    type: 'website',
-    url: '/hyobong-enterprise',
-    siteName: '효봉기업',
-    locale: 'ko_KR',
-    title: '양재역 사무실 임대 | 서초동 효봉기업 빌딩',
-    description: `서초동 양재역 도보 5분. ${VACANCY_SUMMARY}. 문의: 02-3473-6651`,
-    images: [VACANCY.images[0]],
-  },
-  twitter: {
-    card: 'summary',
-    title: '양재역 사무실 임대 | 서초동 효봉기업 빌딩',
-    description: `서초동 양재역 도보 5분. ${VACANCY_SUMMARY}. 문의: 02-3473-6651`,
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const { VACANCY_SUMMARY, image } = await getSummary()
+  return {
+    title: '양재역 사무실 임대 | 서초동 효봉기업 빌딩 공실 안내',
+    description: `서울 서초구 서초동 서운로 20 효봉기업 빌딩. 3호선·신분당선 양재역 도보 약 5분. ${VACANCY_SUMMARY}. 문의: 02-3473-6651`,
+    keywords: ['양재역 사무실 임대', '양재역 사무실', '서운로 사무실 임대', '효봉기업 빌딩', '효봉기업'],
+    alternates: { canonical: '/hyobong-enterprise' },
+    openGraph: {
+      type: 'website',
+      url: '/hyobong-enterprise',
+      siteName: '효봉기업',
+      locale: 'ko_KR',
+      title: '양재역 사무실 임대 | 서초동 효봉기업 빌딩',
+      description: `서초동 양재역 도보 5분. ${VACANCY_SUMMARY}. 문의: 02-3473-6651`,
+      images: [image],
+    },
+    twitter: {
+      card: 'summary',
+      title: '양재역 사무실 임대 | 서초동 효봉기업 빌딩',
+      description: `서초동 양재역 도보 5분. ${VACANCY_SUMMARY}. 문의: 02-3473-6651`,
+    },
+  }
 }
 
-const JSON_LD = {
-  '@context': 'https://schema.org',
-  '@type': 'Place',
-  name: '효봉기업 빌딩',
-  description: `서울 서초구 서초동, 3호선·신분당선 양재역 도보 약 5분. ${VACANCY_SUMMARY}`,
-  url: 'https://www.hyobongkiup.com/hyobong-enterprise',
-  image: `https://www.hyobongkiup.com${VACANCY.images[0]}`,
-  telephone: '+82-2-3473-6651',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '서운로 20',
-    addressLocality: '서초구',
-    addressRegion: '서울특별시',
-    addressCountry: 'KR',
-  },
+function jsonLd(VACANCY_SUMMARY: string, image: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Place',
+    name: '효봉기업 빌딩',
+    description: `서울 서초구 서초동, 3호선·신분당선 양재역 도보 약 5분. ${VACANCY_SUMMARY}`,
+    url: 'https://www.hyobongkiup.com/hyobong-enterprise',
+    image: image.startsWith('http') ? image : `${BASE_URL}${image}`,
+    telephone: '+82-2-3473-6651',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '서운로 20',
+      addressLocality: '서초구',
+      addressRegion: '서울특별시',
+      addressCountry: 'KR',
+    },
+  }
 }
 
 const PhoneIcon = ({ size = 22 }: { size?: number }) => (
@@ -81,7 +80,11 @@ const PhoneIcon = ({ size = 22 }: { size?: number }) => (
   </svg>
 )
 
-export default function HyobongEnterprisePage() {
+export default async function HyobongEnterprisePage() {
+  const { all: vacancies, current, upcoming } = (await getSiteVacancies())['hyobong-enterprise']
+  const vacancyText = `현재 공실 ${current.length}개${upcoming.length > 0 ? ` · 공실 예정 ${upcoming.length}개` : ''}`
+  const { VACANCY_SUMMARY, image } = await getSummary()
+  const JSON_LD = jsonLd(VACANCY_SUMMARY, image)
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
@@ -99,8 +102,8 @@ export default function HyobongEnterprisePage() {
 
             <div className={styles.urgencyBanner}>
               <span className={styles.urgencyDot} />
-              {/* 루틴: 공실 숫자 변경 시 아래 텍스트도 수정하세요 */}
-              현재 공실 1개 · 빠른 계약 가능
+              {/* 공실 수는 관리자 페이지(/admin)의 공실 데이터로 자동 반영됩니다 */}
+              {vacancyText} · 빠른 계약 가능
             </div>
 
             <h1 className={styles.heroTitle}>효봉기업</h1>
@@ -122,14 +125,14 @@ export default function HyobongEnterprisePage() {
             <AnimateIn className="reveal" activeClassName="inView">
               <div className={styles.sectionHead}>
                 <span className={styles.sectionLabel}>공실 정보</span>
-                {/* 루틴: 공실 숫자 변경 시 아래 숫자를 수정하세요 */}
-                <h2 className={styles.sectionTitle}>현재 공실 1개</h2>
+                <h2 className={styles.sectionTitle}>{vacancyText}</h2>
                 <p className={styles.sectionDesc}>지금 바로 입주 가능 · 조건 협의 환영</p>
                 <p className={styles.updateDate}><TodayDate /></p>
               </div>
             </AnimateIn>
 
-            <AnimateIn className="revealScale" activeClassName="inView" threshold={0.05}>
+            {vacancies.map((VACANCY) => (
+            <AnimateIn key={VACANCY.id} className="revealScale" activeClassName="inView" threshold={0.05}>
             <div className={styles.vacancyCard}>
               {VACANCY.images.length > 0 && (
                 <PropertyImageCarousel images={VACANCY.images} alt={`효봉기업 빌딩 ${VACANCY.floor} 사무실`} />
@@ -138,7 +141,7 @@ export default function HyobongEnterprisePage() {
               <div className={styles.cardHeader}>
                 <div className={styles.statusBadge}>
                   <span className={styles.statusDot} />
-                  즉시 입주 가능
+                  {VACANCY.urgency.replace('✔ ', '')}
                 </div>
                 <span className={styles.cardFloor}>{VACANCY.floor}</span>
               </div>
@@ -200,6 +203,7 @@ export default function HyobongEnterprisePage() {
               </PhoneLink>
             </div>
             </AnimateIn>
+            ))}
 
           </div>
         </section>

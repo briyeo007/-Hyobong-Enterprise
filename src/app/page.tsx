@@ -7,10 +7,13 @@ import AutoSlide from '@/components/AutoSlide/AutoSlide'
 import AnimateIn from '@/components/AnimateIn'
 import TodayDate from '@/components/TodayDate'
 import PhoneLink from '@/components/PhoneLink/PhoneLink'
-import { CURRENT_PROPERTIES, UPCOMING_PROPERTIES } from '@/components/sections/PropertySection/PropertySection'
+import { getSiteVacancies } from '@/lib/vacancies'
 import styles from './page.module.scss'
 
 const PHONE = '02-3473-6651'
+
+// 관리자 페이지에서 저장하면 즉시 갱신되고, 그 외에는 1시간마다 다시 확인합니다.
+export const revalidate = 3600
 
 const PhoneIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
@@ -40,16 +43,13 @@ const BISAN_IMAGES = [
   '/images/bisan/KakaoTalk_20260421_150637700_03.jpg',
 ]
 
-// 루틴: 효봉8빌딩 공실 수는 PropertySection의 PROPERTIES에서 자동 계산됩니다.
-// 비산효봉·효봉기업 빌딩은 각 페이지(bisan, hyobong-enterprise)의 공실 수와 맞춰 아래 숫자를 수정하세요.
+// 건물별 공실 수(vacancyCount·upcomingCount)는 관리자 페이지(/admin)의 공실 데이터로 자동 계산됩니다.
 // 메인 상단 공실 합계(heroSub)는 아래 vacancyCount·upcomingCount 합계로 자동 계산됩니다.
-const BUILDINGS = [
+const BUILDING_INFO = [
   {
     id: 'hyobong8',
     name: '효봉8빌딩',
     location: '서초동 · 남부터미널역 도보 5분',
-    vacancyCount: CURRENT_PROPERTIES.length,
-    upcomingCount: UPCOMING_PROPERTIES.length,
     status: '즉시 입주 가능',
     href: '/hyobong8',
     hasSlide: true,
@@ -59,8 +59,6 @@ const BUILDINGS = [
     id: 'bisan',
     name: '비산효봉',
     location: '안양 비산동',
-    vacancyCount: 1,
-    upcomingCount: 0,
     status: '빠른 계약 가능',
     href: '/bisan',
     hasSlide: true,
@@ -70,17 +68,12 @@ const BUILDINGS = [
     id: 'hyobong-enterprise',
     name: '효봉기업',
     location: '서초동 · 양재역 도보 5분',
-    vacancyCount: 1,
-    upcomingCount: 0,
     status: '즉시 입주 가능',
     href: '/hyobong-enterprise',
     hasSlide: true,
     tags: ['즉시 입주', '무료주차 1대', '사무실 가능'],
   },
-]
-
-const TOTAL_VACANCIES = BUILDINGS.reduce((sum, b) => sum + b.vacancyCount, 0)
-const TOTAL_UPCOMING = BUILDINGS.reduce((sum, b) => sum + b.upcomingCount, 0)
+] as const
 
 const INFO_ITEMS = [
   { icon: '📍', label: '남부터미널 / 안양 비산동 / 양재역' },
@@ -88,7 +81,16 @@ const INFO_ITEMS = [
   { icon: '⚡', label: '즉시 입주 가능' },
 ]
 
-export default function MainPage() {
+export default async function MainPage() {
+  const vacancies = await getSiteVacancies()
+  const BUILDINGS = BUILDING_INFO.map((b) => ({
+    ...b,
+    vacancyCount: vacancies[b.id].current.length,
+    upcomingCount: vacancies[b.id].upcoming.length,
+  }))
+  const TOTAL_VACANCIES = BUILDINGS.reduce((sum, b) => sum + b.vacancyCount, 0)
+  const TOTAL_UPCOMING = BUILDINGS.reduce((sum, b) => sum + b.upcomingCount, 0)
+
   return (
     <>
       <Header />

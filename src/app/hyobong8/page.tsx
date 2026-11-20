@@ -3,60 +3,70 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import FloatingButtons from '@/components/FloatingButtons/FloatingButtons'
-import PropertySection, {
-  PROPERTIES,
-  CURRENT_PROPERTIES,
-  UPCOMING_PROPERTIES,
-} from '@/components/sections/PropertySection/PropertySection'
+import PropertySection from '@/components/sections/PropertySection/PropertySection'
+import { getSiteVacancies } from '@/lib/vacancies'
+import type { Property } from '@/lib/vacancy-types'
 import LocationSection from '@/components/sections/LocationSection/LocationSection'
 import AnimateIn from '@/components/AnimateIn'
 import PhoneLink from '@/components/PhoneLink/PhoneLink'
 import styles from './page.module.scss'
 
-// 공실 목록(PROPERTIES)에서 공실 수·평수 범위를 계산해 description에 자동 반영합니다.
-const CONTRACT_AREAS = PROPERTIES.map((p) => p.area.contract)
-const floorList = (list: typeof PROPERTIES) => list.map((p) => p.floor).join('·')
-const UPCOMING_SUMMARY = UPCOMING_PROPERTIES.length > 0
-  ? `·공실 예정 ${UPCOMING_PROPERTIES.length}개(${floorList(UPCOMING_PROPERTIES)})`
-  : ''
-const VACANCY_SUMMARY = `사무실 공실 ${CURRENT_PROPERTIES.length}개(${floorList(CURRENT_PROPERTIES)})${UPCOMING_SUMMARY}, 임대 ${Math.min(...CONTRACT_AREAS)}~${Math.max(...CONTRACT_AREAS)}평`
+// 관리자 페이지에서 저장하면 즉시 갱신되고, 그 외에는 1시간마다 다시 확인합니다.
+export const revalidate = 3600
 
-export const metadata: Metadata = {
-  title: '남부터미널역 사무실 임대 | 서초동 효봉8빌딩 공실 안내',
-  description: `서울 서초구 서초동 3호선 남부터미널역 도보 5분 효봉8빌딩. ${VACANCY_SUMMARY}, 주차 가능. 문의: 02-3473-6651`,
-  keywords: ['남부터미널역 사무실 임대', '남부터미널 사무실 임대', '서초동 사무실 임대', '서초동 상가 임대', '서초구 사무실 임대', '남부터미널역 상가 임대', '효봉8빌딩'],
-  alternates: { canonical: '/hyobong8' },
-  openGraph: {
-    type: 'website',
-    url: '/hyobong8',
-    siteName: '효봉기업',
-    locale: 'ko_KR',
-    title: '남부터미널역 사무실 임대 | 서초동 효봉8빌딩',
-    description: '서초동 남부터미널역 도보 5분 사무실·상가 임대. 즉시 입주 가능. 문의: 02-3473-6651',
-    images: ['/images/building/KakaoTalk_20260417_164505696.jpg'],
-  },
-  twitter: {
-    card: 'summary',
-    title: '남부터미널역 사무실 임대 | 서초동 효봉8빌딩',
-    description: '서초동 남부터미널역 도보 5분 사무실 임대. 즉시 입주 가능. 문의: 02-3473-6651',
-  },
+// 공실 목록에서 공실 수·평수 범위를 계산해 description에 자동 반영합니다.
+const floorList = (list: Property[]) => list.map((p) => p.floor).join('·')
+function vacancySummary(all: Property[], current: Property[], upcoming: Property[]) {
+  const areas = all.map((p) => p.area.contract)
+  const upcomingSummary = upcoming.length > 0
+    ? `·공실 예정 ${upcoming.length}개(${floorList(upcoming)})`
+    : ''
+  const areaSummary = areas.length > 0 ? `, 임대 ${Math.min(...areas)}~${Math.max(...areas)}평` : ''
+  return `사무실 공실 ${current.length}개(${floorList(current)})${upcomingSummary}${areaSummary}`
 }
 
-const JSON_LD = {
-  '@context': 'https://schema.org',
-  '@type': 'Place',
-  name: '효봉8빌딩',
-  description: `서울 서초구 서초동, 3호선 남부터미널역 4-1번 출구 도보 약 5분(374m). ${VACANCY_SUMMARY}`,
-  url: 'https://www.hyobongkiup.com/hyobong8',
-  image: 'https://www.hyobongkiup.com/images/building/KakaoTalk_20260417_164505696.jpg',
-  telephone: '+82-2-3473-6651',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '남부순환로333길 13',
-    addressLocality: '서초구',
-    addressRegion: '서울특별시',
-    addressCountry: 'KR',
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const { all, current, upcoming } = (await getSiteVacancies()).hyobong8
+  const VACANCY_SUMMARY = vacancySummary(all, current, upcoming)
+  return {
+    title: '남부터미널역 사무실 임대 | 서초동 효봉8빌딩 공실 안내',
+    description: `서울 서초구 서초동 3호선 남부터미널역 도보 5분 효봉8빌딩. ${VACANCY_SUMMARY}, 주차 가능. 문의: 02-3473-6651`,
+    keywords: ['남부터미널역 사무실 임대', '남부터미널 사무실 임대', '서초동 사무실 임대', '서초동 상가 임대', '서초구 사무실 임대', '남부터미널역 상가 임대', '효봉8빌딩'],
+    alternates: { canonical: '/hyobong8' },
+    openGraph: {
+      type: 'website',
+      url: '/hyobong8',
+      siteName: '효봉기업',
+      locale: 'ko_KR',
+      title: '남부터미널역 사무실 임대 | 서초동 효봉8빌딩',
+      description: '서초동 남부터미널역 도보 5분 사무실·상가 임대. 즉시 입주 가능. 문의: 02-3473-6651',
+      images: ['/images/building/KakaoTalk_20260417_164505696.jpg'],
+    },
+    twitter: {
+      card: 'summary',
+      title: '남부터미널역 사무실 임대 | 서초동 효봉8빌딩',
+      description: '서초동 남부터미널역 도보 5분 사무실 임대. 즉시 입주 가능. 문의: 02-3473-6651',
+    },
+  }
+}
+
+function jsonLd(VACANCY_SUMMARY: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Place',
+    name: '효봉8빌딩',
+    description: `서울 서초구 서초동, 3호선 남부터미널역 4-1번 출구 도보 약 5분(374m). ${VACANCY_SUMMARY}`,
+    url: 'https://www.hyobongkiup.com/hyobong8',
+    image: 'https://www.hyobongkiup.com/images/building/KakaoTalk_20260417_164505696.jpg',
+    telephone: '+82-2-3473-6651',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '남부순환로333길 13',
+      addressLocality: '서초구',
+      addressRegion: '서울특별시',
+      addressCountry: 'KR',
+    },
+  }
 }
 
 const PHONE = '02-3473-6651'
@@ -80,7 +90,9 @@ const SUMMARY_ITEMS = [
   '엘리베이터 완비',
 ]
 
-export default function Hyobong8Page() {
+export default async function Hyobong8Page() {
+  const { all, current, upcoming } = (await getSiteVacancies()).hyobong8
+  const JSON_LD = jsonLd(vacancySummary(all, current, upcoming))
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
@@ -96,11 +108,11 @@ export default function Hyobong8Page() {
               건물 선택으로 돌아가기
             </Link>
 
-            {/* 루틴: 공실 수는 PropertySection의 PROPERTIES 배열(upcoming 여부)로 자동 반영됩니다 */}
+            {/* 공실 수는 관리자 페이지(/admin)의 공실 데이터로 자동 반영됩니다 */}
             <div className={styles.headerBadge}>
               <span className={styles.headerDot} />
-              현재 공실 {CURRENT_PROPERTIES.length}개
-              {UPCOMING_PROPERTIES.length > 0 && ` · 공실 예정 ${UPCOMING_PROPERTIES.length}개`}
+              현재 공실 {current.length}개
+              {upcoming.length > 0 && ` · 공실 예정 ${upcoming.length}개`}
             </div>
 
             <h1 className={styles.headerTitle}>
@@ -134,7 +146,7 @@ export default function Hyobong8Page() {
         </AnimateIn>
 
         {/* ── Vacancies ── */}
-        <PropertySection />
+        <PropertySection properties={all} />
 
         {/* ── Location ── */}
         <LocationSection showCta={false} />

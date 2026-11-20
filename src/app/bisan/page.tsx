@@ -8,46 +8,36 @@ import LocationSection from '@/components/sections/LocationSection/LocationSecti
 import AnimateIn from '@/components/AnimateIn'
 import TodayDate from '@/components/TodayDate'
 import PhoneLink from '@/components/PhoneLink/PhoneLink'
+import { getSiteVacancies } from '@/lib/vacancies'
 import styles from './page.module.scss'
 
-export const metadata: Metadata = {
-  title: '비산효봉 공실 안내 | 안양 비산동 사무실 임대',
-  description: '안양 비산동 비산효봉. 현재 공실 1개 빠른 계약 가능. 사무실 임대 문의: 02-3473-6651',
-  keywords: ['안양 비산동 사무실 임대', '비산동 사무실 임대', '안양 사무실 임대', '비산효봉', '효봉기업'],
-  alternates: { canonical: '/bisan' },
-  openGraph: {
-    type: 'website',
-    url: '/bisan',
-    siteName: '효봉기업',
-    locale: 'ko_KR',
+// 관리자 페이지에서 저장하면 즉시 갱신되고, 그 외에는 1시간마다 다시 확인합니다.
+export const revalidate = 3600
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { current } = (await getSiteVacancies()).bisan
+  return {
     title: '비산효봉 공실 안내 | 안양 비산동 사무실 임대',
-    description: '안양 비산동 비산효봉. 빠른 계약 가능. 문의: 02-3473-6651',
-  },
-  twitter: {
-    card: 'summary',
-    title: '비산효봉 공실 안내 | 안양 비산동 사무실 임대',
-    description: '안양 비산동 비산효봉. 빠른 계약 가능. 문의: 02-3473-6651',
-  },
+    description: `안양 비산동 비산효봉. 현재 공실 ${current.length}개 빠른 계약 가능. 사무실 임대 문의: 02-3473-6651`,
+    keywords: ['안양 비산동 사무실 임대', '비산동 사무실 임대', '안양 사무실 임대', '비산효봉', '효봉기업'],
+    alternates: { canonical: '/bisan' },
+    openGraph: {
+      type: 'website',
+      url: '/bisan',
+      siteName: '효봉기업',
+      locale: 'ko_KR',
+      title: '비산효봉 공실 안내 | 안양 비산동 사무실 임대',
+      description: '안양 비산동 비산효봉. 빠른 계약 가능. 문의: 02-3473-6651',
+    },
+    twitter: {
+      card: 'summary',
+      title: '비산효봉 공실 안내 | 안양 비산동 사무실 임대',
+      description: '안양 비산동 비산효봉. 빠른 계약 가능. 문의: 02-3473-6651',
+    },
+  }
 }
 
 const PHONE = '02-3473-6651'
-
-const VACANCY = {
-  floor: '1층 1호',
-  summary: '사무실 임대 · 즉시 입주 가능',
-  area: { contract: 28, actual: 17 },
-  deposit: '5,000만원',
-  rent: '350만원',
-  maintenance: '28만원',
-  tags: ['즉시 입주 가능', '조건 협의 가능', '단독 공실'],
-  images: [] as string[],
-  detailSpecs: [
-    { label: '용도', value: '사무실' },
-    { label: '주차', value: '협의 가능' },
-    { label: '관리비 포함', value: '전기·수도·청소' },
-    { label: '입주 가능', value: '즉시' },
-  ],
-}
 
 const PhoneIcon = ({ size = 22 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -55,7 +45,9 @@ const PhoneIcon = ({ size = 22 }: { size?: number }) => (
   </svg>
 )
 
-export default function BisanPage() {
+export default async function BisanPage() {
+  const { all: vacancies, current, upcoming } = (await getSiteVacancies())['bisan']
+  const vacancyText = `현재 공실 ${current.length}개${upcoming.length > 0 ? ` · 공실 예정 ${upcoming.length}개` : ''}`
   return (
     <>
       <Header />
@@ -72,8 +64,8 @@ export default function BisanPage() {
 
             <div className={styles.urgencyBanner}>
               <span className={styles.urgencyDot} />
-              {/* 루틴: 공실 숫자 변경 시 아래 텍스트도 수정하세요 */}
-              현재 공실 1개 · 빠른 계약 가능
+              {/* 공실 수는 관리자 페이지(/admin)의 공실 데이터로 자동 반영됩니다 */}
+              {vacancyText} · 빠른 계약 가능
             </div>
 
             <h1 className={styles.heroTitle}>비산효봉</h1>
@@ -95,14 +87,14 @@ export default function BisanPage() {
             <AnimateIn className="reveal" activeClassName="inView">
               <div className={styles.sectionHead}>
                 <span className={styles.sectionLabel}>공실 정보</span>
-                {/* 루틴: 공실 숫자 변경 시 아래 숫자를 수정하세요 */}
-                <h2 className={styles.sectionTitle}>현재 공실 1개</h2>
+                <h2 className={styles.sectionTitle}>{vacancyText}</h2>
                 <p className={styles.sectionDesc}>지금 바로 입주 가능 · 조건 협의 환영</p>
                 <p className={styles.updateDate}><TodayDate /></p>
               </div>
             </AnimateIn>
 
-            <AnimateIn className="revealScale" activeClassName="inView" threshold={0.05}>
+            {vacancies.map((VACANCY) => (
+            <AnimateIn key={VACANCY.id} className="revealScale" activeClassName="inView" threshold={0.05}>
             <div className={styles.vacancyCard}>
               {VACANCY.images.length > 0 && (
                 <PropertyImageCarousel images={VACANCY.images} alt={`비산효봉 ${VACANCY.floor} 사무실`} />
@@ -111,7 +103,7 @@ export default function BisanPage() {
               <div className={styles.cardHeader}>
                 <div className={styles.statusBadge}>
                   <span className={styles.statusDot} />
-                  즉시 입주 가능
+                  {VACANCY.urgency.replace('✔ ', '')}
                 </div>
                 <span className={styles.cardFloor}>{VACANCY.floor}</span>
               </div>
@@ -173,6 +165,7 @@ export default function BisanPage() {
               </PhoneLink>
             </div>
             </AnimateIn>
+            ))}
 
           </div>
         </section>

@@ -1,0 +1,189 @@
+[
+  {
+    "id": "1f-102",
+    "building": "hyobong8",
+    "sort_order": 10,
+    "floor": "1층",
+    "unit": "102호",
+    "summary": "사무실 임대",
+    "area_contract": 66,
+    "area_actual": 44,
+    "deposit": "5,000만원",
+    "rent": "400만원",
+    "maintenance": "100만원",
+    "available_date": null,
+    "status": "vacant",
+    "tags": ["즉시 입주 가능", "무료주차 1대"],
+    "detail_specs": [
+      { "label": "용도", "value": "사무실" },
+      { "label": "주차", "value": "무료 1대 제공" },
+      { "label": "엘리베이터", "value": "완비" },
+      { "label": "관리비 포함", "value": "전기·수도·청소·경비" },
+      { "label": "관리 형태", "value": "전문 관리팀 상주" }
+    ],
+    "images": [
+      "/images/1f-102/KakaoTalk_20260417_150442023.jpg",
+      "/images/1f-102/KakaoTalk_20260417_150442244.jpg",
+      "/images/1f-102/KakaoTalk_20260417_150442471.jpg",
+      "/images/1f-102/KakaoTalk_20260417_150442724.jpg"
+    ]
+  },
+  {
+    "id": "2f-201",
+    "building": "hyobong8",
+    "sort_order": 20,
+    "floor": "2층",
+    "unit": "201호",
+    "summary": "저렴한 사무실",
+    "area_contract": 55,
+    "area_actual": 34,
+    "deposit": "5,000만원",
+    "rent": "250만원",
+    "maintenance": "110만원",
+    "available_date": null,
+    "status": "vacant",
+    "tags": ["즉시 입주 가능"],
+    "detail_specs": [
+      { "label": "용도", "value": "사무실" },
+      { "label": "주차", "value": "입주자 전용 주차" },
+      { "label": "엘리베이터", "value": "완비" },
+      { "label": "관리비 포함", "value": "전기·수도·청소·경비" },
+      { "label": "관리 형태", "value": "전문 관리팀 상주" }
+    ],
+    "images": ["/images/2f-201/KakaoTalk_20260417_150521837.jpg"]
+  },
+  {
+    "id": "3f-all",
+    "building": "hyobong8",
+    "sort_order": 30,
+    "floor": "3층",
+    "unit": "전체",
+    "summary": "전층 단독 사용 가능",
+    "area_contract": 110,
+    "area_actual": 70,
+    "deposit": "1억원",
+    "rent": "500만원",
+    "maintenance": "200만원",
+    "available_date": null,
+    "status": "vacant",
+    "tags": ["즉시 입주 가능", "전층 단독 사용", "무료주차 2대"],
+    "detail_specs": [
+      { "label": "용도", "value": "사무실 (전층 단독 사용)" },
+      { "label": "주차", "value": "무료 2대 제공" },
+      { "label": "엘리베이터", "value": "완비" },
+      { "label": "관리비 포함", "value": "전기·수도·청소·경비" },
+      { "label": "관리 형태", "value": "전문 관리팀 상주" }
+    ],
+    "images": ["/images/3f-all/KakaoTalk_20260417_150553199.jpg"]
+  },
+  {
+    "id": "4f-401",
+    "building": "hyobong8",
+    "sort_order": 40,
+    "floor": "4층",
+    "unit": "401호",
+    "summary": "청소 완료 · 바닥·천장 텍스 새로 설치",
+    "area_contract": 55,
+    "area_actual": 34,
+    "deposit": "5,000만원",
+    "rent": "250만원",
+    "maintenance": "110만원",
+    "available_date": null,
+    "status": "vacant",
+    "tags": ["즉시 입주 가능", "청소 완료", "무료주차 1대"],
+    "detail_specs": [
+      { "label": "용도", "value": "사무실" },
+      { "label": "주차", "value": "무료 1대 제공" },
+      { "label": "엘리베이터", "value": "완비" },
+      { "label": "관리비 포함", "value": "전기·수도·청소·경비" },
+      { "label": "상태", "value": "청소 완료, 바닥·천장 텍스 새로 설치" },
+      { "label": "관리 형태", "value": "전문 관리팀 상주" }
+    ],
+    "images": [
+      "/images/4f-401/KakaoTalk_20261109_103958293.jpg",
+      "/images/4f-401/KakaoTalk_20261109_103958293_01.jpg",
+      "/images/4f-401/KakaoTalk_20261109_103958293_02.jpg",
+      "/images/4f-401/KakaoTalk_20261109_103958293_03.jpg",
+      "/images/4f-401/KakaoTalk_20261109_103958293_04.jpg"
+    ]
+  },
+  {
+    "id": "5f-501",
+    "building": "hyobong8",
+    "sort_order": 50,
+    "floor": "5층",
+    "unit": "501호",
+    "summary": "청소 완료 · 바닥·천장 텍스 새로 설치",
+    "area_contract": 55,
+    "area_actual": 34,
+    "deposit": "5,000만원",
+    "rent": "250만원",
+    "maintenance": "110만원",
+    "available_date": null,
+    "status": "vacant",
+    "tags": ["즉시 입주 가능", "청소 완료", "무료주차 1대"],
+    "detail_specs": [
+      { "label": "용도", "value": "사무실" },
+      { "label": "주차", "value": "무료 1대 제공" },
+      { "label": "엘리베이터", "value": "완비" },
+      { "label": "관리비 포함", "value": "전기·수도·청소·경비" },
+      { "label": "상태", "value": "청소 완료, 바닥·천장 텍스 새로 설치" },
+      { "label": "관리 형태", "value": "전문 관리팀 상주" }
+    ],
+    "images": [
+      "/images/5f-501/KakaoTalk_20260417_150621262.jpg",
+      "/images/5f-501/KakaoTalk_20260417_150621262_01.jpg"
+    ]
+  },
+  {
+    "id": "bisan-1f-1",
+    "building": "bisan",
+    "sort_order": 10,
+    "floor": "1층",
+    "unit": "1호",
+    "summary": "사무실 임대 · 즉시 입주 가능",
+    "area_contract": 28,
+    "area_actual": 17,
+    "deposit": "5,000만원",
+    "rent": "350만원",
+    "maintenance": "28만원",
+    "available_date": null,
+    "status": "vacant",
+    "tags": ["즉시 입주 가능", "조건 협의 가능", "단독 공실"],
+    "detail_specs": [
+      { "label": "용도", "value": "사무실" },
+      { "label": "주차", "value": "협의 가능" },
+      { "label": "관리비 포함", "value": "전기·수도·청소" },
+      { "label": "입주 가능", "value": "즉시" }
+    ],
+    "images": []
+  },
+  {
+    "id": "enterprise-8f",
+    "building": "hyobong-enterprise",
+    "sort_order": 10,
+    "floor": "8층",
+    "unit": "",
+    "summary": "사무실 임대 · 즉시 입주 가능",
+    "area_contract": 66,
+    "area_actual": 33,
+    "deposit": "5,000만원",
+    "rent": "350만원",
+    "maintenance": "150만원",
+    "available_date": null,
+    "status": "vacant",
+    "tags": ["즉시 입주 가능", "조건 협의 가능", "무료주차 1대", "리모델링 완료"],
+    "detail_specs": [
+      { "label": "용도", "value": "사무실" },
+      { "label": "주차", "value": "무료 1대 제공" },
+      { "label": "엘리베이터", "value": "있음" },
+      { "label": "관리비 포함", "value": "전기·수도·청소" },
+      { "label": "화장실", "value": "남·여 화장실 공사 완료" },
+      { "label": "입주 가능", "value": "즉시 (리모델링 완료)" }
+    ],
+    "images": [
+      "/images/hyobong-enterprise/KakaoTalk_20260421_144826946.jpg",
+      "/images/hyobong-enterprise/KakaoTalk_20260421_144826946_01.jpg"
+    ]
+  }
+]

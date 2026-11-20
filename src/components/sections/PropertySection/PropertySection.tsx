@@ -2,167 +2,13 @@ import AnimateIn from '@/components/AnimateIn'
 import PropertyImageCarousel from './PropertyImageCarousel'
 import TodayDate from '@/components/TodayDate'
 import PhoneLink from '@/components/PhoneLink/PhoneLink'
+import type { Property } from '@/lib/vacancy-types'
 import styles from './PropertySection.module.scss'
 
-type SpecRow = { label: string; value: string }
+export type { Property }
 
-type SingleProperty = {
-  id: string
-  floor: string
-  summary: string
-  area: { contract: number; actual: number }
-  deposit: string
-  rent: string
-  maintenance: string
-  tags: string[]
-  images: string[]
-  urgency?: string
-  // true = 현 임차인 퇴거 전인 공실 예정 호실 (현재 공실 수에서 제외)
-  upcoming?: boolean
-  dual?: false
-  detailSpecs?: SpecRow[]
-}
-
-type DualProperty = {
-  id: string
-  floor: string
-  summary: string
-  area: { contract: number; actual: number }
-  dual: true
-  options: { label: string; deposit: string; rent: string; maintenance: string }[]
-  tags: string[]
-  images: string[]
-  urgency?: string
-  upcoming?: boolean
-  detailSpecs?: SpecRow[]
-}
-
-type Property = SingleProperty | DualProperty
-
-// 루틴: 공실 추가·삭제 시 아래 배열에서 항목을 추가하거나 제거하세요.
-export const PROPERTIES: Property[] = [
-  {
-    id: '1f-102',
-    floor: '1층 102호',
-    summary: '사무실 임대',
-    area: { contract: 66, actual: 44 },
-    deposit: '5,000만원',
-    rent: '400만원',
-    maintenance: '100만원',
-    urgency: '✔ 즉시 입주 가능',
-    tags: ['즉시 입주 가능', '무료주차 1대'],
-    detailSpecs: [
-      { label: '용도', value: '사무실' },
-      { label: '주차', value: '무료 1대 제공' },
-      { label: '엘리베이터', value: '완비' },
-      { label: '관리비 포함', value: '전기·수도·청소·경비' },
-      { label: '관리 형태', value: '전문 관리팀 상주' },
-    ],
-    images: [
-      '/images/1f-102/KakaoTalk_20260417_150442023.jpg',
-      '/images/1f-102/KakaoTalk_20260417_150442244.jpg',
-      '/images/1f-102/KakaoTalk_20260417_150442471.jpg',
-      '/images/1f-102/KakaoTalk_20260417_150442724.jpg',
-    ],
-  },
-  {
-    id: '2f-201',
-    floor: '2층 201호',
-    summary: '저렴한 사무실',
-    area: { contract: 55, actual: 34 },
-    deposit: '5,000만원',
-    rent: '250만원',
-    maintenance: '110만원',
-    urgency: '✔ 즉시 입주 가능',
-    tags: ['즉시 입주 가능'],
-    detailSpecs: [
-      { label: '용도', value: '사무실' },
-      { label: '주차', value: '입주자 전용 주차' },
-      { label: '엘리베이터', value: '완비' },
-      { label: '관리비 포함', value: '전기·수도·청소·경비' },
-      { label: '관리 형태', value: '전문 관리팀 상주' },
-    ],
-    images: [
-      '/images/2f-201/KakaoTalk_20260417_150521837.jpg',
-    ],
-  },
-  {
-    id: '3f-all',
-    floor: '3층 전체',
-    summary: '전층 단독 사용 가능',
-    area: { contract: 110, actual: 70 },
-    deposit: '1억원',
-    rent: '500만원',
-    maintenance: '200만원',
-    urgency: '✔ 즉시 입주 가능',
-    tags: ['즉시 입주 가능', '전층 단독 사용', '무료주차 2대'],
-    detailSpecs: [
-      { label: '용도', value: '사무실 (전층 단독 사용)' },
-      { label: '주차', value: '무료 2대 제공' },
-      { label: '엘리베이터', value: '완비' },
-      { label: '관리비 포함', value: '전기·수도·청소·경비' },
-      { label: '관리 형태', value: '전문 관리팀 상주' },
-    ],
-    images: [
-      '/images/3f-all/KakaoTalk_20260417_150553199.jpg',
-    ],
-  },
-  {
-    id: '4f-401',
-    floor: '4층 401호',
-    summary: '청소 완료 · 바닥·천장 텍스 새로 설치',
-    area: { contract: 55, actual: 34 },
-    deposit: '5,000만원',
-    rent: '250만원',
-    maintenance: '110만원',
-    urgency: '✔ 즉시 입주 가능',
-    tags: ['즉시 입주 가능', '청소 완료', '무료주차 1대'],
-    detailSpecs: [
-      { label: '용도', value: '사무실' },
-      { label: '주차', value: '무료 1대 제공' },
-      { label: '엘리베이터', value: '완비' },
-      { label: '관리비 포함', value: '전기·수도·청소·경비' },
-      { label: '상태', value: '청소 완료, 바닥·천장 텍스 새로 설치' },
-      { label: '관리 형태', value: '전문 관리팀 상주' },
-    ],
-    images: [
-      '/images/4f-401/KakaoTalk_20261109_103958293.jpg',
-      '/images/4f-401/KakaoTalk_20261109_103958293_01.jpg',
-      '/images/4f-401/KakaoTalk_20261109_103958293_02.jpg',
-      '/images/4f-401/KakaoTalk_20261109_103958293_03.jpg',
-      '/images/4f-401/KakaoTalk_20261109_103958293_04.jpg',
-    ],
-  },
-  {
-    id: '5f-501',
-    floor: '5층 501호',
-    summary: '청소 완료 · 바닥·천장 텍스 새로 설치',
-    area: { contract: 55, actual: 34 },
-    deposit: '5,000만원',
-    rent: '250만원',
-    maintenance: '110만원',
-    urgency: '✔ 즉시 입주 가능',
-    tags: ['즉시 입주 가능', '청소 완료', '무료주차 1대'],
-    detailSpecs: [
-      { label: '용도', value: '사무실' },
-      { label: '주차', value: '무료 1대 제공' },
-      { label: '엘리베이터', value: '완비' },
-      { label: '관리비 포함', value: '전기·수도·청소·경비' },
-      { label: '상태', value: '청소 완료, 바닥·천장 텍스 새로 설치' },
-      { label: '관리 형태', value: '전문 관리팀 상주' },
-    ],
-    images: [
-      '/images/5f-501/KakaoTalk_20260417_150621262.jpg',
-      '/images/5f-501/KakaoTalk_20260417_150621262_01.jpg',
-    ],
-  },
-]
-
-// 현재 공실 / 공실 예정 구분 — 메인 페이지와 상세 페이지의 공실 숫자가 여기서 자동 계산됩니다.
-export const CURRENT_PROPERTIES = PROPERTIES.filter((p) => !p.upcoming)
-export const UPCOMING_PROPERTIES = PROPERTIES.filter((p) => p.upcoming)
-
-export default function PropertySection() {
+// 공실 데이터는 관리자 페이지(/admin)에서 수정하며, 건물 페이지가 조회해 properties로 전달합니다.
+export default function PropertySection({ properties }: { properties: Property[] }) {
   return (
     <section id="property" className={styles.section}>
       <div className={styles.container}>
@@ -195,7 +41,7 @@ export default function PropertySection() {
         </PhoneLink>
 
         <div className={styles.grid}>
-          {PROPERTIES.map((p, idx) => (
+          {properties.map((p, idx) => (
             <AnimateIn
               key={p.id}
               className={styles.card}
@@ -233,7 +79,7 @@ export default function PropertySection() {
               </div>
 
               {/* 단일 조건 */}
-              {!p.dual && (
+              {(
                 <div className={styles.specGrid}>
                   <div className={styles.specItem}>
                     <span className={styles.specLabel}>보증금</span>
@@ -249,31 +95,6 @@ export default function PropertySection() {
                     <span className={styles.specLabel}>관리비</span>
                     <span className={styles.specValue}>{p.maintenance}</span>
                   </div>
-                </div>
-              )}
-
-              {/* 이중 조건 (사무실/가게) */}
-              {p.dual && (
-                <div className={styles.dualGrid}>
-                  {p.options.map((opt) => (
-                    <div key={opt.label} className={styles.dualOption}>
-                      <span className={styles.dualLabel}>{opt.label}</span>
-                      <div className={styles.dualSpecs}>
-                        <div className={styles.dualSpecItem}>
-                          <span className={styles.specLabel}>보증금</span>
-                          <span className={styles.dualValue}>{opt.deposit}</span>
-                        </div>
-                        <div className={styles.dualSpecItem}>
-                          <span className={styles.specLabel}>월 임대료</span>
-                          <span className={styles.dualValue}>{opt.rent}</span>
-                        </div>
-                        <div className={styles.dualSpecItem}>
-                          <span className={styles.specLabel}>관리비</span>
-                          <span className={styles.dualValue}>{opt.maintenance}</span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
                 </div>
               )}
 
