@@ -7,8 +7,8 @@ for (const f of ['.env.local', '.env']) {
   }
 }
 
-export const URL_ = (process.env.SUPABASE_URL ?? '').replace(/\/+$/, '')
-const KEY = process.env.SUPABASE_SERVICE_ROLE_KEY ?? ''
+export const URL_ = process.env.SUPABASE_URL ? new URL(process.env.SUPABASE_URL.trim()).origin : ''
+const KEY = (process.env.SUPABASE_SERVICE_ROLE_KEY ?? '').trim()
 if (!URL_ || !KEY) {
   console.error('SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY 환경변수가 필요합니다 (.env.local).')
   process.exit(1)

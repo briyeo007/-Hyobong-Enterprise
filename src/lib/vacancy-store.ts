@@ -24,8 +24,9 @@ const SEED = seed as VacancyRow[]
 
 // ───────── Supabase REST (의존성 없이 fetch 사용) ─────────
 function sb() {
-  const url = process.env.SUPABASE_URL!.replace(/\/+$/, '')
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY!
+  // 'https://xxx.supabase.co/rest/v1/' 처럼 경로가 붙어 있어도 도메인만 사용
+  const url = new URL(process.env.SUPABASE_URL!.trim()).origin
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY!.trim()
   const headers: Record<string, string> = { apikey: key }
   // 기존 JWT 형식(service_role) 키만 Authorization 헤더에 사용, 신규 sb_secret_ 키는 apikey 헤더만 사용
   if (key.startsWith('eyJ')) headers.Authorization = `Bearer ${key}`
